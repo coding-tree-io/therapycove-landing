@@ -1,0 +1,20 @@
+# Jekyll build artifacts
+_site/
+.sass-cache/
+.jekyll-metadata
+
+# GitHub Pages deployment
+Gemfile.lock
+
+# OS & editor junk
+.DS_Store
+*.swp
+*.tmp
+
+# TinaCMS auto-generated files
+tina/__generated__/
+
+# JS runtime dependencies (if using npm/Yarn)
+node_modules/
+
+# Optional: add editor-specific state files here
