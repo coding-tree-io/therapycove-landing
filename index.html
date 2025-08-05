@@ -2,55 +2,124 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>TherapyCove – Coming Soon</title>
+    <title>Therapy Cove – Coming Soon</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
-        body {
+        /* 60-30-10 Brand Palette */
+        :root {
+            --mandys-pink: #EFB6A3;
+            --ocean-flow: #9DC6AA;
+            --coral-pink: #F88379;
+            --ivory: #F9ECCF;
+            --charcoal: #333333;
+        }
+
+        /* Reset & Layout */
+        * {
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
-            color: #333;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--ivory);
+            color: var(--charcoal);
+            font-family: 'Transforma Mix', Helvetica, sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            background: #f4f4f4;
+            min-height: 100vh;
         }
 
+        /* Container */
         .container {
+            position: relative;
             text-align: center;
-            padding: 20px;
-            max-width: 400px;
+            max-width: 450px;
+            padding: 3rem 2rem;
         }
 
+        /* Wave motif (low-opacity) */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140%;
+            height: 120px;
+            background: url('assets/brandmark.svg') center bottom no-repeat;
+            background-size: contain;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        /* Heading */
         h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: #2a2a72;
-        }
-
-        p {
-            margin: 0.5rem 0 1rem;
-        }
-
-        .logo {
-            max-width: 150px;
+            font-family: 'Valonik', sans-serif;
+            font-size: 2.4rem;
             margin-bottom: 1rem;
+            color: var(--charcoal);
         }
 
+        /* Lead */
+        p.lead {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--ocean-flow);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Subtext */
+        p.sub {
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        /* CTA Button */
+        .cta {
+            display: inline-block;
+            padding: 0.75rem 1.6rem;
+            background: var(--coral-pink);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .cta:hover {
+            background: var(--mandys-pink);
+        }
+
+        /* Footer Email */
         .email {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: #555;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: var(--charcoal);
+        }
+
+        /* Responsive */
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>TherapyCove is Coming Soon</h1>
-    <p>Providing compassionate psychotherapy sessions in a supportive space.</p>
-    <p>Launching shortly—stay tuned.</p>
-    <!--    <p class="email">Questions? Email us at info@therapycove.gr</p>-->
+    <h1>Therapy Cove Is Coming Soon</h1>
+    <p class="lead">
+        Providing compassionate psychotherapy sessions in a supportive space.
+    </p>
+    <p class="sub">Launching shortly—stay tuned.</p>
+    <!--    <p class="email">Questions? Email us at info@therapycove.gr</p>-->
 </div>
 </body>
 </html>
