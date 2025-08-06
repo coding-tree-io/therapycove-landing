@@ -1,0 +1,13 @@
+title: Therapy Cove
+description: Secure, personalized online therapy in Greece. Launching soon.
+baseurl: ""        # no subpath
+url: "https://www.therapycove.gr"
+theme: minima      # or remove if you’re using custom layouts
+plugins:
+  - jekyll-seo-tag
+
+exclude:
+  - ".idea/"
+  - "node_modules/"
+  - "vendor/"
+  - "Gemfile*"
