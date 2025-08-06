@@ -7,39 +7,41 @@
     <style>
         /* 60-30-10 Brand Palette */
         :root {
-            --mandys-pink: #EFB6A3;
-            --ocean-flow: #9DC6AA;
-            --coral-pink: #F88379;
-            --ivory: #F9ECCF;
-            --charcoal: #333333;
+            --ivory: #F9ECCF; /* 60 % background */
+            --charcoal: #333333; /* 30 % primary text */
+            --coral-pink: #F88379; /* 10 % accent CTA */
+            --ocean-flow: #9DC6AA; /* secondary decorative */
+            --mandys-pink: #EFB6A3; /* hover accent */
         }
 
-        /* Reset & Layout */
-        * {
+        /* Reset & Base */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
+        html {
+            font-family: 'Transforma Mix', Helvetica, sans-serif;
             background: var(--ivory);
             color: var(--charcoal);
-            font-family: 'Transforma Mix', Helvetica, sans-serif;
+        }
+
+        body {
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
         }
 
-        /* Container */
+        /* Container & Spacing */
         .container {
             position: relative;
             text-align: center;
-            max-width: 450px;
-            padding: 3rem 2rem;
+            padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 5vw, 2rem);
+            max-width: 500px;
         }
 
-        /* Wave motif (low-opacity) */
         .container::before {
             content: "";
             position: absolute;
@@ -54,67 +56,108 @@
             pointer-events: none;
         }
 
-        /* Heading */
+        /* Logo */
+        .logo {
+            display: block;
+            margin: 0 auto clamp(1rem, 2vw, 1.5rem);
+            width: clamp(120px, 15vw, 160px);
+            height: auto;
+        }
+
+        /* Headline & Border */
+        .headline-wrapper {
+            border-bottom: 4px solid var(--ocean-flow);
+            padding-bottom: 0.5rem;
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
+        }
+
         h1 {
             font-family: 'Valonik', sans-serif;
-            font-size: 2.4rem;
-            margin-bottom: 1rem;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
+            line-height: 1.2;
             color: var(--charcoal);
         }
 
-        /* Lead */
+        /* Lead & Subtext */
         p.lead {
-            font-size: 1rem;
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            font-weight: 500;
+            color: var(--charcoal);
             line-height: 1.6;
-            color: var(--ocean-flow);
-            margin-bottom: 1.5rem;
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
         }
 
-        /* Subtext */
         p.sub {
             font-size: 0.95rem;
-            margin-bottom: 2rem;
+            color: var(--ocean-flow);
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
         }
 
-        /* CTA Button */
-        .cta {
-            display: inline-block;
-            padding: 0.75rem 1.6rem;
+        .form-field label {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .form-field input[type="email"] {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--ocean-flow);
+            border-radius: 4px;
+            font-size: 1rem;
+            width: clamp(200px, 60%, 400px);
+        }
+
+        .form-field button {
             background: var(--coral-pink);
             color: #fff;
-            text-decoration: none;
+            border: none;
             border-radius: 4px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: background 0.3s ease;
+            padding: 0.75rem 1.5rem;
             font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
         }
 
-        .cta:hover {
+        .form-field button:hover,
+        .form-field button:focus {
             background: var(--mandys-pink);
+            outline: none;
         }
 
-        /* Footer Email */
+        /* Email Footer */
         .email {
-            margin-top: 2rem;
             font-size: 0.85rem;
             color: var(--charcoal);
+            margin-top: clamp(2rem, 4vw, 3rem);
         }
 
-        /* Responsive */
-        @media (max-width: 400px) {
-            h1 {
-                font-size: 2rem;
-            }
+        /* Focus States */
+        input:focus, button:focus {
+            outline: 2px solid var(--ocean-flow);
+            outline-offset: 2px;
+        }
 
+        /* Responsive Tweaks */
+        @media (max-width: 400px) {
             .container {
-                padding: 2rem 1rem;
+                padding: clamp(1rem, 5vw, 2rem);
             }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>Therapy Cove Is Coming Soon</h1>
+    <img class="logo" src="assets/therapycove-logo.jpg" alt="Therapy Cove logo" loading="lazy">
+    <div class="headline-wrapper">
+        <h1>Therapy Cove Is Coming Soon</h1>
+    </div>
     <p class="lead">
         Providing compassionate psychotherapy sessions in a supportive space.
     </p>
