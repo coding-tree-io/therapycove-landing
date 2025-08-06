@@ -3,166 +3,23 @@
 <head>
     <meta charset="utf-8">
     <title>Therapy Cove – Coming Soon</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <style>
-        /* 60-30-10 Brand Palette */
-        :root {
-            --ivory: #F9ECCF; /* 60 % background */
-            --charcoal: #333333; /* 30 % primary text */
-            --coral-pink: #F88379; /* 10 % accent CTA */
-            --ocean-flow: #9DC6AA; /* secondary decorative */
-            --mandys-pink: #EFB6A3; /* hover accent */
-        }
-
-        /* Reset & Base */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            font-family: 'Transforma Mix', Helvetica, sans-serif;
-            background: var(--ivory);
-            color: var(--charcoal);
-        }
-
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        /* Container & Spacing */
-        .container {
-            position: relative;
-            text-align: center;
-            padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 5vw, 2rem);
-            max-width: 500px;
-        }
-
-        .container::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 140%;
-            height: 120px;
-            background: url('assets/brandmark.svg') center bottom no-repeat;
-            background-size: contain;
-            opacity: 0.08;
-            pointer-events: none;
-        }
-
-        /* Logo */
-        .logo {
-            display: block;
-            margin: 0 auto clamp(1rem, 2vw, 1.5rem);
-            width: clamp(120px, 15vw, 160px);
-            height: auto;
-        }
-
-        /* Headline & Border */
-        .headline-wrapper {
-            border-bottom: 4px solid var(--ocean-flow);
-            padding-bottom: 0.5rem;
-            margin-bottom: clamp(1rem, 2vw, 1.5rem);
-        }
-
-        h1 {
-            font-family: 'Valonik', sans-serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--charcoal);
-        }
-
-        /* Lead & Subtext */
-        p.lead {
-            font-size: clamp(1rem, 2.5vw, 1.125rem);
-            font-weight: 500;
-            color: var(--charcoal);
-            line-height: 1.6;
-            margin-bottom: clamp(1rem, 2vw, 1.5rem);
-        }
-
-        p.sub {
-            font-size: 0.95rem;
-            color: var(--ocean-flow);
-            margin-bottom: clamp(1.5rem, 3vw, 2rem);
-        }
-
-        .form-field label {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        .form-field input[type="email"] {
-            padding: 0.75rem 1rem;
-            border: 1px solid var(--ocean-flow);
-            border-radius: 4px;
-            font-size: 1rem;
-            width: clamp(200px, 60%, 400px);
-        }
-
-        .form-field button {
-            background: var(--coral-pink);
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .form-field button:hover,
-        .form-field button:focus {
-            background: var(--mandys-pink);
-            outline: none;
-        }
-
-        /* Email Footer */
-        .email {
-            font-size: 0.85rem;
-            color: var(--charcoal);
-            margin-top: clamp(2rem, 4vw, 3rem);
-        }
-
-        /* Focus States */
-        input:focus, button:focus {
-            outline: 2px solid var(--ocean-flow);
-            outline-offset: 2px;
-        }
-
-        /* Responsive Tweaks */
-        @media (max-width: 400px) {
-            .container {
-                padding: clamp(1rem, 5vw, 2rem);
-            }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-<div class="container">
-    <img class="logo" src="assets/therapycove-logo.jpg" alt="Therapy Cove logo" loading="lazy">
-    <div class="headline-wrapper">
-        <h1>Therapy Cove Is Coming Soon</h1>
-    </div>
-    <p class="lead">
-        Providing compassionate psychotherapy sessions in a supportive space.
-    </p>
-    <p class="sub">Launching shortly—stay tuned.</p>
-    <!--    <p class="email">Questions? Email us at info@therapycove.gr</p>-->
+<div class="page-container">
+    <img class="site-logo"
+         src="assets/therapycove-logo.jpg"
+         alt="Therapy Cove logo"
+         loading="lazy">
+
+    <div class="headline-bar"><h1 class="main-heading"> Therapy Cove Is Coming Soon </h1></div>
+
+    <p class="lead-text"> Providing compassionate psychotherapy sessions in a supportive space. </p>
+
+    <p class="supporting-text"> Launching shortly—stay tuned. </p>
+
+    <!--    <p class="contact-text"> Questions? Email us at info@therapycove.gr </p>-->
 </div>
 </body>
 </html>
