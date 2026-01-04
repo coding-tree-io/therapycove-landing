@@ -1,0 +1,87 @@
+{% assign pricing = site.data.home.pricing %}
+{% assign contact = site.data.home.contact %}
+<section class="pricing14-thq-pricing23-elm thq-section-padding pricing14root-class-name">
+  <div class="pricing14-thq-max-width-elm thq-section-max-width">
+    <div class="pricing14-thq-section-title-elm">
+      <span class="pricing14-thq-text-elm10 thq-body-small">{{ pricing.eyebrow }}</span>
+      <div class="pricing14-thq-content-elm">
+        <h2 class="pricing14-thq-text-elm11 thq-heading-2">{{ pricing.heading }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="pricing14-divider thq-divider-horizontal"></div>
+  <div id="contact" class="contact-form2-thq-contact5-elm thq-section-padding">
+    <div class="thq-flex-row thq-section-max-width contact-form2-thq-max-width-elm">
+      <div class="thq-flex-column contact-form2-thq-content-elm">
+        <div class="contact-form2-thq-section-title-elm">
+          {% if contact.eyebrow %}
+          <span class="thq-body-small">{{ contact.eyebrow }}</span>
+          {% endif %}
+          <h2 class="thq-heading-2">{{ contact.heading }}</h2>
+          {% if contact.description %}
+          <span class="thq-body-large">{{ contact.description }}</span>
+          {% endif %}
+        </div>
+        <div class="contact-form2-thq-contact-info-elm thq-flex-column">
+          <div class="contact-form2-thq-row-elm1 thq-flex-row">
+            <svg viewBox="0 0 1024 1024" class="thq-icon-small">
+              <path d="M854 342v-86l-342 214-342-214v86l342 212zM854 170q34 0 59 26t25 60v512q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h684z"></path>
+            </svg>
+            <span class="thq-body-small">{{ contact.email }}</span>
+          </div>
+          <div class="contact-form2-thq-row-elm2 thq-flex-row">
+            <svg viewBox="0 0 1024 1024" class="thq-icon-small">
+              <path d="M282 460q96 186 282 282l94-94q20-20 44-10 72 24 152 24 18 0 30 12t12 30v150q0 18-12 30t-30 12q-300 0-513-213t-213-513q0-18 12-30t30-12h150q18 0 30 12t12 30q0 80 24 152 8 26-10 44z"></path>
+            </svg>
+            <span class="thq-body-small">{{ contact.phone }}</span>
+          </div>
+          <div class="contact-form2-thq-row-elm3 thq-flex-row">
+            <svg viewBox="0 0 1024 1024" class="thq-icon-small">
+              <path d="M512 0c-176.732 0-320 143.268-320 320 0 320 320 704 320 704s320-384 320-704c0-176.732-143.27-320-320-320zM512 512c-106.040 0-192-85.96-192-192s85.96-192 192-192 192 85.96 192 192-85.96 192-192 192z"></path>
+            </svg>
+            <span class="thq-body-small">{{ contact.address }}</span>
+          </div>
+        </div>
+      </div>
+      <form data-form-id="f8b46cd8-e768-4d05-9074-dd913e006d91" class="contact-form2-form">
+        <div class="contact-form2-thq-input-elm1">
+          <label for="contact-form-2-name" class="thq-body-small">{{ contact.form.name_label }}</label>
+          <input
+            type="text"
+            id="contact-form-2-name"
+            name="contact-form-2-name"
+            placeholder="Name"
+            data-form-field-id="contact-form-2-name"
+            class="contact-form2-thq-text-input-elm1 thq-input"
+          >
+        </div>
+        <div class="contact-form2-thq-input-elm2">
+          <label for="contact-form-2-email" class="thq-body-small">{{ contact.form.email_label }}</label>
+          <input
+            type="email"
+            id="contact-form-2-email"
+            name="contact-form-2-email"
+            required
+            placeholder="Email"
+            data-form-field-id="contact-form-2-email"
+            class="contact-form2-thq-text-input-elm2 thq-input"
+          >
+        </div>
+        <div class="contact-form2-thq-input-elm3">
+          <label for="contact-form-2-message" class="thq-body-small">{{ contact.form.message_label }}</label>
+          <textarea
+            id="contact-form-2-message"
+            name="contact-form-2-message"
+            rows="3"
+            placeholder="Enter your message"
+            data-form-field-id="contact-form-2-message"
+            class="contact-form2-textarea thq-input"
+          ></textarea>
+        </div>
+        <button name="button qlhqddumts" type="submit" class="thq-button-filled">
+          <span class="thq-body-small">{{ contact.form.submit_label }}</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

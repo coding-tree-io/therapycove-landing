@@ -1,0 +1,17 @@
+{% assign info = site.data.home.info %}
+<section id="info" class="home-container2 info-section">
+  <div class="home-thq-container-elm info-grid">
+    <div class="info-block">
+      <h3 class="info-heading thq-heading-3">{{ info.client.heading }}</h3>
+      <div class="info-body thq-body-small rich-text">
+        {{ info.client.body | markdownify }}
+      </div>
+    </div>
+    <div class="info-block">
+      <h3 class="info-heading thq-heading-3">{{ info.therapist.heading }}</h3>
+      <div class="info-body thq-body-small rich-text">
+        {{ info.therapist.body | markdownify }}
+      </div>
+    </div>
+  </div>
+</section>

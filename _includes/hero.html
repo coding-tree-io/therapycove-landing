@@ -1,13 +1,29 @@
-<div class="page-container">
-  <img
-    class="site-logo"
-    src="{{ include.logo }}"
-    alt="Therapy Cove logo"
-    loading="lazy"
-  >
-  <div class="headline-bar">
-    <h1 class="main-heading">{{ include.headline }}</h1>
+{% assign hero = site.data.home.hero %}
+<section class="hero17-thq-header78-elm hero17root-class-name">
+  <div class="hero17-thq-column-elm thq-section-max-width thq-section-padding">
+    <div class="hero17-thq-content-elm1">
+      <div class="hero17-thq-text-elm1 thq-body-large rich-text">
+        {{ hero.body | markdownify }}
+      </div>
+    </div>
+    <div class="hero17-thq-actions-elm">
+      <a href="{{ hero.primary_action.href }}" class="hero17-thq-button-elm1 thq-button-filled">
+        <span class="thq-body-small">{{ hero.primary_action.label }}</span>
+      </a>
+      <a href="{{ hero.secondary_action.href }}" class="hero17-thq-button-elm2 thq-button-outline">
+        <span class="thq-body-small">{{ hero.secondary_action.label }}</span>
+      </a>
+    </div>
   </div>
-  <p class="lead-text">{{ include.lead }}</p>
-  <p class="supporting-text">{{ include.supporting }}</p>
-</div>
+  <div class="hero17-thq-content-elm2 css shadow animation transition">
+    <div id="space" class="row-container-thq-row-container-elm hero-image-anchor thq-mask-image-horizontal thq-animated-group-container-horizontal">
+      <div class="row-container-thq-strip-elm thq-animated-group-horizontal animation">
+        <img
+          alt="{{ hero.image.alt }}"
+          src="{{ hero.image.src | relative_url }}"
+          class="shadow steady animation"
+        >
+      </div>
+    </div>
+  </div>
+</section>

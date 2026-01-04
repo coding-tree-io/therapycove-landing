@@ -1,0 +1,40 @@
+{% assign features = site.data.home.features %}
+<section id="approaches" class="features25-container1 thq-section-padding features25root-class-name">
+  <div class="features25-container2 thq-section-max-width">
+    <div class="features25-thq-tabs-menu-elm">
+      <h2 class="thq-heading-2">{{ features.heading }}</h2>
+      <div class="thq-body-small rich-text">
+        {{ features.description | markdownify }}
+      </div>
+      <div class="features25-thq-tab-horizontal-elm1">
+        <div class="features25-thq-divider-container-elm1">
+          <div class="features25-container3"></div>
+        </div>
+        <div class="features25-thq-content-elm1">
+          <h2 class="features25-thq-feature2-title-elm thq-heading-2">{{ features.items[0].title }}</h2>
+          <div class="thq-body-small rich-text">
+            {{ features.items[0].description | markdownify }}
+          </div>
+        </div>
+      </div>
+      <div class="features25-thq-tab-horizontal-elm2">
+        <div class="features25-thq-divider-container-elm2">
+          <div class="features25-container4"></div>
+        </div>
+        <div class="features25-thq-content-elm2">
+          <h2 class="thq-heading-2">{{ features.items[1].title }}</h2>
+          <div class="thq-body-small rich-text">
+            {{ features.items[1].description | markdownify }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="features25-thq-image-container-elm">
+      <img
+        alt="{{ features.image.alt }}"
+        src="{{ features.image.src | relative_url }}"
+        class="features25-image3"
+      >
+    </div>
+  </div>
+</section>

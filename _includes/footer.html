@@ -1,0 +1,38 @@
+{% assign footer = site.data.home.footer %}
+{% assign contact = site.data.home.contact %}
+<footer class="footer4-thq-footer7-elm thq-section-padding">
+  <div class="footer4-thq-max-width-elm thq-section-max-width">
+    <div class="footer4-thq-content-elm footer4-content">
+      <div class="footer4-brand">
+        <img
+          alt="{{ footer.logo_alt }}"
+          src="{{ '/assets/therapycove-logo.jpg' | relative_url }}"
+          class="footer4-thq-logo-elm2"
+        >
+        {% if footer.tagline %}
+        <p class="footer4-tagline thq-body-small">{{ footer.tagline }}</p>
+        {% endif %}
+      </div>
+      <div class="footer4-column">
+        <h3 class="footer4-heading">Επικοινωνία</h3>
+        <ul class="footer4-list">
+          <li>
+            <a href="mailto:{{ contact.email }}" class="footer4-contact-link">{{ contact.email }}</a>
+          </li>
+          <li>
+            <a href="tel:{{ contact.phone }}" class="footer4-contact-link">{{ contact.phone }}</a>
+          </li>
+          <li>
+            <span>{{ contact.address }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer4-thq-credits-elm">
+      <div class="thq-divider-horizontal"></div>
+      <div class="footer4-thq-row-elm footer4-bottom">
+        <span class="footer4-copyright">{{ footer.copyright }}</span>
+      </div>
+    </div>
+  </div>
+</footer>

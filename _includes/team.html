@@ -1,0 +1,74 @@
+{% assign team = site.data.home.team %}
+<section id="therapists" class="team3-thq-team12-elm thq-section-padding">
+  <div class="team3-thq-max-width-elm thq-section-max-width">
+    <div class="team3-thq-section-title-elm">
+      <div class="team3-thq-content-elm1">
+        <h2 class="thq-heading-2">{{ team.heading }}</h2>
+      </div>
+    </div>
+    <div class="team3-thq-content-elm2">
+      {% assign member1 = team.members[0] %}
+      {% assign member2 = team.members[1] %}
+      {% assign member3 = team.members[2] %}
+      <div class="team3-thq-row-elm1">
+        <div class="team3-thq-card-elm1">
+          <img
+            alt="{{ member1.alt }}"
+            src="{{ member1.image | relative_url }}"
+            class="team3-thq-member-image-elm1 thq-img-ratio-1-1"
+          >
+          <div class="team3-thq-content-elm3">
+            <div class="team3-thq-title-elm1">
+              <span class="team3-thq-text-elm11 thq-body-small">{{ member1.name }}</span>
+              <span class="thq-body-small">{{ member1.role }}</span>
+            </div>
+            <div class="team3-thq-text-elm13 thq-body-small rich-text">
+              {{ member1.bio | markdownify }}
+            </div>
+          </div>
+          <div class="team3-thq-social-icons-elm1"></div>
+        </div>
+      </div>
+      <div class="team3-thq-row-elm2">
+        <div class="team3-thq-card-elm2">
+          <img
+            alt="{{ member2.alt }}"
+            src="{{ member2.image | relative_url }}"
+            class="team3-thq-member-image-elm2 thq-img-ratio-1-1"
+          >
+          <div class="team3-thq-content-elm4">
+            <div class="team3-thq-title-elm2">
+              <span class="team3-thq-text-elm14 thq-body-small">{{ member2.name }}</span>
+              <span class="thq-body-small">{{ member2.role }}</span>
+            </div>
+            <div class="team3-thq-text-elm16 thq-body-small rich-text">
+              {{ member2.bio | markdownify }}
+            </div>
+          </div>
+        </div>
+        <div class="team3-thq-card-elm3">
+          <img
+            alt="{{ member3.alt }}"
+            src="{{ member3.image | relative_url }}"
+            class="team3-thq-member-image-elm3 thq-img-ratio-1-1"
+          >
+          <div class="team3-thq-content-elm5">
+            <div class="team3-thq-title-elm3">
+              <span class="team3-thq-text-elm17 thq-body-small">{{ member3.name }}</span>
+              <span class="thq-body-small">{{ member3.role }}</span>
+            </div>
+            <div class="team3-thq-text-elm19 thq-body-small rich-text">
+              {{ member3.bio | markdownify }}
+            </div>
+          </div>
+          <div class="team3-thq-social-icons-elm2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="team3-thq-content-elm6">
+      <div class="team3-thq-content-elm7">
+        <div class="team3-thq-content-elm8"></div>
+      </div>
+    </div>
+  </div>
+</section>
