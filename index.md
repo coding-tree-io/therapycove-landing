@@ -1,12 +1,21 @@
 ---
 layout: default
-title: "Therapy Cove Is Coming Soon"
-description: "Providing compassionate psychotherapy sessions in a supportive space."
+title: "Therapy Cove"
+description: "Secure, personalized online therapy in Greece."
+lang: "el"
 ---
 
-{% include hero.html
-logo="/assets/therapycove-logo.jpg"
-headline=page.title
-lead=page.description
-supporting="Launching shortly—stay tuned."
-%}
+<div class="home-container1">
+  {% include navbar.html %}
+  <img
+    alt="Therapy Cove mark"
+    src="{{ '/assets/images/8cdc0150-2223-4a87-af3c-53e092fe8173-300h.png' | relative_url }}"
+    class="home-image"
+  >
+  {% include hero.html %}
+  {% include info.html %}
+  {% include team.html %}
+  {% include features.html %}
+  {% include pricing.html %}
+  {% include footer.html %}
+</div>
