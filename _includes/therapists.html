@@ -6,7 +6,6 @@
     {% assign therapists_label = link.label %}
   {% endif %}
 {% endfor %}
-{% assign featured = therapists.members[0] %}
 <section id="therapists" class="cove-section cove-therapists">
   <div class="cove-shell">
     <div class="cove-section-heading cove-section-heading--left">
@@ -15,42 +14,22 @@
       {% endif %}
       <h2 class="cove-section-title">{{ therapists.heading }}</h2>
     </div>
-    {% if featured %}
-    <div class="cove-therapists-featured">
-      <div class="cove-therapists-featured-media">
-        <img
-          alt="{{ featured.alt }}"
-          src="{{ featured.image | relative_url }}"
-          class="cove-therapists-featured-image"
-        >
-      </div>
-      <div class="cove-therapists-featured-content">
-        <p class="cove-therapists-role">{{ featured.role }}</p>
-        <h3 class="cove-therapists-name">{{ featured.name }}</h3>
-        <div class="cove-rich-text">
-          {{ featured.bio | markdownify }}
-        </div>
-      </div>
-    </div>
-    {% endif %}
-
-    <div class="cove-therapists-grid">
-      {% for member in therapists.members offset:1 %}
-      <article class="cove-therapists-card">
-        <div class="cove-therapists-card-media">
+    <div class="cove-therapists-list">
+      {% for member in therapists.members %}
+      <article class="cove-therapists-profile">
+        <div class="cove-therapists-profile-media">
           <img
             alt="{{ member.alt }}"
             src="{{ member.image | relative_url }}"
-            class="cove-therapists-card-image"
+            class="cove-therapists-profile-image"
           >
-          <div class="cove-therapists-card-overlay" aria-hidden="true"></div>
-          <div class="cove-therapists-card-meta">
-            <p class="cove-therapists-card-role">{{ member.role }}</p>
-            <h3 class="cove-therapists-card-name">{{ member.name }}</h3>
-          </div>
         </div>
-        <div class="cove-therapists-card-body cove-rich-text">
-          {{ member.bio | markdownify }}
+        <div class="cove-therapists-profile-content">
+          <p class="cove-therapists-role">{{ member.role }}</p>
+          <h3 class="cove-therapists-name">{{ member.name }}</h3>
+          <div class="cove-rich-text">
+            {{ member.bio | markdownify }}
+          </div>
         </div>
       </article>
       {% endfor %}

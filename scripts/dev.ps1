@@ -1,4 +1,5 @@
 $ErrorActionPreference = "Stop"
+
 $projectRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
 Set-Location $projectRoot
 
@@ -13,22 +14,41 @@ function Test-Command {
     return $null -ne (Get-Command $Name -ErrorAction SilentlyContinue)
 }
 
+function Get-IsWindows {
+    return $env:OS -eq "Windows_NT"
+}
+
 function Add-PathEntry {
     param(
         [Parameter(Mandatory = $true)]
         [string]$PathEntry
     )
 
-    $normalized = $PathEntry.TrimEnd("\")
-    $current = $env:Path -split ";"
+    $normalized = $PathEntry.TrimEnd([IO.Path]::DirectorySeparatorChar, [IO.Path]::AltDirectorySeparatorChar)
+    $separator = [IO.Path]::PathSeparator
+    $current = @()
+
+    if ($env:Path) {
+        $current = $env:Path -split [regex]::Escape($separator)
+    }
+
     if ($current -notcontains $normalized) {
-        $env:Path = $normalized + ";" + $env:Path
+        if ([string]::IsNullOrWhiteSpace($env:Path)) {
+            $env:Path = $normalized
+        }
+        else {
+            $env:Path = $normalized + $separator + $env:Path
+        }
     }
 }
 
 function Ensure-RubyOnPath {
     if (Test-Command "ruby") {
         return $true
+    }
+
+    if (-not (Get-IsWindows)) {
+        return $false
     }
 
     $candidateBins = @(
@@ -48,28 +68,6 @@ function Ensure-RubyOnPath {
         if (Test-Path (Join-Path $bin "ruby.exe")) {
             Add-PathEntry $bin
             return $true
-        }
-    }
-
-    $root = Join-Path $env:SystemDrive "\"
-    $rootRubyDirs = Get-ChildItem -Path $root -Directory -Filter "Ruby*" -ErrorAction SilentlyContinue
-    foreach ($dir in $rootRubyDirs) {
-        $bin = Join-Path $dir.FullName "bin"
-        if (Test-Path (Join-Path $bin "ruby.exe")) {
-            Add-PathEntry $bin
-            return $true
-        }
-    }
-
-    $programFilesRoots = @($env:ProgramFiles, ${env:ProgramFiles(x86)}) | Where-Object { $_ }
-    foreach ($rootPath in $programFilesRoots) {
-        $pfRubyDirs = Get-ChildItem -Path $rootPath -Directory -Filter "Ruby*" -ErrorAction SilentlyContinue
-        foreach ($dir in $pfRubyDirs) {
-            $bin = Join-Path $dir.FullName "bin"
-            if (Test-Path (Join-Path $bin "ruby.exe")) {
-                Add-PathEntry $bin
-                return $true
-            }
         }
     }
 
@@ -100,11 +98,11 @@ function Get-BundlerVersionFromLock {
 
 function Ensure-Bundle {
     if (-not (Ensure-RubyOnPath)) {
-        throw "Ruby is not available. Install Ruby (RubyInstaller with DevKit) and ensure it is on PATH, then rerun."
+        throw "Ruby is not available. Install Ruby and ensure it is on PATH, then rerun."
     }
 
     if (-not (Test-Command "gem")) {
-        throw "RubyGems is not available. Reinstall Ruby with DevKit and ensure it is on PATH."
+        throw "RubyGems is not available. Reinstall Ruby and ensure it is on PATH."
     }
 
     $bundlerVersion = Get-BundlerVersionFromLock
@@ -151,13 +149,18 @@ function Ensure-Bundle {
 }
 
 function Start-DecapServer {
-    if (-not (Test-Command "npx")) {
+    $npx = Get-Command "npx" -ErrorAction SilentlyContinue
+    if (-not $npx) {
         Write-Warning "npx not found; skipping Decap local backend. Install Node.js to enable the CMS locally."
         return $null
     }
 
     try {
-        return Start-Process -FilePath "cmd.exe" -ArgumentList "/c", "npx decap-server" -WorkingDirectory $projectRoot -NoNewWindow -PassThru -ErrorAction Stop
+        if (Get-IsWindows) {
+            return Start-Process -FilePath "cmd.exe" -ArgumentList "/c", "npx decap-server" -WorkingDirectory $projectRoot -NoNewWindow -PassThru -ErrorAction Stop
+        }
+
+        return Start-Process -FilePath "npx" -ArgumentList "decap-server" -WorkingDirectory $projectRoot -PassThru -ErrorAction Stop
     } catch {
         Write-Warning ("Failed to start the Decap local backend: " + $_.Exception.Message)
         return $null
@@ -175,11 +178,6 @@ finally
 {
     if ($decap -and -not $decap.HasExited)
     {
-        $decap.CloseMainWindow() | Out-Null
-        Start-Sleep -Milliseconds 500
-        if (-not $decap.HasExited)
-        {
-            Stop-Process -Id $decap.Id -Force
-        }
+        Stop-Process -Id $decap.Id -Force -ErrorAction SilentlyContinue
     }
 }
