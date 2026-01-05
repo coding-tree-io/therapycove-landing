@@ -25,13 +25,29 @@
   };
 
   let lastScrollTime = 0;
-  const cooldownMs = 600;
+  let lastSwitchTime = 0;
+  let accumulatedDelta = 0;
+  let lastDirection = 0;
+  const cooldownMs = 300;
   const scrollThreshold = 12;
+  const minDeltaPerTab = 240;
+  const maxDeltaPerEvent = 120;
+  const resetMs = 700;
   const topOffset = 96;
 
   const isSectionActive = () => {
     const rect = section.getBoundingClientRect();
     return rect.top <= topOffset && rect.bottom >= topOffset;
+  };
+
+  const normalizeDelta = (event) => {
+    let delta = event.deltaY;
+    if (event.deltaMode === 1) {
+      delta *= 16;
+    } else if (event.deltaMode === 2) {
+      delta *= window.innerHeight;
+    }
+    return delta;
   };
 
   const onWheel = (event) => {
@@ -40,11 +56,13 @@
     }
 
     if (!isSectionActive()) {
+      accumulatedDelta = 0;
+      lastDirection = 0;
       return;
     }
 
-    const delta = event.deltaY;
-    if (Math.abs(delta) < scrollThreshold) {
+    const rawDelta = normalizeDelta(event);
+    if (Math.abs(rawDelta) < scrollThreshold) {
       return;
     }
 
@@ -53,17 +71,32 @@
       return;
     }
 
-    const canAdvance = delta > 0 && activeIndex < tabs.length - 1;
-    const canRewind = delta < 0 && activeIndex > 0;
+    const direction = Math.sign(rawDelta);
+    const canAdvance = direction > 0 && activeIndex < tabs.length - 1;
+    const canRewind = direction < 0 && activeIndex > 0;
     if (!canAdvance && !canRewind) {
       return;
     }
 
     event.preventDefault();
     const now = Date.now();
-    if (now - lastScrollTime >= cooldownMs) {
+    if (direction !== lastDirection || now - lastScrollTime > resetMs) {
+      accumulatedDelta = 0;
+    }
+
+    lastDirection = direction;
+    lastScrollTime = now;
+
+    if (now - lastSwitchTime < cooldownMs) {
+      return;
+    }
+
+    const delta = Math.max(-maxDeltaPerEvent, Math.min(maxDeltaPerEvent, rawDelta));
+    accumulatedDelta += delta;
+    if (Math.abs(accumulatedDelta) >= minDeltaPerTab) {
       setActiveIndex(activeIndex + (canAdvance ? 1 : -1));
-      lastScrollTime = now;
+      accumulatedDelta = 0;
+      lastSwitchTime = now;
     }
   };
 
