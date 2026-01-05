@@ -1,0 +1,34 @@
+{% assign audiences = site.data.therapy_cove.audiences %}
+{% assign site_nav = site.data.therapy_cove.site_nav %}
+{% assign audiences_label = '' %}
+{% for link in site_nav.links %}
+  {% if link.href == '#audiences' %}
+    {% assign audiences_label = link.label %}
+  {% endif %}
+{% endfor %}
+<section id="audiences" class="cove-section cove-audiences">
+  <div class="cove-shell">
+    {% if audiences_label != '' %}
+    <p class="cove-eyebrow">{{ audiences_label }}</p>
+    {% endif %}
+    {% if audiences.intro %}
+    <div class="cove-audiences-intro cove-rich-text">
+      {{ audiences.intro | markdownify }}
+    </div>
+    {% endif %}
+    <div class="cove-audiences-grid">
+      <article class="cove-audiences-card">
+        <h3 class="cove-card-title">{{ audiences.clients.heading }}</h3>
+        <div class="cove-rich-text">
+          {{ audiences.clients.body | markdownify }}
+        </div>
+      </article>
+      <article class="cove-audiences-card">
+        <h3 class="cove-card-title">{{ audiences.therapist.heading }}</h3>
+        <div class="cove-rich-text">
+          {{ audiences.therapist.body | markdownify }}
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

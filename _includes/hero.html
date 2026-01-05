@@ -1,46 +1,42 @@
-{% assign hero = site.data.home.hero %}
-{% assign nav = site.data.home.nav %}
-{% assign hero_paragraphs = hero.body | split: "\n\n" %}
-{% assign hero_summary = hero_paragraphs[0] %}
+{% assign hero = site.data.therapy_cove.hero %}
+{% assign site_nav = site.data.therapy_cove.site_nav %}
 {% assign hero_title = hero.heading | default: page.title %}
-<section class="tc-hero" aria-labelledby="hero-title">
-  <div class="tc-hero-background" aria-hidden="true">
-    <div class="tc-hero-shape tc-hero-shape--one"></div>
-    <div class="tc-hero-shape tc-hero-shape--two"></div>
+<section id="hero" class="cove-section cove-hero" aria-labelledby="hero-title">
+  <div class="cove-hero-backdrop" aria-hidden="true">
+    <div class="cove-hero-shape cove-hero-shape--one"></div>
+    <div class="cove-hero-shape cove-hero-shape--two"></div>
   </div>
-
-  <div class="tc-container tc-hero-inner">
-    <div class="tc-hero-logo tc-animate" style="--delay: 0ms;">
+  <div class="cove-shell cove-hero-inner">
+    <div class="cove-hero-brand cove-reveal" style="--delay: 0ms;">
       <img
-        alt="{{ nav.logo_alt }}"
-        src="{{ '/assets/images/8cdc0150-2223-4a87-af3c-53e092fe8173-300h.png' | relative_url }}"
-        class="tc-hero-logo-image"
+        alt="{{ site_nav.logo_alt }}"
+        src="{{ '/assets/images/therapy-cove-logo.svg' | relative_url }}"
+        class="cove-hero-logo"
       >
     </div>
-
-    <div class="tc-hero-content tc-animate" style="--delay: 120ms;">
-      <h1 id="hero-title" class="tc-hero-title">{{ hero_title }}</h1>
-      <div class="tc-hero-text tc-rich-text">
-        {{ hero_summary | markdownify }}
+    <div class="cove-hero-content cove-reveal" style="--delay: 120ms;">
+      <h1 id="hero-title" class="cove-hero-title">{{ hero_title }}</h1>
+      <div class="cove-rich-text cove-hero-lead">
+        {{ hero.lead | markdownify }}
       </div>
     </div>
 
-    <div class="tc-hero-actions tc-animate" style="--delay: 220ms;">
-      <a class="tc-button tc-button--solid tc-button--lg" href="{{ hero.primary_action.href }}">{{ hero.primary_action.label }}</a>
-      <a class="tc-button tc-button--ghost tc-button--lg" href="{{ hero.secondary_action.href }}">{{ hero.secondary_action.label }}</a>
+    <div class="cove-hero-actions cove-reveal" style="--delay: 220ms;">
+      <a class="cove-button cove-button--solid cove-button--lg" href="{{ hero.primary_cta.href }}">{{ hero.primary_cta.label }}</a>
+      <a class="cove-button cove-button--ghost cove-button--lg" href="{{ hero.secondary_cta.href }}">{{ hero.secondary_cta.label }}</a>
     </div>
 
-    <div id="space" class="tc-hero-media tc-animate" style="--delay: 360ms;">
+    <div id="space" class="cove-hero-media cove-reveal" style="--delay: 360ms;">
       <img
-        alt="{{ hero.image.alt }}"
-        src="{{ hero.image.src | relative_url }}"
-        class="tc-hero-image"
+        alt="{{ hero.space_image.alt }}"
+        src="{{ hero.space_image.src | relative_url }}"
+        class="cove-hero-image"
       >
-      <div class="tc-hero-media-overlay" aria-hidden="true"></div>
+      <div class="cove-hero-media-overlay" aria-hidden="true"></div>
     </div>
 
-    <a class="tc-hero-scroll" href="#info" aria-label="Scroll to content">
-      <svg viewBox="0 0 24 24" aria-hidden="true" class="tc-hero-scroll-icon">
+    <a class="cove-hero-scroll" href="#audiences" aria-label="Scroll to content">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="cove-hero-scroll-icon">
         <path d="M12 4v12m0 0l-5-5m5 5l5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>
     </a>

@@ -1,30 +1,26 @@
-{% assign footer = site.data.home.footer %}
-{% assign nav = site.data.home.nav %}
-<footer class="tc-footer">
-  <div class="tc-container">
-    <div class="tc-footer-content">
-      <a href="#top" class="tc-footer-logo" aria-label="{{ footer.logo_alt }}">
+{% assign footer = site.data.therapy_cove.footer %}
+{% assign site_nav = site.data.therapy_cove.site_nav %}
+<footer class="cove-footer">
+  <div class="cove-shell">
+    <div class="cove-footer-content">
+      <a href="#hero" class="cove-footer-logo" aria-label="{{ footer.logo_alt }}">
         <img
           alt="{{ footer.logo_alt }}"
-          src="{{ '/assets/images/8cdc0150-2223-4a87-af3c-53e092fe8173-300h.png' | relative_url }}"
-          class="tc-footer-logo-image"
+          src="{{ '/assets/images/therapy-cove-logo.svg' | relative_url }}"
+          class="cove-footer-logo-image"
         >
       </a>
-
       {% if footer.tagline %}
-      <p class="tc-footer-tagline">{{ footer.tagline }}</p>
+      <p class="cove-footer-tagline">{{ footer.tagline }}</p>
       {% endif %}
-
-      <nav class="tc-footer-nav" aria-label="Footer">
-        {% for item in nav.items %}
-        <a href="{{ item.href }}" class="tc-footer-link">{{ item.label }}</a>
+      <nav class="cove-footer-nav" aria-label="Footer">
+        {% for link in site_nav.links %}
+        <a href="{{ link.href }}" class="cove-footer-link">{{ link.label }}</a>
         {% endfor %}
       </nav>
-
-      <div class="tc-footer-divider" aria-hidden="true"></div>
-
-      <div class="tc-footer-bottom">
-        <span class="tc-footer-copy">{{ footer.copyright }}</span>
+      <div class="cove-footer-divider" aria-hidden="true"></div>
+      <div class="cove-footer-bottom">
+        <span class="cove-footer-copy">{{ footer.copyright }}</span>
       </div>
     </div>
   </div>

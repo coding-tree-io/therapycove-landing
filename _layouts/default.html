@@ -2,9 +2,8 @@
 <html lang="{{ page.lang | default: site.lang | default: 'el' }}">
 <head>
   {% include seo.html %}
-  <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/theme.css' | relative_url }}">
-  <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="{{ '/assets/css/therapy-cove.css' | relative_url }}">
   <link
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
@@ -13,14 +12,9 @@
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
   >
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
-  >
 </head>
 <body>
   {{ content }}
-  <script defer src="{{ '/assets/js/scroll-tabs.js' | relative_url }}"></script>
-  <script defer src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+  <script defer src="{{ '/assets/js/approaches-tabs.js' | relative_url }}"></script>
 </body>
 </html>

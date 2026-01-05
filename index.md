@@ -5,12 +5,12 @@ description: "Secure, personalized online therapy in Greece."
 lang: "el"
 ---
 
-<main id="top" class="tc-page">
-  {% include navbar.html %}
+<main class="cove-page">
+  {% include site-nav.html %}
   {% include hero.html %}
-  {% include info.html %}
-  {% include team.html %}
-  {% include features.html %}
+  {% include audiences.html %}
+  {% include therapists.html %}
+  {% include approaches.html %}
   {% include contact.html %}
   {% include footer.html %}
 </main>

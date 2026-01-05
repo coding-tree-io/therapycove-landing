@@ -1,0 +1,47 @@
+{% assign site_nav = site.data.therapy_cove.site_nav %}
+<header class="cove-nav">
+  <div class="cove-shell cove-nav-inner">
+    <a href="#hero" class="cove-logo" aria-label="{{ site_nav.logo_alt }}">
+      <img
+        alt="{{ site_nav.logo_alt }}"
+        src="{{ '/assets/images/therapy-cove-logo.svg' | relative_url }}"
+        class="cove-logo-image"
+      >
+    </a>
+    <input id="cove-nav-toggle" class="cove-nav-toggle" type="checkbox">
+    <nav class="cove-nav-links" aria-label="Primary">
+      {% for link in site_nav.links %}
+      <a class="cove-nav-link" href="{{ link.href }}">{{ link.label }}</a>
+      {% endfor %}
+    </nav>
+    <div class="cove-nav-cta">
+      <a class="cove-button cove-button--nav" href="{{ site_nav.cta.primary.href }}">{{ site_nav.cta.primary.label }}</a>
+    </div>
+    <label class="cove-nav-toggle-label" for="cove-nav-toggle" aria-label="Toggle navigation">
+      <span class="cove-nav-toggle-line"></span>
+      <span class="cove-nav-toggle-line"></span>
+      <span class="cove-nav-toggle-line"></span>
+    </label>
+
+    <div class="cove-nav-drawer">
+      <div class="cove-nav-drawer-inner">
+        <div class="cove-nav-drawer-header">
+          <img
+            alt="{{ site_nav.logo_alt }}"
+            src="{{ '/assets/images/therapy-cove-logo.svg' | relative_url }}"
+            class="cove-nav-drawer-logo"
+          >
+          <label class="cove-nav-close" for="cove-nav-toggle" aria-label="Close navigation">×</label>
+        </div>
+        <nav class="cove-nav-drawer-links" aria-label="Mobile">
+          {% for link in site_nav.links %}
+          <a class="cove-nav-drawer-link" href="{{ link.href }}">{{ link.label }}</a>
+          {% endfor %}
+        </nav>
+        <div class="cove-nav-drawer-actions">
+          <a class="cove-button cove-button--nav cove-button--lg" href="{{ site_nav.cta.primary.href }}">{{ site_nav.cta.primary.label }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

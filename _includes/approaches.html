@@ -1,0 +1,57 @@
+{% assign approaches = site.data.therapy_cove.approaches %}
+{% assign site_nav = site.data.therapy_cove.site_nav %}
+{% assign approaches_label = '' %}
+{% for link in site_nav.links %}
+  {% if link.href == '#approaches' %}
+    {% assign approaches_label = link.label %}
+  {% endif %}
+{% endfor %}
+{% if approaches_label == '' %}
+  {% assign approaches_label = approaches.heading %}
+{% endif %}
+<section id="approaches" class="cove-section cove-approaches">
+  <div class="cove-shell">
+    <div class="cove-section-heading" data-approaches-lock>
+      {% if approaches_label != '' %}
+      <p class="cove-eyebrow">{{ approaches_label }}</p>
+      {% endif %}
+      <h2 class="cove-section-title">{{ approaches.heading }}</h2>
+      {% if approaches.summary %}
+      <div class="cove-section-summary cove-rich-text">{{ approaches.summary | markdownify }}</div>
+      {% endif %}
+    </div>
+    <div class="approaches-tabs">
+      {% for tab in approaches.tabs %}
+      <input
+        id="approach-tab-{{ forloop.index0 }}"
+        class="approaches-tab-toggle"
+        type="radio"
+        name="approaches-tabs"
+        {% if forloop.first %}checked{% endif %}
+      >
+      {% endfor %}
+
+      <div class="approaches-tab-list" role="tablist">
+        {% for tab in approaches.tabs %}
+        <label class="approaches-tab" for="approach-tab-{{ forloop.index0 }}" role="tab">
+          <span class="approaches-dot"></span>
+          <span class="approaches-title">{{ tab.title }}</span>
+          <div class="approaches-description cove-rich-text">{{ tab.description | markdownify }}</div>
+        </label>
+        {% endfor %}
+      </div>
+
+      <div class="approaches-panels">
+        {% for tab in approaches.tabs %}
+        <div class="approaches-panel" data-approach-index="{{ forloop.index0 }}">
+          <img
+            alt="{{ tab.image.alt }}"
+            src="{{ tab.image.src | relative_url }}"
+            class="approaches-image"
+          >
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
