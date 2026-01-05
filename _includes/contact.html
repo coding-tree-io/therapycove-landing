@@ -1,0 +1,102 @@
+{% assign pricing = site.data.home.pricing %}
+{% assign contact = site.data.home.contact %}
+{% assign email_label = contact.email_label | default: contact.form.email_label %}
+<section id="contact" class="tc-section tc-contact">
+  <div class="tc-container">
+    <div class="tc-section-header tc-section-header--left">
+      {% if pricing.eyebrow %}
+      <p class="tc-eyebrow">{{ pricing.eyebrow }}</p>
+      {% endif %}
+      <h2 class="tc-section-title">{{ contact.heading }}</h2>
+      <p class="tc-section-description">{{ pricing.heading }}</p>
+    </div>
+
+    <div class="tc-contact-grid">
+      <div class="tc-contact-info">
+        <div class="tc-contact-item">
+          <div class="tc-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
+              <path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+            </svg>
+          </div>
+          <div class="tc-contact-text">
+            {% if email_label %}
+            <span class="tc-contact-label">{{ email_label }}</span>
+            {% endif %}
+            <span class="tc-contact-value">{{ contact.email }}</span>
+          </div>
+        </div>
+        <div class="tc-contact-item">
+          <div class="tc-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M7.5 3h2.5l1 4-2 1.5a14 14 0 0 0 6 6l1.5-2 4 1v2.5c0 1.1-.9 2-2 2A16 16 0 0 1 4.5 5c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <div class="tc-contact-text">
+            {% if contact.phone_label %}
+            <span class="tc-contact-label">{{ contact.phone_label }}</span>
+            {% endif %}
+            <span class="tc-contact-value">{{ contact.phone }}</span>
+          </div>
+        </div>
+        <div class="tc-contact-item">
+          <div class="tc-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+              <circle cx="12" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+            </svg>
+          </div>
+          <div class="tc-contact-text">
+            {% if contact.address_label %}
+            <span class="tc-contact-label">{{ contact.address_label }}</span>
+            {% endif %}
+            <span class="tc-contact-value">{{ contact.address }}</span>
+          </div>
+        </div>
+      </div>
+
+      <form data-form-id="f8b46cd8-e768-4d05-9074-dd913e006d91" class="tc-contact-form">
+        <div class="tc-form-grid">
+          <div class="tc-form-field">
+            <label for="contact-name" class="tc-form-label">{{ contact.form.name_label }}</label>
+            <input
+              type="text"
+              id="contact-name"
+              name="contact-name"
+              placeholder="{{ contact.form.name_label }}"
+              data-form-field-id="contact-form-2-name"
+              class="tc-form-input"
+            >
+          </div>
+          <div class="tc-form-field">
+            <label for="contact-email" class="tc-form-label">{{ contact.form.email_label }}</label>
+            <input
+              type="email"
+              id="contact-email"
+              name="contact-email"
+              required
+              placeholder="{{ contact.form.email_label }}"
+              data-form-field-id="contact-form-2-email"
+              class="tc-form-input"
+            >
+          </div>
+        </div>
+        <div class="tc-form-field">
+          <label for="contact-message" class="tc-form-label">{{ contact.form.message_label }}</label>
+          <textarea
+            id="contact-message"
+            name="contact-message"
+            rows="5"
+            placeholder="{{ contact.form.message_label }}"
+            data-form-field-id="contact-form-2-message"
+            class="tc-form-textarea"
+          ></textarea>
+        </div>
+        <button class="tc-button tc-button--solid tc-button--full" name="contact-submit" type="submit">
+          {{ contact.form.submit_label }}
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

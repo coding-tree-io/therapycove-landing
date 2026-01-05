@@ -1,29 +1,48 @@
 {% assign hero = site.data.home.hero %}
-<section class="hero17-thq-header78-elm hero17root-class-name">
-  <div class="hero17-thq-column-elm thq-section-max-width thq-section-padding">
-    <div class="hero17-thq-content-elm1">
-      <div class="hero17-thq-text-elm1 thq-body-large rich-text">
-        {{ hero.body | markdownify }}
-      </div>
-    </div>
-    <div class="hero17-thq-actions-elm">
-      <a href="{{ hero.primary_action.href }}" class="hero17-thq-button-elm1 thq-button-filled">
-        <span class="thq-body-small">{{ hero.primary_action.label }}</span>
-      </a>
-      <a href="{{ hero.secondary_action.href }}" class="hero17-thq-button-elm2 thq-button-outline">
-        <span class="thq-body-small">{{ hero.secondary_action.label }}</span>
-      </a>
-    </div>
+{% assign nav = site.data.home.nav %}
+{% assign hero_paragraphs = hero.body | split: "\n\n" %}
+{% assign hero_summary = hero_paragraphs[0] %}
+{% assign hero_title = hero.heading | default: page.title %}
+<section class="tc-hero" aria-labelledby="hero-title">
+  <div class="tc-hero-background" aria-hidden="true">
+    <div class="tc-hero-shape tc-hero-shape--one"></div>
+    <div class="tc-hero-shape tc-hero-shape--two"></div>
   </div>
-  <div class="hero17-thq-content-elm2 css shadow animation transition">
-    <div id="space" class="row-container-thq-row-container-elm hero-image-anchor thq-mask-image-horizontal thq-animated-group-container-horizontal">
-      <div class="row-container-thq-strip-elm thq-animated-group-horizontal animation">
-        <img
-          alt="{{ hero.image.alt }}"
-          src="{{ hero.image.src | relative_url }}"
-          class="shadow steady animation"
-        >
+
+  <div class="tc-container tc-hero-inner">
+    <div class="tc-hero-logo tc-animate" style="--delay: 0ms;">
+      <img
+        alt="{{ nav.logo_alt }}"
+        src="{{ '/assets/images/8cdc0150-2223-4a87-af3c-53e092fe8173-300h.png' | relative_url }}"
+        class="tc-hero-logo-image"
+      >
+    </div>
+
+    <div class="tc-hero-content tc-animate" style="--delay: 120ms;">
+      <h1 id="hero-title" class="tc-hero-title">{{ hero_title }}</h1>
+      <div class="tc-hero-text tc-rich-text">
+        {{ hero_summary | markdownify }}
       </div>
     </div>
+
+    <div class="tc-hero-actions tc-animate" style="--delay: 220ms;">
+      <a class="tc-button tc-button--solid tc-button--lg" href="{{ hero.primary_action.href }}">{{ hero.primary_action.label }}</a>
+      <a class="tc-button tc-button--ghost tc-button--lg" href="{{ hero.secondary_action.href }}">{{ hero.secondary_action.label }}</a>
+    </div>
+
+    <div id="space" class="tc-hero-media tc-animate" style="--delay: 360ms;">
+      <img
+        alt="{{ hero.image.alt }}"
+        src="{{ hero.image.src | relative_url }}"
+        class="tc-hero-image"
+      >
+      <div class="tc-hero-media-overlay" aria-hidden="true"></div>
+    </div>
+
+    <a class="tc-hero-scroll" href="#info" aria-label="Scroll to content">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="tc-hero-scroll-icon">
+        <path d="M12 4v12m0 0l-5-5m5 5l5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </a>
   </div>
 </section>

@@ -1,37 +1,30 @@
 {% assign footer = site.data.home.footer %}
-{% assign contact = site.data.home.contact %}
-<footer class="footer4-thq-footer7-elm thq-section-padding">
-  <div class="footer4-thq-max-width-elm thq-section-max-width">
-    <div class="footer4-thq-content-elm footer4-content">
-      <div class="footer4-brand">
+{% assign nav = site.data.home.nav %}
+<footer class="tc-footer">
+  <div class="tc-container">
+    <div class="tc-footer-content">
+      <a href="#top" class="tc-footer-logo" aria-label="{{ footer.logo_alt }}">
         <img
           alt="{{ footer.logo_alt }}"
-          src="{{ '/assets/therapycove-logo.jpg' | relative_url }}"
-          class="footer4-thq-logo-elm2"
+          src="{{ '/assets/images/8cdc0150-2223-4a87-af3c-53e092fe8173-300h.png' | relative_url }}"
+          class="tc-footer-logo-image"
         >
-        {% if footer.tagline %}
-        <p class="footer4-tagline thq-body-small">{{ footer.tagline }}</p>
-        {% endif %}
-      </div>
-      <div class="footer4-column">
-        <h3 class="footer4-heading">Επικοινωνία</h3>
-        <ul class="footer4-list">
-          <li>
-            <a href="mailto:{{ contact.email }}" class="footer4-contact-link">{{ contact.email }}</a>
-          </li>
-          <li>
-            <a href="tel:{{ contact.phone }}" class="footer4-contact-link">{{ contact.phone }}</a>
-          </li>
-          <li>
-            <span>{{ contact.address }}</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer4-thq-credits-elm">
-      <div class="thq-divider-horizontal"></div>
-      <div class="footer4-thq-row-elm footer4-bottom">
-        <span class="footer4-copyright">{{ footer.copyright }}</span>
+      </a>
+
+      {% if footer.tagline %}
+      <p class="tc-footer-tagline">{{ footer.tagline }}</p>
+      {% endif %}
+
+      <nav class="tc-footer-nav" aria-label="Footer">
+        {% for item in nav.items %}
+        <a href="{{ item.href }}" class="tc-footer-link">{{ item.label }}</a>
+        {% endfor %}
+      </nav>
+
+      <div class="tc-footer-divider" aria-hidden="true"></div>
+
+      <div class="tc-footer-bottom">
+        <span class="tc-footer-copy">{{ footer.copyright }}</span>
       </div>
     </div>
   </div>

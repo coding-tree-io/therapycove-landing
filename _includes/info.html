@@ -1,17 +1,38 @@
+{% assign hero = site.data.home.hero %}
+{% assign nav = site.data.home.nav %}
 {% assign info = site.data.home.info %}
-<section id="info" class="home-container2 info-section">
-  <div class="home-thq-container-elm info-grid">
-    <div class="info-block">
-      <h3 class="info-heading thq-heading-3">{{ info.client.heading }}</h3>
-      <div class="info-body thq-body-small rich-text">
-        {{ info.client.body | markdownify }}
-      </div>
+{% assign hero_paragraphs = hero.body | split: "\n\n" %}
+{% assign hero_detail_paragraphs = hero_paragraphs | slice: 1, hero_paragraphs.size %}
+{% assign hero_details = hero_detail_paragraphs | join: "\n\n" %}
+{% assign info_label = '' %}
+{% for item in nav.items %}
+  {% if item.href == '#info' %}
+    {% assign info_label = item.label %}
+  {% endif %}
+{% endfor %}
+<section id="info" class="tc-section tc-info">
+  <div class="tc-container">
+    {% if info_label != '' %}
+    <p class="tc-eyebrow">{{ info_label }}</p>
+    {% endif %}
+    {% if hero_details != '' %}
+    <div class="tc-info-intro tc-rich-text">
+      {{ hero_details | markdownify }}
     </div>
-    <div class="info-block">
-      <h3 class="info-heading thq-heading-3">{{ info.therapist.heading }}</h3>
-      <div class="info-body thq-body-small rich-text">
-        {{ info.therapist.body | markdownify }}
-      </div>
+    {% endif %}
+    <div class="tc-info-grid">
+      <article class="tc-info-card">
+        <h3 class="tc-card-title">{{ info.client.heading }}</h3>
+        <div class="tc-rich-text">
+          {{ info.client.body | markdownify }}
+        </div>
+      </article>
+      <article class="tc-info-card">
+        <h3 class="tc-card-title">{{ info.therapist.heading }}</h3>
+        <div class="tc-rich-text">
+          {{ info.therapist.body | markdownify }}
+        </div>
+      </article>
     </div>
   </div>
 </section>
