@@ -64,3 +64,6 @@ build/
 ### VS Code ###
 .vscode/
 
+
+# Bundler installs
+vendor/
