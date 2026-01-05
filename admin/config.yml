@@ -100,6 +100,7 @@ collections:
             name: hero
             widget: object
             fields:
+              - { label: Heading, name: heading, widget: string }
               - label: Body
                 name: body
                 widget: markdown
@@ -201,6 +202,9 @@ collections:
             widget: object
             fields:
               - { label: Heading, name: heading, widget: string }
+              - { label: Email Label, name: email_label, widget: string }
+              - { label: Phone Label, name: phone_label, widget: string }
+              - { label: Address Label, name: address_label, widget: string }
               - label: Email
                 name: email
                 widget: string

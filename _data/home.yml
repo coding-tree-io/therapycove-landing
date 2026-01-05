@@ -1,23 +1,24 @@
 nav:
   logo_alt: "Therapy Cove logo"
   items:
-    - label: "/"
+    - label: "Αρχική"
       href: "#top"
-    - label: "προσεγγίσεις"
-      href: "#approaches"
-    - label: "θεραπευτες"
-      href: "#therapists"
-    - label: "πληροφορίες"
-      href: "#info"
+    - label: "Η ομάδα"
+      href: "#team"
+    - label: "Προσεγγίσεις"
+      href: "#features"
+    - label: "Επικοινωνία"
+      href: "#contact"
   actions:
     primary:
-      label: "Sign Up"
+      label: "Κλείσε Ραντεβού"
       href: "#contact"
     secondary:
-      label: "Contact Us"
+      label: "Επικοινωνία"
       href: "#contact"
 
 hero:
+  heading: "Ένας χώρος για σένα"
   body: |
     Το **Therapy Cove** είναι ένα μοντέρνο κέντρο και εκπαιδευτήριο ψυχικής υγείας, ανοιχτό προς όλους όσους έχουν ανάγκη για υποστήριξη.
 
@@ -32,8 +33,8 @@ hero:
     label: "Ο χώρος"
     href: "#space"
   secondary_action:
-    label: "Η ομάδα"
-    href: "#therapists"
+    label: "Γνώρισε την ομάδα"
+    href: "#team"
   image:
     src: "/assets/images/bfe16607-0cf8-4c74-840b-dea67ec41351-1600w.jpeg"
     alt: "Therapy Cove space"
@@ -97,19 +98,22 @@ features:
     alt: "Therapy Cove space"
 
 pricing:
-  eyebrow: "Choose the perfect plan for you"
+  eyebrow: "Επικοινωνία"
   heading: "Επικοινώνησε μαζί μας για να μάθεις περισσότερες λεπτομέρειες για την διάρκεια και το κόστος των συνεδριών μας."
 
 contact:
   heading: "Στοιχεία επικοινωνίας"
+  email_label: "Email"
+  phone_label: "Τηλέφωνο"
+  address_label: "Διεύθυνση"
   email: "info@therapycove.gr"
-  phone: "2112184996"
+  phone: "211 218 4996"
   address: "Καρνεαδου 23, Αθήνα"
   form:
     name_label: "Ονοματεπωνυμο"
     email_label: "Email"
     message_label: "Μήνυμα"
-    submit_label: "Submit"
+    submit_label: "Αποστολή"
 
 footer:
   logo_alt: "Therapy Cove logo"
