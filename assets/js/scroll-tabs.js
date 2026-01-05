@@ -28,6 +28,7 @@
   let lastSwitchTime = 0;
   let accumulatedDelta = 0;
   let lastDirection = 0;
+  let edgeUnlocked = false;
   const cooldownMs = 300;
   const scrollThreshold = 12;
   const minDeltaPerTab = 240;
@@ -50,18 +51,23 @@
     return delta;
   };
 
-  const onWheel = (event) => {
-    if (event.ctrlKey) {
-      return;
-    }
+  const clampDelta = (rawDelta) => {
+    return Math.max(-maxDeltaPerEvent, Math.min(maxDeltaPerEvent, rawDelta));
+  };
 
+  const resetAccumulation = () => {
+    accumulatedDelta = 0;
+    lastDirection = 0;
+  };
+
+  const processDelta = (rawDelta) => {
     if (!isSectionActive()) {
       accumulatedDelta = 0;
       lastDirection = 0;
+      edgeUnlocked = false;
       return;
     }
 
-    const rawDelta = normalizeDelta(event);
     if (Math.abs(rawDelta) < scrollThreshold) {
       return;
     }
@@ -71,14 +77,23 @@
       return;
     }
 
+    if (activeIndex < tabs.length - 1) {
+      edgeUnlocked = false;
+    }
+
     const direction = Math.sign(rawDelta);
-    const canAdvance = direction > 0 && activeIndex < tabs.length - 1;
-    const canRewind = direction < 0 && activeIndex > 0;
-    if (!canAdvance && !canRewind) {
+    if (!direction) {
       return;
     }
 
-    event.preventDefault();
+    const isAtLast = activeIndex === tabs.length - 1;
+    const canAdvance = direction > 0 && !isAtLast;
+    const canRewind = direction < 0 && activeIndex > 0;
+    const wantsExitDown = direction > 0 && isAtLast;
+    if (!canAdvance && !canRewind && !wantsExitDown) {
+      return;
+    }
+
     const now = Date.now();
     if (direction !== lastDirection || now - lastScrollTime > resetMs) {
       accumulatedDelta = 0;
@@ -87,18 +102,84 @@
     lastDirection = direction;
     lastScrollTime = now;
 
-    if (now - lastSwitchTime < cooldownMs) {
-      return;
+    if (canAdvance || canRewind) {
+      if (now - lastSwitchTime < cooldownMs) {
+        return true;
+      }
+
+      accumulatedDelta += clampDelta(rawDelta);
+      if (Math.abs(accumulatedDelta) >= minDeltaPerTab) {
+        setActiveIndex(activeIndex + (canAdvance ? 1 : -1));
+        accumulatedDelta = 0;
+        lastSwitchTime = now;
+      }
+      return true;
     }
 
-    const delta = Math.max(-maxDeltaPerEvent, Math.min(maxDeltaPerEvent, rawDelta));
-    accumulatedDelta += delta;
-    if (Math.abs(accumulatedDelta) >= minDeltaPerTab) {
-      setActiveIndex(activeIndex + (canAdvance ? 1 : -1));
-      accumulatedDelta = 0;
-      lastSwitchTime = now;
+    if (wantsExitDown) {
+      if (edgeUnlocked) {
+        return;
+      }
+
+      if (now - lastSwitchTime < cooldownMs) {
+        return true;
+      }
+
+      accumulatedDelta += clampDelta(rawDelta);
+      if (Math.abs(accumulatedDelta) >= minDeltaPerTab) {
+        edgeUnlocked = true;
+        accumulatedDelta = 0;
+        lastSwitchTime = now;
+        return;
+      }
+      return true;
     }
   };
 
+  const onWheel = (event) => {
+    if (event.ctrlKey) {
+      return;
+    }
+
+    const rawDelta = normalizeDelta(event);
+    const shouldPrevent = processDelta(rawDelta);
+    if (shouldPrevent && event.cancelable) {
+      event.preventDefault();
+    }
+  };
+
+  let lastTouchY = null;
+  const onTouchStart = (event) => {
+    if (event.touches.length !== 1) {
+      lastTouchY = null;
+      return;
+    }
+    lastTouchY = event.touches[0].clientY;
+  };
+
+  const onTouchMove = (event) => {
+    if (event.touches.length !== 1 || lastTouchY === null) {
+      return;
+    }
+
+    const currentY = event.touches[0].clientY;
+    const rawDelta = lastTouchY - currentY;
+    lastTouchY = currentY;
+
+    const shouldPrevent = processDelta(rawDelta);
+    if (shouldPrevent && event.cancelable) {
+      event.preventDefault();
+    }
+  };
+
+  const onTouchEnd = () => {
+    lastTouchY = null;
+    resetAccumulation();
+  };
+
   window.addEventListener("wheel", onWheel, { passive: false });
+  window.addEventListener("touchstart", onTouchStart, { passive: true });
+  window.addEventListener("touchmove", onTouchMove, { passive: false });
+  window.addEventListener("touchend", onTouchEnd, { passive: true });
+  window.addEventListener("touchcancel", onTouchEnd, { passive: true });
 })();
