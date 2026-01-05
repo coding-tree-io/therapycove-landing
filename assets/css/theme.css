@@ -600,9 +600,13 @@ h4 {
   border: 1px solid transparent;
   border-radius: 24px;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  grid-template-areas:
+    "dot title"
+    "dot description";
+  grid-template-columns: auto 1fr;
+  column-gap: 16px;
+  row-gap: 12px;
   padding: 24px;
   transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 }
@@ -611,6 +615,8 @@ h4 {
   background: rgba(51, 51, 51, 0.25);
   border-radius: 999px;
   height: 10px;
+  grid-area: dot;
+  margin-top: 6px;
   transition: transform 0.2s ease, background 0.2s ease;
   width: 10px;
 }
@@ -619,10 +625,12 @@ h4 {
   color: var(--tc-ink);
   font-size: 1.1rem;
   font-weight: 500;
+  grid-area: title;
 }
 
 .tc-features-description {
   display: none;
+  grid-area: description;
 }
 
 .tc-features-panels {
