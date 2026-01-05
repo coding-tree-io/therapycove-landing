@@ -29,8 +29,10 @@
   let accumulatedDelta = 0;
   let lastDirection = 0;
   let edgeUnlocked = false;
+  let lockUntil = 0;
+  let wasActive = false;
   const cooldownMs = 300;
-  const scrollThreshold = 12;
+  const dwellMs = 550;
   const minDeltaPerTab = 240;
   const maxDeltaPerEvent = 120;
   const resetMs = 700;
@@ -60,21 +62,47 @@
     lastDirection = 0;
   };
 
-  const processDelta = (rawDelta) => {
-    if (!isSectionActive()) {
-      accumulatedDelta = 0;
-      lastDirection = 0;
+  const resetState = () => {
+    resetAccumulation();
+    edgeUnlocked = false;
+    lockUntil = 0;
+    wasActive = false;
+  };
+
+  const startDwell = (now) => {
+    lockUntil = now + dwellMs;
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("change", () => {
+      if (!tab.checked) {
+        return;
+      }
+      const now = Date.now();
+      startDwell(now);
+      lastSwitchTime = now;
       edgeUnlocked = false;
-      return;
-    }
+      if (index < tabs.length - 1) {
+        accumulatedDelta = 0;
+      }
+    });
+  });
 
-    if (Math.abs(rawDelta) < scrollThreshold) {
-      return;
-    }
-
+  const processDelta = (rawDelta) => {
     const activeIndex = getActiveIndex();
-    if (activeIndex < 0) {
-      return;
+    const now = Date.now();
+    if (!isSectionActive()) {
+      resetState();
+      return false;
+    }
+
+    if (!wasActive) {
+      wasActive = true;
+      startDwell(now);
+    }
+
+    if (activeIndex < 0 || rawDelta === 0) {
+      return false;
     }
 
     if (activeIndex < tabs.length - 1) {
@@ -83,18 +111,13 @@
 
     const direction = Math.sign(rawDelta);
     if (!direction) {
-      return;
+      return false;
     }
 
-    const isAtLast = activeIndex === tabs.length - 1;
-    const canAdvance = direction > 0 && !isAtLast;
-    const canRewind = direction < 0 && activeIndex > 0;
-    const wantsExitDown = direction > 0 && isAtLast;
-    if (!canAdvance && !canRewind && !wantsExitDown) {
-      return;
+    if (direction > 0 && now < lockUntil) {
+      return true;
     }
 
-    const now = Date.now();
     if (direction !== lastDirection || now - lastScrollTime > resetMs) {
       accumulatedDelta = 0;
     }
@@ -102,23 +125,37 @@
     lastDirection = direction;
     lastScrollTime = now;
 
-    if (canAdvance || canRewind) {
+    if (direction > 0 && activeIndex < tabs.length - 1) {
       if (now - lastSwitchTime < cooldownMs) {
         return true;
       }
 
       accumulatedDelta += clampDelta(rawDelta);
       if (Math.abs(accumulatedDelta) >= minDeltaPerTab) {
-        setActiveIndex(activeIndex + (canAdvance ? 1 : -1));
+        setActiveIndex(activeIndex + 1);
         accumulatedDelta = 0;
         lastSwitchTime = now;
       }
       return true;
     }
 
-    if (wantsExitDown) {
+    if (direction < 0 && activeIndex > 0) {
+      if (now - lastSwitchTime < cooldownMs) {
+        return true;
+      }
+
+      accumulatedDelta += clampDelta(rawDelta);
+      if (Math.abs(accumulatedDelta) >= minDeltaPerTab) {
+        setActiveIndex(activeIndex - 1);
+        accumulatedDelta = 0;
+        lastSwitchTime = now;
+      }
+      return true;
+    }
+
+    if (direction > 0 && activeIndex === tabs.length - 1) {
       if (edgeUnlocked) {
-        return;
+        return false;
       }
 
       if (now - lastSwitchTime < cooldownMs) {
@@ -130,10 +167,11 @@
         edgeUnlocked = true;
         accumulatedDelta = 0;
         lastSwitchTime = now;
-        return;
+        return false;
       }
       return true;
     }
+    return false;
   };
 
   const onWheel = (event) => {
