@@ -1,7 +1,7 @@
 {% assign hero = site.data.therapy_cove.hero %}
 {% assign site_nav = site.data.therapy_cove.site_nav %}
 {% assign hero_title = hero.heading | default: page.title %}
-<section id="hero" class="cove-section cove-hero" aria-labelledby="hero-title">
+<section id="home" class="cove-section cove-hero" aria-labelledby="hero-title">
   <div class="cove-hero-backdrop" aria-hidden="true">
     <div class="cove-hero-shape cove-hero-shape--one"></div>
     <div class="cove-hero-shape cove-hero-shape--two"></div>
@@ -10,7 +10,7 @@
     <div class="cove-hero-brand cove-reveal" style="--delay: 0ms;">
       <img
         alt="{{ site_nav.logo_alt }}"
-        src="{{ '/assets/images/therapy-cove-logo.svg' | relative_url }}"
+        src="{{ '/assets/images/therapy-cove-logo.png' | relative_url }}"
         class="cove-hero-logo"
       >
     </div>

@@ -49,12 +49,15 @@
   let bypassUntil = 0;
   let lockUntil = 0;
   let wasActive = false;
+  let anchorBypass = 0;
+  let lastNaturalScroll = 0;
   const cooldownMs = 300;
   const dwellMs = 550;
   const minDeltaPerTab = 240;
   const maxDeltaPerEvent = 120;
   const resetMs = 700;
   const snapThreshold = 10;
+  const naturalScrollWindow = 300;
 
   const getLockOffset = () => {
     const navHeight =
@@ -95,6 +98,8 @@
     lockUntil = 0;
     wasActive = false;
     bypassUntil = 0;
+    anchorBypass = 0;
+    lastNaturalScroll = 0;
   };
 
   const startDwell = (now) => {
@@ -140,6 +145,7 @@
   const processDelta = (rawDelta) => {
     const activeIndex = getActiveIndex();
     const now = Date.now();
+    lastNaturalScroll = now;
     if (!isSectionActive()) {
       resetState();
       return false;
@@ -287,7 +293,18 @@
         resetState();
         return;
       }
-      if (bypassUntil && Date.now() < bypassUntil) {
+      const now = Date.now();
+      if (anchorBypass) {
+        if (now >= anchorBypass) {
+          anchorBypass = 0;
+        } else {
+          return;
+        }
+      }
+      if (now - lastNaturalScroll > naturalScrollWindow) {
+        return;
+      }
+      if (bypassUntil && now < bypassUntil) {
         return;
       }
       if (!edgeUnlocked) {
@@ -301,38 +318,72 @@
     edgeUnlocked = true;
   };
 
+  const enableAnchorBypass = (durationMs = 1200) => {
+    anchorBypass = Date.now() + durationMs;
+    edgeUnlocked = true;
+    bypassUntil = Math.max(bypassUntil, anchorBypass);
+  };
+
   const contactSection = document.getElementById("contact");
   const contactLockTarget =
     contactSection && (contactSection.querySelector("[data-contact-lock]") || contactSection);
 
-  const snapContactToLock = () => {
+  const scrollContactIntoView = (behavior = "smooth") => {
     if (!contactLockTarget) {
       return;
     }
     const rect = contactLockTarget.getBoundingClientRect();
-    const targetTop = window.scrollY + rect.top - getLockOffset();
-    window.scrollTo({ top: targetTop, behavior: "smooth" });
+    const extraMargin = 30;
+    const targetTop = Math.max(
+      0,
+      window.scrollY + rect.top - getLockOffset() - extraMargin
+    );
+    window.scrollTo({ top: targetTop, behavior });
+  };
+
+  const triggerContactFlow = (behavior = "smooth") => {
+    enableBypass(5000);
+    scrollContactIntoView(behavior);
+    if (window.location.hash !== "#contact" && history.replaceState) {
+      history.replaceState(null, "", "#contact");
+    }
   };
 
   const onHashChange = () => {
-    if (window.location.hash === "#contact") {
-      enableBypass();
-      setTimeout(snapContactToLock, 80);
+    const hash = window.location.hash;
+    if (!hash) {
+      return;
     }
+    if (hash === "#contact") {
+      enableBypass(5000);
+      scrollContactIntoView("auto");
+      return;
+    }
+    if (hash === "#approaches") {
+      return;
+    }
+    enableAnchorBypass(1600);
   };
 
   document.addEventListener("click", (event) => {
     const anchor = event.target.closest('a[href="#contact"]');
     if (anchor) {
-      enableBypass();
-      setTimeout(snapContactToLock, 80);
+      event.preventDefault();
+      triggerContactFlow("smooth");
+      return;
+    }
+    const otherAnchor = event.target.closest(
+      'a[href^="#"]:not([href="#contact"]):not([href="#approaches"])'
+    );
+    if (otherAnchor) {
+      enableAnchorBypass(1600);
     }
   });
 
   document.addEventListener("pointerdown", (event) => {
     const anchor = event.target.closest('a[href="#contact"]');
     if (anchor) {
-      enableBypass();
+      enableBypass(5000);
     }
   });
 
@@ -342,7 +393,8 @@
     }
     const active = document.activeElement;
     if (active && active.matches('a[href="#contact"]')) {
-      enableBypass();
+      event.preventDefault();
+      triggerContactFlow("smooth");
     }
   });
 
@@ -353,4 +405,5 @@
   window.addEventListener("touchcancel", onTouchEnd, { passive: true });
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("hashchange", onHashChange, { passive: true });
+  onHashChange();
 })();

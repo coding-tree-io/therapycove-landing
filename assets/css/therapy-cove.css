@@ -523,6 +523,44 @@ h4 {
   line-height: 1.7;
   margin: 32px auto 0;
   max-width: 720px;
+  text-align: justify;
+  color: rgba(var(--cove-charcoal-rgb), 0.93);
+  letter-spacing: 0.01em;
+}
+
+.cove-hero-lead strong {
+  font-weight: 600;
+}
+
+.cove-hero-lead span {
+  display: inline-block;
+  line-height: 1.7;
+}
+
+.cove-hero-lead:first-letter {
+  font-size: clamp(2rem, 3vw, 2.4rem);
+  font-weight: 500;
+  float: left;
+  line-height: 0.9;
+  padding-right: 0.35rem;
+}
+
+.cove-hero-lead::after {
+  content: "";
+  display: block;
+  margin: 2rem 0 0;
+  height: 1px;
+  width: clamp(120px, 22vw, 200px);
+  background: linear-gradient(90deg, rgba(var(--cove-ocean-flow-rgb), 0.8), transparent);
+  opacity: 0.5;
+}
+
+@media (min-width: 900px) {
+  .cove-hero-lead {
+    column-count: 2;
+    column-gap: 3rem;
+    text-align: justify;
+  }
 }
 
 .cove-hero-actions {

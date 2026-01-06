@@ -2,7 +2,7 @@ site_nav:
   logo_alt: "Therapy Cove logo"
   links:
     - label: "Αρχική"
-      href: "#hero"
+      href: "#home"
     - label: "Η ομάδα"
       href: "#therapists"
     - label: "Προσεγγίσεις"
