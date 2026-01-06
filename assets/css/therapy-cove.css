@@ -8,9 +8,6 @@
   --cove-surface-radius: 26px;
   --cove-surface-shadow: 0 24px 40px rgba(var(--cove-charcoal-rgb), 0.08);
 
-  --cove-sand: var(--cove-ivory);
-  --cove-sage: var(--cove-ocean-flow);
-  --cove-ink: var(--cove-charcoal);
   --cove-ink-soft: rgba(var(--cove-charcoal-rgb), 0.7);
   --cove-ink-faint: rgba(var(--cove-charcoal-rgb), 0.5);
   --cove-sage-soft: rgba(var(--cove-ocean-flow-rgb), 0.2);
@@ -21,17 +18,17 @@
   --cove-nav-height: 80px;
 
   --pico-font-family: "Noto Sans", sans-serif;
-  --pico-background-color: var(--cove-sand);
-  --pico-color: var(--cove-ink);
+  --pico-background-color: var(--cove-ivory);
+  --pico-color: var(--cove-charcoal);
   --pico-muted-color: var(--cove-ink-faint);
-  --pico-primary: var(--cove-sage);
+  --pico-primary: var(--cove-ocean-flow);
   --pico-primary-hover: rgba(var(--cove-ocean-flow-rgb), 0.9);
   --pico-primary-focus: rgba(var(--cove-ocean-flow-rgb), 0.3);
   --pico-border-radius: 1rem;
 }
 
 .cove-surface {
-  background: var(--cove-sand);
+  background: var(--cove-ivory);
   border-radius: var(--cove-surface-radius);
   border: 1px solid rgba(var(--cove-charcoal-rgb), 0.05);
   box-shadow: var(--cove-surface-shadow);
@@ -141,8 +138,8 @@ html {
 }
 
 body {
-  background: var(--cove-sand);
-  color: var(--cove-ink);
+  background: var(--cove-ivory);
+  color: var(--cove-charcoal);
   line-height: 1.6;
   margin: 0;
   padding: 0;
@@ -157,7 +154,7 @@ h4 {
 }
 
 .cove-page {
-  background: var(--cove-sand);
+  background: var(--cove-ivory);
   margin: 0;
   max-width: none;
   padding: 0;
@@ -205,7 +202,7 @@ h4 {
 }
 
 .cove-eyebrow {
-  color: var(--cove-sage);
+  color: var(--cove-ocean-flow);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -223,11 +220,11 @@ h4 {
 }
 
 .cove-rich-text strong {
-  color: var(--cove-ink);
+  color: var(--cove-charcoal);
 }
 
 .cove-rich-text blockquote {
-  border-left: 3px solid var(--cove-sage);
+  border-left: 3px solid var(--cove-ocean-flow);
   color: rgba(var(--cove-charcoal-rgb), 0.6);
   font-family: "STIX Two Text", serif;
   font-style: italic;
@@ -256,8 +253,8 @@ h4 {
 }
 
 .cove-button--solid {
-  background: var(--cove-sage);
-  color: var(--cove-sand);
+  background: var(--cove-ocean-flow);
+  color: var(--cove-ivory);
   box-shadow: var(--cove-shadow-sm);
 }
 
@@ -271,12 +268,12 @@ h4 {
   background: transparent;
   border-color: rgba(var(--cove-charcoal-rgb), 0.2);
   border-width: 2px;
-  color: var(--cove-ink);
+  color: var(--cove-charcoal);
 }
 
 .cove-button--ghost:hover {
   background: rgba(var(--cove-ocean-flow-rgb), 0.15);
-  border-color: var(--cove-sage);
+  border-color: var(--cove-ocean-flow);
 }
 
 .cove-button--lg {
@@ -285,10 +282,10 @@ h4 {
 }
 
 .cove-button--nav {
-  background: var(--cove-sand);
+  background: var(--cove-ivory);
   border-color: transparent;
   box-shadow: none;
-  color: var(--cove-ink);
+  color: var(--cove-charcoal);
   font-size: 0.85rem;
   padding: 10px 24px;
 }
@@ -341,7 +338,7 @@ h4 {
 }
 
 .cove-nav-link {
-  color: var(--cove-sand);
+  color: var(--cove-ivory);
   font-size: 0.875rem;
   font-weight: 500;
   position: relative;
@@ -349,7 +346,7 @@ h4 {
 }
 
 .cove-nav-link::after {
-  background: var(--cove-sand);
+  background: var(--cove-ivory);
   bottom: -6px;
   content: "";
   height: 2px;
@@ -382,14 +379,14 @@ h4 {
 }
 
 .cove-nav-toggle-line {
-  background: var(--cove-sand);
+  background: var(--cove-ivory);
   border-radius: 999px;
   height: 2px;
   width: 24px;
 }
 
 .cove-nav-drawer {
-  background: var(--cove-sage);
+  background: var(--cove-ocean-flow);
   height: 100vh;
   inset: 0;
   opacity: 0;
@@ -428,7 +425,7 @@ h4 {
 }
 
 .cove-nav-close {
-  color: var(--cove-sand);
+  color: var(--cove-ivory);
   cursor: pointer;
   font-size: 2rem;
   line-height: 1;
@@ -445,7 +442,7 @@ h4 {
 }
 
 .cove-nav-drawer-link {
-  color: var(--cove-sand);
+  color: var(--cove-ivory);
   font-size: 1.4rem;
   font-weight: 500;
   text-decoration: none;
@@ -463,7 +460,7 @@ h4 {
   background: linear-gradient(
     180deg,
     rgba(var(--cove-ocean-flow-rgb), 0.12) 0%,
-    var(--cove-sand) 50%
+    var(--cove-ivory) 50%
   );
   overflow: hidden;
   padding-top: 120px;
@@ -668,7 +665,7 @@ h4 {
 }
 
 .cove-therapists-role {
-  color: var(--cove-sage);
+  color: var(--cove-ocean-flow);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.15em;
@@ -723,7 +720,7 @@ h4 {
 
 .cove-therapists-card-meta {
   bottom: 0;
-  color: var(--cove-sand);
+  color: var(--cove-ivory);
   left: 0;
   padding: 24px;
   position: absolute;
@@ -764,9 +761,9 @@ h4 {
 .cove-approaches {
   background: linear-gradient(
     180deg,
-    var(--cove-sand) 0%,
+    var(--cove-ivory) 0%,
     rgba(var(--cove-ocean-flow-rgb), 0.08) 50%,
-    var(--cove-sand) 100%
+    var(--cove-ivory) 100%
   );
 }
 
@@ -815,7 +812,7 @@ h4 {
 }
 
 .approaches-title {
-  color: var(--cove-ink);
+  color: var(--cove-charcoal);
   font-size: 1.1rem;
   font-weight: 500;
   grid-area: title;
@@ -833,7 +830,7 @@ h4 {
 }
 
 .approaches-tab.is-active .approaches-dot {
-  background: var(--cove-sage);
+  background: var(--cove-ocean-flow);
   box-shadow: 0 0 12px rgba(var(--cove-ocean-flow-rgb), 0.6);
   transform: scale(1.2);
 }
@@ -891,7 +888,7 @@ h4 {
   background: var(--cove-sage-faint);
   border: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.2);
   border-radius: 16px;
-  color: var(--cove-sage);
+  color: var(--cove-ocean-flow);
   display: flex;
   height: 56px;
   justify-content: center;
@@ -911,7 +908,7 @@ h4 {
 }
 
 .cove-contact-value {
-  color: var(--cove-ink);
+  color: var(--cove-charcoal);
   display: block;
   font-size: 1.25rem;
   font-weight: 500;
@@ -946,7 +943,7 @@ h4 {
   border: none;
   border-radius: 16px;
   box-shadow: none;
-  color: var(--cove-ink);
+  color: var(--cove-charcoal);
   font-size: 0.95rem;
   font-family: inherit;
   padding: 14px 16px;
@@ -1004,7 +1001,7 @@ h4 {
 }
 
 .cove-footer-link:hover {
-  color: var(--cove-sage);
+  color: var(--cove-ocean-flow);
 }
 
 .cove-footer-divider {
