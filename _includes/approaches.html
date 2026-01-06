@@ -11,7 +11,7 @@
 {% endif %}
 <section id="approaches" class="cove-section cove-approaches">
   <div class="cove-shell">
-    <div class="cove-section-heading" data-approaches-lock>
+    <div class="section-intro" data-approaches-lock>
       {% if approaches_label != '' %}
       <p class="cove-eyebrow">{{ approaches_label }}</p>
       {% endif %}
@@ -43,7 +43,7 @@
 
       <div class="approaches-panels">
         {% for tab in approaches.tabs %}
-        <div class="approaches-panel" data-approach-index="{{ forloop.index0 }}">
+        <div class="approaches-panel cove-surface" data-approach-index="{{ forloop.index0 }}">
           <img
             alt="{{ tab.image.alt }}"
             src="{{ tab.image.src | relative_url }}"

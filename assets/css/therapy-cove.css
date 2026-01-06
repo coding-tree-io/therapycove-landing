@@ -5,6 +5,8 @@
   --cove-charcoal-rgb: 51, 51, 51;
   --cove-ivory-rgb: 249, 236, 207;
   --cove-ocean-flow-rgb: 157, 198, 170;
+  --cove-surface-radius: 26px;
+  --cove-surface-shadow: 0 24px 40px rgba(var(--cove-charcoal-rgb), 0.08);
 
   --cove-sand: var(--cove-ivory);
   --cove-sage: var(--cove-ocean-flow);
@@ -26,6 +28,13 @@
   --pico-primary-hover: rgba(var(--cove-ocean-flow-rgb), 0.9);
   --pico-primary-focus: rgba(var(--cove-ocean-flow-rgb), 0.3);
   --pico-border-radius: 1rem;
+}
+
+.cove-surface {
+  background: var(--cove-sand);
+  border-radius: var(--cove-surface-radius);
+  border: 1px solid rgba(var(--cove-charcoal-rgb), 0.05);
+  box-shadow: var(--cove-surface-shadow);
 }
 
 html {
@@ -167,12 +176,12 @@ h4 {
   scroll-margin-top: 96px;
 }
 
-.cove-section-heading {
+.section-intro {
   margin-bottom: 80px;
   text-align: center;
 }
 
-.cove-section-heading--left {
+.section-intro--left {
   max-width: 720px;
   text-align: left;
 }
@@ -680,10 +689,8 @@ h4 {
 .cove-therapists-card {
   display: flex;
   flex-direction: column;
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-  padding: 0;
+  padding: 32px;
+  gap: 24px;
 }
 
 .cove-therapists-card-media {
@@ -842,9 +849,6 @@ h4 {
 }
 
 .approaches-panel {
-  border: 1px solid rgba(var(--cove-charcoal-rgb), 0.05);
-  border-radius: 32px;
-  box-shadow: var(--cove-shadow-lg);
   display: none;
   overflow: hidden;
 }
@@ -915,9 +919,6 @@ h4 {
 }
 
 .contact-form {
-  background: var(--cove-sage-faint);
-  border: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.2);
-  border-radius: 32px;
   padding: 40px;
 }
 
@@ -1087,7 +1088,7 @@ h4 {
     padding: 96px 0;
   }
 
-  .cove-section-heading {
+  .section-intro {
     margin-bottom: 56px;
   }
 

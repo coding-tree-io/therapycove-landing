@@ -3,7 +3,7 @@
 {% assign email_label = contact.email_label | default: contact.form.email_label %}
 <section id="contact" class="cove-section cove-contact" data-contact-lock>
   <div class="cove-shell">
-    <div class="cove-section-heading cove-section-heading--left">
+    <div class="section-intro section-intro--left">
       {% if contact_intro.eyebrow %}
       <p class="cove-eyebrow">{{ contact_intro.eyebrow }}</p>
       {% endif %}
@@ -55,7 +55,7 @@
         </div>
       </div>
 
-      <form data-form-id="f8b46cd8-e768-4d05-9074-dd913e006d91" class="contact-form">
+      <form data-form-id="f8b46cd8-e768-4d05-9074-dd913e006d91" class="contact-form cove-surface">
         <div class="contact-form-grid">
           <div class="contact-form-field">
             <label for="contact-form-name" class="contact-form-label">{{ contact.form.name_label }}</label>
