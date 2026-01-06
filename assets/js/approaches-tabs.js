@@ -46,6 +46,7 @@
   let accumulatedDelta = 0;
   let lastDirection = 0;
   let edgeUnlocked = false;
+  let bypassUntil = 0;
   let lockUntil = 0;
   let wasActive = false;
   const cooldownMs = 300;
@@ -93,6 +94,7 @@
     edgeUnlocked = false;
     lockUntil = 0;
     wasActive = false;
+    bypassUntil = 0;
   };
 
   const startDwell = (now) => {
@@ -146,6 +148,13 @@
     if (!wasActive) {
       wasActive = true;
       startDwell(now);
+    }
+
+    if (bypassUntil && now < bypassUntil) {
+      return false;
+    }
+    if (bypassUntil && now >= bypassUntil) {
+      bypassUntil = 0;
     }
 
     if (!edgeUnlocked && !isNearLock()) {
@@ -278,11 +287,64 @@
         resetState();
         return;
       }
+      if (bypassUntil && Date.now() < bypassUntil) {
+        return;
+      }
       if (!edgeUnlocked) {
         snapToLock();
       }
     });
   };
+
+  const enableBypass = (durationMs = 1400) => {
+    bypassUntil = Date.now() + durationMs;
+    edgeUnlocked = true;
+  };
+
+  const contactSection = document.getElementById("contact");
+  const contactLockTarget =
+    contactSection && (contactSection.querySelector("[data-contact-lock]") || contactSection);
+
+  const snapContactToLock = () => {
+    if (!contactLockTarget) {
+      return;
+    }
+    const rect = contactLockTarget.getBoundingClientRect();
+    const targetTop = window.scrollY + rect.top - getLockOffset();
+    window.scrollTo({ top: targetTop, behavior: "smooth" });
+  };
+
+  const onHashChange = () => {
+    if (window.location.hash === "#contact") {
+      enableBypass();
+      setTimeout(snapContactToLock, 80);
+    }
+  };
+
+  document.addEventListener("click", (event) => {
+    const anchor = event.target.closest('a[href="#contact"]');
+    if (anchor) {
+      enableBypass();
+      setTimeout(snapContactToLock, 80);
+    }
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    const anchor = event.target.closest('a[href="#contact"]');
+    if (anchor) {
+      enableBypass();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
+    const active = document.activeElement;
+    if (active && active.matches('a[href="#contact"]')) {
+      enableBypass();
+    }
+  });
 
   window.addEventListener("wheel", onWheel, { passive: false });
   window.addEventListener("touchstart", onTouchStart, { passive: true });
@@ -290,4 +352,5 @@
   window.addEventListener("touchend", onTouchEnd, { passive: true });
   window.addEventListener("touchcancel", onTouchEnd, { passive: true });
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("hashchange", onHashChange, { passive: true });
 })();

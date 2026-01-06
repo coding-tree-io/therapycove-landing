@@ -1,14 +1,21 @@
 :root {
-  --cove-sand: #f9eccf;
-  --cove-sage: #9dc6aa;
-  --cove-ink: #333333;
-  --cove-ink-soft: rgba(51, 51, 51, 0.7);
-  --cove-ink-faint: rgba(51, 51, 51, 0.5);
-  --cove-sage-soft: rgba(157, 198, 170, 0.2);
-  --cove-sage-faint: rgba(157, 198, 170, 0.12);
-  --cove-shadow-lg: 0 30px 60px rgba(51, 51, 51, 0.12);
-  --cove-shadow-md: 0 20px 40px rgba(51, 51, 51, 0.12);
-  --cove-shadow-sm: 0 12px 24px rgba(51, 51, 51, 0.12);
+  --cove-charcoal: #333333;
+  --cove-ivory: #F9ECCF;
+  --cove-ocean-flow: #9DC6AA;
+  --cove-charcoal-rgb: 51, 51, 51;
+  --cove-ivory-rgb: 249, 236, 207;
+  --cove-ocean-flow-rgb: 157, 198, 170;
+
+  --cove-sand: var(--cove-ivory);
+  --cove-sage: var(--cove-ocean-flow);
+  --cove-ink: var(--cove-charcoal);
+  --cove-ink-soft: rgba(var(--cove-charcoal-rgb), 0.7);
+  --cove-ink-faint: rgba(var(--cove-charcoal-rgb), 0.5);
+  --cove-sage-soft: rgba(var(--cove-ocean-flow-rgb), 0.2);
+  --cove-sage-faint: rgba(var(--cove-ocean-flow-rgb), 0.12);
+  --cove-shadow-lg: 0 30px 60px rgba(var(--cove-charcoal-rgb), 0.12);
+  --cove-shadow-md: 0 20px 40px rgba(var(--cove-charcoal-rgb), 0.12);
+  --cove-shadow-sm: 0 12px 24px rgba(var(--cove-charcoal-rgb), 0.12);
   --cove-nav-height: 80px;
 
   --pico-font-family: "Noto Sans", sans-serif;
@@ -16,8 +23,8 @@
   --pico-color: var(--cove-ink);
   --pico-muted-color: var(--cove-ink-faint);
   --pico-primary: var(--cove-sage);
-  --pico-primary-hover: #8fbf9f;
-  --pico-primary-focus: rgba(157, 198, 170, 0.3);
+  --pico-primary-hover: rgba(var(--cove-ocean-flow-rgb), 0.9);
+  --pico-primary-focus: rgba(var(--cove-ocean-flow-rgb), 0.3);
   --pico-border-radius: 1rem;
 }
 
@@ -212,7 +219,7 @@ h4 {
 
 .cove-rich-text blockquote {
   border-left: 3px solid var(--cove-sage);
-  color: rgba(51, 51, 51, 0.6);
+  color: rgba(var(--cove-charcoal-rgb), 0.6);
   font-family: "STIX Two Text", serif;
   font-style: italic;
   font-size: 1.05rem;
@@ -246,20 +253,20 @@ h4 {
 }
 
 .cove-button--solid:hover {
-  background: rgba(157, 198, 170, 0.9);
+  background: rgba(var(--cove-ocean-flow-rgb), 0.9);
   box-shadow: var(--cove-shadow-md);
   transform: translateY(-1px);
 }
 
 .cove-button--ghost {
   background: transparent;
-  border-color: rgba(51, 51, 51, 0.2);
+  border-color: rgba(var(--cove-charcoal-rgb), 0.2);
   border-width: 2px;
   color: var(--cove-ink);
 }
 
 .cove-button--ghost:hover {
-  background: rgba(157, 198, 170, 0.15);
+  background: rgba(var(--cove-ocean-flow-rgb), 0.15);
   border-color: var(--cove-sage);
 }
 
@@ -293,9 +300,9 @@ h4 {
 
 /* Navigation */
 .cove-nav {
-  background: rgba(157, 198, 170, 0.95);
+  background: rgba(var(--cove-ocean-flow-rgb), 0.95);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(249, 236, 207, 0.5);
+  border-bottom: 1px solid rgba(var(--cove-ivory-rgb), 0.5);
   position: fixed;
   top: 0;
   width: 100%;
@@ -446,7 +453,7 @@ h4 {
 .cove-hero {
   background: linear-gradient(
     180deg,
-    rgba(157, 198, 170, 0.12) 0%,
+    rgba(var(--cove-ocean-flow-rgb), 0.12) 0%,
     var(--cove-sand) 50%
   );
   overflow: hidden;
@@ -467,7 +474,7 @@ h4 {
 }
 
 .cove-hero-shape--one {
-  background: rgba(157, 198, 170, 0.2);
+  background: rgba(var(--cove-ocean-flow-rgb), 0.2);
   height: 600px;
   right: -200px;
   top: -220px;
@@ -475,7 +482,7 @@ h4 {
 }
 
 .cove-hero-shape--two {
-  background: rgba(157, 198, 170, 0.18);
+  background: rgba(var(--cove-ocean-flow-rgb), 0.18);
   bottom: -200px;
   height: 520px;
   left: -180px;
@@ -528,7 +535,7 @@ h4 {
 
 .cove-hero-media {
   aspect-ratio: 16 / 9;
-  border: 1px solid rgba(51, 51, 51, 0.05);
+  border: 1px solid rgba(var(--cove-charcoal-rgb), 0.05);
   border-radius: 32px;
   box-shadow: var(--cove-shadow-lg);
   margin-top: 80px;
@@ -545,7 +552,7 @@ h4 {
 }
 
 .cove-hero-media-overlay {
-  background: linear-gradient(0deg, rgba(51, 51, 51, 0.12), transparent 60%);
+  background: linear-gradient(0deg, rgba(var(--cove-charcoal-rgb), 0.12), transparent 60%);
   inset: 0;
   position: absolute;
 }
@@ -574,7 +581,7 @@ h4 {
 
 .cove-audiences-card {
   background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(51, 51, 51, 0.05);
+  border: 1px solid rgba(var(--cove-charcoal-rgb), 0.05);
   border-radius: 24px;
   box-shadow: var(--cove-shadow-sm);
   padding: 32px;
@@ -586,31 +593,28 @@ h4 {
 }
 
 /* Therapists */
-.cove-therapists-list {
-  display: grid;
-  gap: 64px;
-}
-
-.cove-therapists-profile {
+.cove-therapists-featured {
   display: grid;
   gap: 64px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 64px;
 }
 
-.cove-therapists-profile-media {
+.cove-therapists-featured-media {
   aspect-ratio: 4 / 5;
   border-radius: 32px;
   box-shadow: var(--cove-shadow-lg);
   overflow: hidden;
+  position: relative;
 }
 
-.cove-therapists-profile-image {
+.cove-therapists-featured-image {
   height: 100%;
   object-fit: cover;
   width: 100%;
 }
 
-.cove-therapists-profile-content {
+.cove-therapists-featured-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -629,12 +633,94 @@ h4 {
   margin: 12px 0 0;
 }
 
+.cove-therapists-grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cove-therapists-card {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.cove-therapists-card-media {
+  aspect-ratio: 4 / 5;
+  border: 0;
+  border-radius: 32px;
+  box-shadow: var(--cove-shadow-md);
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.4s ease;
+}
+
+.cove-therapists-card-image {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+  width: 100%;
+}
+
+.cove-therapists-card-overlay {
+  background: linear-gradient(
+    0deg,
+    rgba(var(--cove-charcoal-rgb), 0.7),
+    rgba(var(--cove-charcoal-rgb), 0.1)
+  );
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.cove-therapists-card-meta {
+  bottom: 0;
+  color: var(--cove-sand);
+  left: 0;
+  padding: 24px;
+  position: absolute;
+  right: 0;
+  z-index: 2;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.cove-therapists-card-meta p,
+.cove-therapists-card-meta h3 {
+  color: inherit;
+}
+
+.cove-therapists-card-role {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cove-therapists-card-name {
+  font-size: 1.875rem;
+  margin: 8px 0 0;
+}
+
+.cove-therapists-card-body {
+  margin-top: 20px;
+}
+
+.cove-therapists-card:hover .cove-therapists-card-media {
+  box-shadow: var(--cove-shadow-lg);
+}
+
+.cove-therapists-card:hover .cove-therapists-card-image {
+  transform: scale(1.05);
+}
+
 /* Approaches */
 .cove-approaches {
   background: linear-gradient(
     180deg,
     var(--cove-sand) 0%,
-    rgba(157, 198, 170, 0.08) 50%,
+    rgba(var(--cove-ocean-flow-rgb), 0.08) 50%,
     var(--cove-sand) 100%
   );
 }
@@ -674,7 +760,7 @@ h4 {
 }
 
 .approaches-dot {
-  background: rgba(51, 51, 51, 0.25);
+  background: rgba(var(--cove-charcoal-rgb), 0.25);
   border-radius: 999px;
   height: 10px;
   grid-area: dot;
@@ -697,13 +783,13 @@ h4 {
 
 .approaches-tab.is-active {
   background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(157, 198, 170, 0.2);
+  border: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.2);
   box-shadow: var(--cove-shadow-sm);
 }
 
 .approaches-tab.is-active .approaches-dot {
   background: var(--cove-sage);
-  box-shadow: 0 0 12px rgba(157, 198, 170, 0.6);
+  box-shadow: 0 0 12px rgba(var(--cove-ocean-flow-rgb), 0.6);
   transform: scale(1.2);
 }
 
@@ -718,7 +804,7 @@ h4 {
 }
 
 .approaches-panel {
-  border: 1px solid rgba(51, 51, 51, 0.05);
+  border: 1px solid rgba(var(--cove-charcoal-rgb), 0.05);
   border-radius: 32px;
   box-shadow: var(--cove-shadow-lg);
   display: none;
@@ -761,7 +847,7 @@ h4 {
 .cove-contact-icon {
   align-items: center;
   background: var(--cove-sage-faint);
-  border: 1px solid rgba(157, 198, 170, 0.2);
+  border: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.2);
   border-radius: 16px;
   color: var(--cove-sage);
   display: flex;
@@ -792,7 +878,7 @@ h4 {
 
 .contact-form {
   background: var(--cove-sage-faint);
-  border: 1px solid rgba(157, 198, 170, 0.2);
+  border: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.2);
   border-radius: 32px;
   padding: 40px;
 }
@@ -835,12 +921,12 @@ h4 {
 .contact-form-input:focus,
 .contact-form-textarea:focus {
   box-shadow: none;
-  outline: 2px solid rgba(157, 198, 170, 0.4);
+  outline: 2px solid rgba(var(--cove-ocean-flow-rgb), 0.4);
 }
 
 /* Footer */
 .cove-footer {
-  border-top: 1px solid rgba(157, 198, 170, 0.2);
+  border-top: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.2);
   padding: 64px 0;
 }
 
@@ -883,7 +969,7 @@ h4 {
 }
 
 .cove-footer-divider {
-  background: rgba(157, 198, 170, 0.2);
+  background: rgba(var(--cove-ocean-flow-rgb), 0.2);
   height: 1px;
   width: 220px;
 }
@@ -937,7 +1023,7 @@ h4 {
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .cove-therapists-profile {
+  .cove-therapists-featured {
     grid-template-columns: 1fr;
   }
 
@@ -990,6 +1076,7 @@ h4 {
   }
 
   .cove-audiences-grid,
+  .cove-therapists-grid,
   .contact-form-grid {
     grid-template-columns: 1fr;
   }
@@ -1025,3 +1112,4 @@ h4 {
     padding: 16px;
   }
 }
+
