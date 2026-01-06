@@ -8,10 +8,10 @@
   --cove-surface-radius: 26px;
   --cove-surface-shadow: 0 24px 40px rgba(var(--cove-charcoal-rgb), 0.08);
 
-  --cove-ink-soft: rgba(var(--cove-charcoal-rgb), 0.7);
-  --cove-ink-faint: rgba(var(--cove-charcoal-rgb), 0.5);
-  --cove-sage-soft: rgba(var(--cove-ocean-flow-rgb), 0.2);
-  --cove-sage-faint: rgba(var(--cove-ocean-flow-rgb), 0.12);
+  --cove-charcoal-soft: rgba(var(--cove-charcoal-rgb), 0.7);
+  --cove-charcoal-muted: rgba(var(--cove-charcoal-rgb), 0.5);
+  --cove-ocean-soft: rgba(var(--cove-ocean-flow-rgb), 0.2);
+  --cove-ocean-muted: rgba(var(--cove-ocean-flow-rgb), 0.12);
   --cove-shadow-lg: 0 30px 60px rgba(var(--cove-charcoal-rgb), 0.12);
   --cove-shadow-md: 0 20px 40px rgba(var(--cove-charcoal-rgb), 0.12);
   --cove-shadow-sm: 0 12px 24px rgba(var(--cove-charcoal-rgb), 0.12);
@@ -20,7 +20,7 @@
   --pico-font-family: "Noto Sans", sans-serif;
   --pico-background-color: var(--cove-ivory);
   --pico-color: var(--cove-charcoal);
-  --pico-muted-color: var(--cove-ink-faint);
+  --pico-muted-color: var(--cove-charcoal-muted);
   --pico-primary: var(--cove-ocean-flow);
   --pico-primary-hover: rgba(var(--cove-ocean-flow-rgb), 0.9);
   --pico-primary-focus: rgba(var(--cove-ocean-flow-rgb), 0.3);
@@ -190,14 +190,14 @@ h4 {
 }
 
 .cove-section-description {
-  color: var(--cove-ink-soft);
+  color: var(--cove-charcoal-soft);
   font-size: 1.1rem;
   line-height: 1.7;
   margin: 16px 0 0;
 }
 
 .cove-section-summary p {
-  color: var(--cove-ink-soft);
+  color: var(--cove-charcoal-soft);
   margin: 16px 0 0;
 }
 
@@ -210,7 +210,7 @@ h4 {
 }
 
 .cove-rich-text p {
-  color: var(--cove-ink-soft);
+  color: var(--cove-charcoal-soft);
   line-height: 1.7;
   margin-top: 16px;
 }

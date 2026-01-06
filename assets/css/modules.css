@@ -1,4 +1,3 @@
-/* Therapists */
 .cove-therapists-featured {
   display: grid;
   gap: 64px;
@@ -247,7 +246,7 @@
 
 .cove-contact-icon {
   align-items: center;
-  background: var(--cove-sage-faint);
+  background: var(--cove-ocean-muted);
   border: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.2);
   border-radius: 16px;
   color: var(--cove-ocean-flow);
@@ -263,7 +262,7 @@
 }
 
 .cove-contact-label {
-  color: var(--cove-ink-faint);
+  color: var(--cove-charcoal-muted);
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -294,7 +293,7 @@
 }
 
 .contact-form-label {
-  color: var(--cove-ink-soft);
+  color: var(--cove-charcoal-soft);
   font-size: 0.85rem;
   font-weight: 500;
 }
@@ -342,7 +341,7 @@
 }
 
 .cove-footer-tagline {
-  color: var(--cove-ink-soft);
+  color: var(--cove-charcoal-soft);
   font-size: 0.95rem;
   max-width: 560px;
 }
@@ -357,7 +356,7 @@
 }
 
 .cove-footer-link {
-  color: var(--cove-ink-faint);
+  color: var(--cove-charcoal-muted);
   font-size: 0.85rem;
   text-decoration: none;
 }
@@ -378,7 +377,7 @@
 }
 
 .cove-footer-copy {
-  color: var(--cove-ink-faint);
+  color: var(--cove-charcoal-muted);
   font-size: 0.8rem;
 }
 

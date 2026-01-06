@@ -150,22 +150,15 @@
 }
 
 /* Hero */
-.cove-hero {
-  background: linear-gradient(
-    180deg,
-    rgba(var(--cove-ocean-flow-rgb), 0.12) 0%,
-    var(--cove-ivory) 50%
-  );
-  overflow: hidden;
-  padding-top: 120px;
-  position: relative;
-}
-
-.cove-hero-backdrop {
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-}
+.cove-hero {
+  background: var(--cove-ivory);
+  overflow: hidden;
+  padding-top: 120px;
+  position: relative;
+}
+.cove-hero-backdrop {
+  display: none;
+}
 
 .cove-hero-shape {
   border-radius: 50%;
@@ -297,7 +290,7 @@
 
 .cove-hero-scroll {
   bottom: 32px;
-  color: var(--cove-ink-faint);
+  color: var(--cove-charcoal-muted);
   display: inline-flex;
   left: 50%;
   position: absolute;
