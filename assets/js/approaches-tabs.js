@@ -51,6 +51,7 @@
   let wasActive = false;
   let anchorBypass = 0;
   let lastNaturalScroll = 0;
+  let lockDisabled = false;
   const cooldownMs = 300;
   const dwellMs = 550;
   const minDeltaPerTab = 240;
@@ -100,6 +101,7 @@
     bypassUntil = 0;
     anchorBypass = 0;
     lastNaturalScroll = 0;
+    lockDisabled = false;
   };
 
   const startDwell = (now) => {
@@ -130,6 +132,10 @@
       startDwell(now);
       lastSwitchTime = now;
       edgeUnlocked = false;
+      if (index === tabInputs.length - 1) {
+        lockDisabled = true;
+        edgeUnlocked = true;
+      }
       if (index < tabInputs.length - 1) {
         accumulatedDelta = 0;
       }
@@ -143,6 +149,13 @@
   }
 
   const processDelta = (rawDelta) => {
+    if (isContactActive()) {
+      resetState();
+      return false;
+    }
+    if (lockDisabled) {
+      return false;
+    }
     const activeIndex = getActiveIndex();
     const now = Date.now();
     lastNaturalScroll = now;
@@ -178,6 +191,13 @@
 
     const direction = Math.sign(rawDelta);
     if (!direction) {
+      return false;
+    }
+    if (direction < 0) {
+      lastDirection = direction;
+      bypassUntil = now + 1200;
+      edgeUnlocked = true;
+      resetAccumulation();
       return false;
     }
 
@@ -289,8 +309,18 @@
     }
     scrollRaf = window.requestAnimationFrame(() => {
       scrollRaf = null;
+      if (isContactActive()) {
+        resetState();
+        return;
+      }
       if (!isSectionActive()) {
         resetState();
+        return;
+      }
+      if (lockDisabled) {
+        return;
+      }
+      if (lastDirection < 0) {
         return;
       }
       const now = Date.now();
@@ -324,16 +354,27 @@
     bypassUntil = Math.max(bypassUntil, anchorBypass);
   };
 
-  const contactSection = document.getElementById("contact");
+  const contactAnchor = document.getElementById("contact");
+  const contactSection =
+    document.querySelector("[data-contact-section]") || contactAnchor?.closest("section");
   const contactLockTarget =
-    contactSection && (contactSection.querySelector("[data-contact-lock]") || contactSection);
+    document.querySelector("[data-contact-lock]") || contactAnchor || contactSection;
+  const isContactActive = () => {
+    if (!contactSection) {
+      return false;
+    }
+    const offset = getLockOffset();
+    const start = contactSection.offsetTop - offset;
+    const end = contactSection.offsetTop + contactSection.offsetHeight;
+    return window.scrollY >= start && window.scrollY <= end;
+  };
 
   const scrollContactIntoView = (behavior = "smooth") => {
     if (!contactLockTarget) {
       return;
     }
     const rect = contactLockTarget.getBoundingClientRect();
-    const extraMargin = 30;
+    const extraMargin = 0;
     const targetTop = Math.max(
       0,
       window.scrollY + rect.top - getLockOffset() - extraMargin
