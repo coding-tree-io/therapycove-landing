@@ -11,31 +11,37 @@
       <img
         alt="{{ site_nav.logo_alt }}"
         src="{{ '/assets/images/therapy-cove-logo.png' | relative_url }}"
-        class="cove-hero-logo"
+        class="cove-hero-logo drop-shadow-[0_18px_40px_rgba(51,51,51,0.18)]"
       >
     </div>
     <div class="cove-hero-content cove-reveal" style="--delay: 120ms;">
-      <h1 id="hero-title" class="cove-hero-title">{{ hero_title }}</h1>
+      <h1 id="hero-title" class="cove-hero-title tracking-tight">{{ hero_title }}</h1>
       <div class="cove-rich-text cove-hero-lead">
         {{ hero.lead | markdownify }}
       </div>
     </div>
 
     <div class="cove-hero-actions cove-reveal" style="--delay: 220ms;">
-      <a class="cove-button cove-button--solid cove-button--lg" href="{{ hero.primary_cta.href }}">{{ hero.primary_cta.label }}</a>
-      <a class="cove-button cove-button--ghost cove-button--lg" href="{{ hero.secondary_cta.href }}">{{ hero.secondary_cta.label }}</a>
+      <a class="cove-button cove-button--solid cove-button--lg shadow-soft hover:shadow-cove transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cove-ocean-flow/30" href="{{ hero.primary_cta.href }}">{{ hero.primary_cta.label }}</a>
+      <a class="cove-button cove-button--ghost cove-button--lg hover:shadow-soft transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cove-ocean-flow/30" href="{{ hero.secondary_cta.href }}">{{ hero.secondary_cta.label }}</a>
     </div>
 
-    <div id="space" class="cove-hero-media cove-reveal" style="--delay: 360ms;">
-      <img
-        alt="{{ hero.space_image.alt }}"
-        src="{{ hero.space_image.src | relative_url }}"
+    <div id="space" class="cove-hero-media cove-reveal ring-1 ring-cove-charcoal/10 shadow-cove" style="--delay: 360ms;">
+      {% include picture.html
+        src=hero.space_image.src
+        alt=hero.space_image.alt
+        widths="640,960,1280,1600,2048"
+        sizes="(min-width: 1200px) 1024px, (min-width: 768px) 90vw, 100vw"
+        width="1280"
+        height="720"
         class="cove-hero-image"
-      >
+        loading="eager"
+        fetchpriority="high"
+      %}
       <div class="cove-hero-media-overlay" aria-hidden="true"></div>
     </div>
 
-    <a class="cove-hero-scroll" href="#audiences" aria-label="Scroll to content">
+    <a class="cove-hero-scroll transition" href="#audiences" aria-label="Scroll to content">
       <svg viewBox="0 0 24 24" aria-hidden="true" class="cove-hero-scroll-icon">
         <path d="M12 4v12m0 0l-5-5m5 5l5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>

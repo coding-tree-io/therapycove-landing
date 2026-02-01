@@ -11,12 +11,14 @@
 {% endif %}
 <section id="approaches" class="cove-section cove-approaches">
   <div class="cove-shell">
+    {% assign approaches_summary = approaches.summary | strip %}
+    {% assign approaches_first = approaches.tabs[0].description | strip %}
     <div class="section-intro" data-approaches-lock>
       {% if approaches_label != '' %}
       <p class="cove-eyebrow">{{ approaches_label }}</p>
       {% endif %}
       <h2 class="cove-section-title">{{ approaches.heading }}</h2>
-      {% if approaches.summary %}
+      {% if approaches_summary != '' and approaches_summary != approaches_first %}
       <div class="cove-section-summary cove-rich-text">{{ approaches.summary | markdownify }}</div>
       {% endif %}
     </div>
@@ -33,7 +35,7 @@
 
       <div class="approaches-tab-list" role="tablist">
         {% for tab in approaches.tabs %}
-        <label class="approaches-tab" for="approach-tab-{{ forloop.index0 }}" role="tab">
+        <label class="approaches-tab ring-1 ring-cove-charcoal/5 hover:bg-white/60 transition" for="approach-tab-{{ forloop.index0 }}" role="tab">
           <span class="approaches-dot"></span>
           <span class="approaches-title">{{ tab.title }}</span>
           <div class="approaches-description cove-rich-text">{{ tab.description | markdownify }}</div>
@@ -43,15 +45,20 @@
 
       <div class="approaches-panels">
         {% for tab in approaches.tabs %}
-        <div class="approaches-panel cove-surface" data-approach-index="{{ forloop.index0 }}">
-          <img
-            alt="{{ tab.image.alt }}"
-            src="{{ tab.image.src | relative_url }}"
+        <div class="approaches-panel cove-surface ring-1 ring-white/40 shadow-soft" data-approach-index="{{ forloop.index0 }}">
+          {% include picture.html
+            src=tab.image.src
+            alt=tab.image.alt
+            widths="480,720,960,1280,1600"
+            sizes="(min-width: 1024px) 700px, (min-width: 768px) 90vw, 100vw"
+            width="960"
+            height="540"
             class="approaches-image"
-          >
+            loading="lazy"
+          %}
         </div>
-        {% endfor %}
-      </div>
+      {% endfor %}
+    </div>
     </div>
   </div>
 </section>

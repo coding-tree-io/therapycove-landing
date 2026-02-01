@@ -7,7 +7,8 @@
   {% endif %}
 {% endfor %}
 {% assign featured = therapists.members[0] %}
-<section id="therapists" class="cove-section cove-therapists">
+<span id="therapists" class="cove-anchor cove-anchor--therapists"></span>
+<section class="cove-section cove-therapists">
   <div class="cove-shell">
     <div class="section-intro section-intro--left">
       {% if therapists_label != '' %}
@@ -17,12 +18,17 @@
     </div>
     {% if featured %}
     <div class="cove-therapists-featured">
-      <div class="cove-therapists-featured-media">
-        <img
-          alt="{{ featured.alt }}"
-          src="{{ featured.image | relative_url }}"
+      <div class="cove-therapists-featured-media ring-1 ring-white/40">
+        {% include picture.html
+          src=featured.image
+          alt=featured.alt
+          widths="400,600,800,1000,1200"
+          sizes="(min-width: 1200px) 560px, (min-width: 768px) 80vw, 100vw"
+          width="800"
+          height="1199"
           class="cove-therapists-featured-image"
-        >
+          loading="lazy"
+        %}
         <div class="cove-therapists-card-overlay" aria-hidden="true"></div>
         <div class="cove-therapists-card-meta">
           <h3 class="cove-therapists-card-name">{{ featured.name }}</h3>
@@ -39,13 +45,18 @@
 
     <div class="cove-therapists-grid">
       {% for member in therapists.members offset:1 %}
-      <article class="cove-therapists-card cove-surface">
-        <div class="cove-therapists-card-media">
-          <img
-            alt="{{ member.alt }}"
-            src="{{ member.image | relative_url }}"
+      <article class="cove-therapists-card cove-surface transition hover:-translate-y-1">
+        <div class="cove-therapists-card-media ring-1 ring-white/40">
+          {% include picture.html
+            src=member.image
+            alt=member.alt
+            widths="400,600,800,1000,1200"
+            sizes="(min-width: 1200px) 560px, (min-width: 768px) 80vw, 100vw"
+            width="800"
+            height="1199"
             class="cove-therapists-card-image"
-          >
+            loading="lazy"
+          %}
           <div class="cove-therapists-card-overlay" aria-hidden="true"></div>
           <div class="cove-therapists-card-meta">
             <p class="cove-therapists-card-role">{{ member.role }}</p>
