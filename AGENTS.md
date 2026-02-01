@@ -1,5 +1,8 @@
 # AGENTS.md
 
+## Agent entrypoints
+- Always read `AGENT_ENTRYPOINTS.md` early; it is the repo-local index for key files and commands.
+
 ## Project identity
 - Therapy Cove is a modern center for psychological health in Athens, serving adults.
 - The site represents a real practice with three practicing psychologists and must communicate trust, calm, and professionalism.
@@ -34,3 +37,12 @@
 ## Content alignment
 - Copy and structure should reflect the existing Therapy Cove tone and content.
 - The site must consistently present a modern, supportive mental health center with three psychologists operating the space.
+
+## Current site state (as of 2026-01-31)
+- Layout sections are defined in `_includes/`: hero (`#home`), audiences (`#audiences`), therapists (`#therapists`), approaches (`#approaches`), contact (`#contact`), footer.
+- Navigation uses `assets/images/log-vector.svg` in the header and drawer; hero + footer use `assets/images/therapy-cove-logo.png`.
+- Styles are a mix of Pico CSS (CDN), custom CSS (`assets/css/base.css`, `assets/css/layout.css`, `assets/css/modules.css` via `assets/css/therapy-cove.css`), and a Tailwind build (`assets/css/tailwind-build.css`) with Flowbite plugin utilities.
+- Flowbite JS is loaded locally from `assets/vendor/flowbite/flowbite.min.js`.
+- Fonts are self-hosted via `assets/css/fonts.css` (Fraunces + Sora) with Greek typography using a Helvetica-based stack in `assets/css/base.css` and language-based overrides.
+- Core palette variables live in `assets/css/base.css`: `--cove-charcoal` (#333333), `--cove-ivory` (#F9ECCF), `--cove-ocean-flow` (#9DC6AA) plus RGB/soft variants.
+- Approaches interaction/scroll locking logic is handled in `assets/js/approaches-tabs.js`.
