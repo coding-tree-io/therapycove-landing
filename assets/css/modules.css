@@ -1,12 +1,13 @@
 .cove-therapists-featured {
   display: grid;
-  gap: 64px;
+  gap: clamp(48px, 6vw, 72px);
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-bottom: 64px;
 }
 
 .cove-therapists-featured-media {
   aspect-ratio: 800 / 1199;
+  border: 1px solid var(--cove-surface-border);
   border-radius: 32px;
   box-shadow: var(--cove-shadow-lg);
   overflow: hidden;
@@ -87,9 +88,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 6px;
+  gap: 8px;
   left: 0;
-  padding: 24px;
+  padding: 20px;
   position: absolute;
   right: 0;
   z-index: 2;
@@ -98,12 +99,13 @@
 
 .cove-therapists-card-meta p,
 .cove-therapists-card-meta h3 {
-  background: rgba(var(--cove-ivory-rgb), 0.9);
-  border-radius: 8px;
+  background: rgba(var(--cove-ivory-rgb), 0.92);
+  border: 1px solid rgba(var(--cove-charcoal-rgb), 0.06);
+  border-radius: 999px;
   box-decoration-break: clone;
   color: inherit;
   display: inline-block;
-  padding: 2px 6px;
+  padding: 3px 10px;
 }
 
 .cove-therapists-card-role {
@@ -133,9 +135,9 @@
 .cove-approaches {
   background: linear-gradient(
     180deg,
-    var(--cove-ivory) 0%,
-    rgba(var(--cove-ocean-flow-rgb), 0.08) 50%,
-    var(--cove-ivory) 100%
+    rgba(var(--cove-ivory-rgb), 0.9) 0%,
+    rgba(var(--cove-ocean-flow-rgb), 0.1) 45%,
+    rgba(var(--cove-ivory-rgb), 0.95) 100%
   );
 }
 
@@ -158,8 +160,8 @@
 }
 
 .approaches-tab {
-  background: transparent;
-  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(var(--cove-charcoal-rgb), 0.06);
   border-radius: 24px;
   cursor: pointer;
   display: grid;
@@ -170,7 +172,7 @@
   column-gap: 16px;
   row-gap: 12px;
   padding: 24px;
-  transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease, transform 0.3s ease;
 }
 
 .approaches-dot {
@@ -196,9 +198,10 @@
 }
 
 .approaches-tab.is-active {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.2);
+  background: var(--cove-surface-color);
+  border: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.3);
   box-shadow: var(--cove-shadow-sm);
+  transform: translateY(-2px);
 }
 
 .approaches-tab.is-active .approaches-dot {
@@ -257,8 +260,8 @@
 
 .cove-contact-icon {
   align-items: center;
-  background: var(--cove-ocean-muted);
-  border: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.2);
+  background: rgba(var(--cove-ocean-flow-rgb), 0.18);
+  border: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.25);
   border-radius: 16px;
   color: var(--cove-ocean-flow);
   display: flex;
@@ -311,8 +314,8 @@
 
 .contact-form-input,
 .contact-form-textarea {
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(var(--cove-charcoal-rgb), 0.08);
   border-radius: 16px;
   box-shadow: none;
   color: var(--cove-charcoal);
@@ -343,13 +346,18 @@
 
 .contact-form-input:focus,
 .contact-form-textarea:focus {
-  box-shadow: none;
-  outline: 2px solid rgba(var(--cove-ocean-flow-rgb), 0.4);
+  box-shadow: 0 0 0 4px rgba(var(--cove-ocean-flow-rgb), 0.2);
+  outline: none;
 }
 
 /* Footer */
 .cove-footer {
-  border-top: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.2);
+  background: linear-gradient(
+    180deg,
+    rgba(var(--cove-ocean-flow-rgb), 0.08) 0%,
+    rgba(var(--cove-ivory-rgb), 0.95) 100%
+  );
+  border-top: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.18);
   padding: clamp(24px, 3vw, 40px) 0;
 }
 

@@ -9,16 +9,21 @@
   --cove-font-display: "Fraunces", serif;
   --cove-font-body: "Sora", sans-serif;
   --cove-surface-radius: 26px;
-  --cove-surface-shadow: 0 24px 40px rgba(var(--cove-charcoal-rgb), 0.08);
+  --cove-surface-shadow: 0 24px 50px rgba(var(--cove-charcoal-rgb), 0.12),
+    0 6px 18px rgba(var(--cove-charcoal-rgb), 0.06);
 
   --cove-charcoal-soft: rgba(var(--cove-charcoal-rgb), 0.7);
   --cove-charcoal-muted: rgba(var(--cove-charcoal-rgb), 0.5);
   --cove-ocean-soft: rgba(var(--cove-ocean-flow-rgb), 0.2);
   --cove-ocean-muted: rgba(var(--cove-ocean-flow-rgb), 0.12);
-  --cove-shadow-lg: 0 30px 60px rgba(var(--cove-charcoal-rgb), 0.12);
-  --cove-shadow-md: 0 20px 40px rgba(var(--cove-charcoal-rgb), 0.12);
-  --cove-shadow-sm: 0 12px 24px rgba(var(--cove-charcoal-rgb), 0.12);
+  --cove-ivory-tint: rgba(var(--cove-ivory-rgb), 0.72);
+  --cove-surface-color: rgba(255, 255, 255, 0.78);
+  --cove-surface-border: rgba(var(--cove-charcoal-rgb), 0.08);
+  --cove-shadow-lg: 0 34px 70px rgba(var(--cove-charcoal-rgb), 0.12);
+  --cove-shadow-md: 0 20px 44px rgba(var(--cove-charcoal-rgb), 0.12);
+  --cove-shadow-sm: 0 12px 24px rgba(var(--cove-charcoal-rgb), 0.1);
   --cove-nav-height: 80px;
+  --cove-section-spacing: clamp(96px, 12vw, 140px);
 
   --pico-font-family: var(--cove-font-greek);
   --pico-background-color: var(--cove-ivory);
@@ -31,10 +36,11 @@
 }
 
 .cove-surface {
-  background: var(--cove-ivory);
+  background: var(--cove-surface-color);
   border-radius: var(--cove-surface-radius);
-  border: 1px solid rgba(var(--cove-charcoal-rgb), 0.05);
+  border: 1px solid var(--cove-surface-border);
   box-shadow: var(--cove-surface-shadow);
+  backdrop-filter: blur(12px);
 }
 
 html {
@@ -149,7 +155,10 @@ html {
 }
 
 body {
-  background: var(--cove-ivory);
+  background:
+    radial-gradient(900px circle at 80% -10%, rgba(var(--cove-ocean-flow-rgb), 0.18), transparent 55%),
+    radial-gradient(600px circle at 12% 20%, rgba(var(--cove-ocean-flow-rgb), 0.12), transparent 60%),
+    var(--cove-ivory);
   color: var(--cove-charcoal);
   line-height: 1.6;
   font-family: var(--cove-font-greek);
@@ -163,6 +172,7 @@ h3,
 h4 {
   font-family: var(--cove-font-greek);
   font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .cove-page {
@@ -181,7 +191,8 @@ h4 {
 
 .cove-section {
   margin: 0;
-  padding: 128px 0;
+  padding: var(--cove-section-spacing) 0;
+  position: relative;
   scroll-margin-top: 96px;
 }
 
@@ -213,6 +224,7 @@ h4 {
   font-size: clamp(2.4rem, 4vw, 3.75rem);
   line-height: 1.1;
   margin: 12px 0 0;
+  text-wrap: balance;
 }
 
 .cove-section-description {
@@ -239,6 +251,11 @@ h4 {
   color: var(--cove-charcoal-soft);
   line-height: 1.7;
   margin-top: 16px;
+}
+
+::selection {
+  background: rgba(var(--cove-ocean-flow-rgb), 0.35);
+  color: var(--cove-charcoal);
 }
 
 .cove-rich-text p:first-child {
@@ -303,20 +320,28 @@ h4 {
 }
 
 .cove-button--solid {
-  background: var(--cove-ocean-flow);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--cove-ocean-flow-rgb), 1),
+    rgba(var(--cove-ocean-flow-rgb), 0.86)
+  );
   color: var(--cove-ivory);
   box-shadow: var(--cove-shadow-sm);
 }
 
 .cove-button--solid:hover {
-  background: rgba(var(--cove-ocean-flow-rgb), 0.9);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--cove-ocean-flow-rgb), 0.98),
+    rgba(var(--cove-ocean-flow-rgb), 0.8)
+  );
   box-shadow: var(--cove-shadow-md);
   transform: translateY(-1px);
 }
 
 .cove-button--ghost {
   background: transparent;
-  border-color: rgba(var(--cove-charcoal-rgb), 0.2);
+  border-color: rgba(var(--cove-charcoal-rgb), 0.16);
   border-width: 2px;
   color: var(--cove-charcoal);
 }
