@@ -1,13 +1,12 @@
 /* Navigation */
 .cove-nav {
-  background: linear-gradient(
-    135deg,
-    rgba(var(--cove-ocean-flow-rgb), 0.95),
-    rgba(var(--cove-ocean-flow-rgb), 0.85)
-  );
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(var(--cove-charcoal-rgb), 0.08);
-  box-shadow: 0 12px 28px rgba(var(--cove-charcoal-rgb), 0.12);
+  background: rgba(var(--cove-ocean-flow-rgb), 0.88);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.1) inset,
+    0 4px 24px rgba(var(--cove-charcoal-rgb), 0.08);
   position: fixed;
   top: 0;
   width: 100%;
@@ -17,54 +16,49 @@
 .cove-nav-inner {
   align-items: center;
   display: flex;
-  gap: 32px;
+  gap: 24px;
   height: var(--cove-nav-height);
   justify-content: space-between;
 }
 
 .cove-logo-image {
-  height: clamp(22px, 2.2vw, 28px);
+  height: clamp(20px, 2vw, 26px);
   width: auto;
+  transition: transform 0.3s ease;
+}
+
+.cove-logo:hover .cove-logo-image {
+  transform: scale(1.02);
 }
 
 .cove-nav-links {
   display: flex;
   flex: 1;
-  gap: 40px;
+  gap: 8px;
   justify-content: center;
   margin: 0;
   padding: 0;
 }
 
 .cove-nav-link {
-  color: var(--cove-ivory);
-  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.8rem;
   font-weight: 500;
-  opacity: 0.85;
+  letter-spacing: 0.01em;
+  padding: 8px 16px;
+  border-radius: 999px;
   position: relative;
   text-decoration: none;
-  transition: opacity 0.2s ease, color 0.2s ease;
-}
-
-.cove-nav-link::after {
-  background: var(--cove-ivory);
-  bottom: -6px;
-  content: "";
-  height: 2px;
-  left: 0;
-  position: absolute;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.2s ease;
-  width: 100%;
-}
-
-.cove-nav-link:hover::after {
-  transform: scaleX(1);
+  transition: 
+    background 0.25s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .cove-nav-link:hover {
-  opacity: 1;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  transform: translateY(-1px);
 }
 
 .cove-nav-cta {
@@ -79,30 +73,39 @@
 .cove-nav-toggle-label {
   display: none;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
   cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.cove-nav-toggle-label:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .cove-nav-toggle-line {
-  background: var(--cove-ivory);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 999px;
   height: 2px;
-  width: 24px;
+  width: 22px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .cove-nav-drawer {
-  background: linear-gradient(
-    160deg,
-    rgba(var(--cove-ocean-flow-rgb), 0.98),
-    rgba(var(--cove-ocean-flow-rgb), 0.85)
-  );
+  background: rgba(var(--cove-ocean-flow-rgb), 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   height: 100vh;
+  height: 100dvh;
   inset: 0;
   opacity: 0;
   pointer-events: none;
   position: fixed;
-  transform: translateX(100%);
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: translateY(-8px);
+  transition: 
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.25s ease;
   width: 100vw;
   z-index: 1001;
 }
@@ -110,16 +113,18 @@
 .cove-nav-toggle:checked ~ .cove-nav-drawer {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 .cove-nav-drawer-inner {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 40px;
   height: 100%;
-  padding: 32px 24px;
+  padding: 24px;
+  justify-content: flex-start;
+  padding-top: 32px;
 }
 
 .cove-nav-drawer-header {
@@ -130,31 +135,47 @@
 }
 
 .cove-nav-drawer-logo {
-  height: clamp(40px, 4.5vw, 48px);
+  height: clamp(32px, 4vw, 40px);
 }
 
 .cove-nav-close {
-  color: var(--cove-ivory);
+  color: rgba(255, 255, 255, 0.9);
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.75rem;
   line-height: 1;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.cove-nav-close:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .cove-nav-drawer-links {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-top: 24px;
 }
 
 .cove-nav-drawer-link {
-  color: var(--cove-ivory);
-  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.25rem;
   font-weight: 500;
   text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.cove-nav-drawer-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 .cove-nav-drawer-actions {
@@ -162,18 +183,15 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: auto;
+  padding-bottom: 32px;
 }
 
 /* Hero */
 .cove-hero {
-  background: linear-gradient(
-    180deg,
-    rgba(var(--cove-ivory-rgb), 0.92) 0%,
-    var(--cove-ivory) 55%,
-    rgba(var(--cove-ocean-flow-rgb), 0.08) 100%
-  );
+  background: transparent;
   overflow: hidden;
-  padding-top: 120px;
+  padding-top: 100px;
   position: relative;
   isolation: isolate;
 }
@@ -184,100 +202,116 @@
   pointer-events: none;
   position: absolute;
   z-index: 0;
+  overflow: hidden;
 }
-
 
 .cove-hero-shape {
   border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.8;
+  filter: blur(100px);
+  opacity: 0.6;
   position: absolute;
+  will-change: transform;
 }
 
 .cove-hero-shape--one {
-  background: rgba(var(--cove-ocean-flow-rgb), 0.22);
-  height: min(620px, 60vw);
-  right: -180px;
-  top: -240px;
-  width: min(620px, 60vw);
+  background: rgba(var(--cove-ocean-flow-rgb), 0.2);
+  height: min(700px, 70vw);
+  right: -20%;
+  top: -30%;
+  width: min(700px, 70vw);
+  animation: hero-float-1 20s ease-in-out infinite;
 }
 
 .cove-hero-shape--two {
-  background: rgba(var(--cove-ocean-flow-rgb), 0.14);
-  bottom: -220px;
-  height: min(540px, 55vw);
-  left: -200px;
-  width: min(540px, 55vw);
+  background: rgba(var(--cove-ocean-flow-rgb), 0.12);
+  bottom: -30%;
+  height: min(600px, 60vw);
+  left: -15%;
+  width: min(600px, 60vw);
+  animation: hero-float-2 25s ease-in-out infinite;
+}
+
+@keyframes hero-float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 20px) scale(1.05); }
+}
+
+@keyframes hero-float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -30px) scale(1.03); }
 }
 
 .cove-hero-inner {
   align-items: center;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 80px);
-  padding-bottom: 80px;
+  min-height: calc(100vh - 72px);
+  min-height: calc(100dvh - 72px);
+  padding-bottom: 100px;
   position: relative;
   text-align: center;
   z-index: 1;
 }
 
 .cove-hero-brand {
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 
 .cove-hero-logo {
   height: auto;
-  width: clamp(160px, 20vw, 240px);
+  width: clamp(140px, 18vw, 200px);
+  filter: drop-shadow(0 20px 40px rgba(var(--cove-charcoal-rgb), 0.12));
 }
 
 .cove-hero-content {
-  max-width: 720px;
+  max-width: 760px;
 }
 
 .cove-hero-title {
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  font-size: clamp(2.5rem, 5.5vw, 4rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
   margin: 0;
-  text-wrap: balance;
 }
 
 .cove-hero-lead {
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-  line-height: 1.7;
-  margin: 32px auto 0;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.75;
+  margin: 36px auto 0;
   max-width: 720px;
   text-align: justify;
-  color: rgba(var(--cove-charcoal-rgb), 0.93);
-  letter-spacing: 0.01em;
-  text-wrap: pretty;
+  color: var(--cove-charcoal-soft);
+  letter-spacing: 0.005em;
 }
 
 .cove-hero-lead strong {
   font-weight: 600;
+  color: var(--cove-charcoal);
 }
 
 .cove-hero-lead span {
   display: inline-block;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .cove-hero-lead:first-letter {
-  font-size: clamp(2rem, 3vw, 2.4rem);
+  font-size: clamp(1.8rem, 2.8vw, 2.2rem);
   font-weight: 500;
   float: left;
-  line-height: 0.9;
-  padding-right: 0.35rem;
+  line-height: 0.85;
+  padding-right: 0.3rem;
+  color: var(--cove-ocean-flow);
 }
 
 .cove-hero-lead::after {
   content: "";
   display: block;
-  margin: 2rem 0 0;
-  height: 1px;
-  width: clamp(120px, 22vw, 200px);
-  background: linear-gradient(90deg, rgba(var(--cove-ocean-flow-rgb), 0.8), transparent);
-  opacity: 0.5;
+  margin: 2.5rem 0 0;
+  height: 2px;
+  width: clamp(60px, 12vw, 100px);
+  background: var(--cove-ocean-flow);
+  opacity: 0.3;
+  border-radius: 1px;
 }
 
 @media (min-width: 900px) {
@@ -291,18 +325,20 @@
 .cove-hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 12px;
   justify-content: center;
-  margin-top: 48px;
+  margin-top: 44px;
 }
 
 .cove-hero-media {
   aspect-ratio: 16 / 9;
-  border: 1px solid rgba(var(--cove-charcoal-rgb), 0.08);
-  border-radius: clamp(28px, 4vw, 42px);
-  box-shadow: var(--cove-shadow-lg);
-  margin-top: 80px;
-  max-width: 1024px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--cove-radius-xl);
+  box-shadow: 
+    var(--cove-shadow-xl),
+    0 0 0 1px rgba(var(--cove-charcoal-rgb), 0.04);
+  margin-top: 72px;
+  max-width: 980px;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -312,53 +348,99 @@
   height: 100%;
   object-fit: cover;
   width: 100%;
+  transition: transform 8s ease-out;
+}
+
+.cove-hero-media:hover .cove-hero-image {
+  transform: scale(1.02);
 }
 
 .cove-hero-media-overlay {
-  background: linear-gradient(0deg, rgba(var(--cove-charcoal-rgb), 0.14), transparent 65%);
+  background: linear-gradient(
+    180deg,
+    transparent 60%,
+    rgba(var(--cove-charcoal-rgb), 0.08) 100%
+  );
   inset: 0;
   position: absolute;
+  pointer-events: none;
 }
 
 .cove-hero-scroll {
-  bottom: 32px;
+  bottom: 40px;
   color: var(--cove-charcoal-muted);
   display: inline-flex;
   left: 50%;
   position: absolute;
   text-decoration: none;
   transform: translateX(-50%);
+  padding: 12px;
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+.cove-hero-scroll:hover {
+  background: rgba(var(--cove-ocean-flow-rgb), 0.1);
+  color: var(--cove-ocean-flow);
 }
 
 .cove-hero-scroll-icon {
-  animation: cove-float 1.8s ease-in-out infinite;
-  height: 24px;
-  width: 24px;
+  animation: cove-float 2s ease-in-out infinite;
+  height: 20px;
+  width: 20px;
 }
 
 .cove-audiences-grid {
   display: grid;
-  gap: 24px;
+  gap: 20px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .cove-audiences-card {
-  background: var(--cove-surface-color);
-  border: 1px solid var(--cove-surface-border);
-  border-radius: 24px;
-  box-shadow: var(--cove-shadow-sm);
-  backdrop-filter: blur(10px);
-  padding: 32px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--cove-radius-lg);
+  box-shadow: 
+    var(--cove-shadow-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 36px;
+  transition: 
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cove-audiences-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cove-ocean-flow), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .cove-audiences-card:hover {
-  box-shadow: var(--cove-shadow-md);
-  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 
+    var(--cove-shadow-lg),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transform: translateY(-6px);
+}
+
+.cove-audiences-card:hover::before {
+  opacity: 1;
 }
 
 .cove-card-title {
-  font-size: 1.5rem;
-  margin: 0 0 8px;
+  font-size: 1.35rem;
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
 }
 

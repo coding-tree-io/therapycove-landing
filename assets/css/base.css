@@ -5,25 +5,61 @@
   --cove-charcoal-rgb: 51, 51, 51;
   --cove-ivory-rgb: 249, 236, 207;
   --cove-ocean-flow-rgb: 157, 198, 170;
+  
+  /* Extended palette - complementary tones */
+  --cove-ocean-deep: #7ab08a;
+  --cove-ocean-light: #c5dece;
+  --cove-warm-white: #fffef9;
+  
   --cove-font-greek: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --cove-font-display: "Fraunces", serif;
   --cove-font-body: "Sora", sans-serif;
-  --cove-surface-radius: 26px;
-  --cove-surface-shadow: 0 24px 50px rgba(var(--cove-charcoal-rgb), 0.12),
-    0 6px 18px rgba(var(--cove-charcoal-rgb), 0.06);
+  
+  /* Modern surface system */
+  --cove-surface-radius: 20px;
+  --cove-radius-sm: 12px;
+  --cove-radius-lg: 28px;
+  --cove-radius-xl: 36px;
+  
+  /* Refined shadow system */
+  --cove-surface-shadow: 
+    0 1px 2px rgba(var(--cove-charcoal-rgb), 0.04),
+    0 4px 12px rgba(var(--cove-charcoal-rgb), 0.06),
+    0 16px 40px rgba(var(--cove-charcoal-rgb), 0.08);
 
-  --cove-charcoal-soft: rgba(var(--cove-charcoal-rgb), 0.7);
-  --cove-charcoal-muted: rgba(var(--cove-charcoal-rgb), 0.5);
-  --cove-ocean-soft: rgba(var(--cove-ocean-flow-rgb), 0.2);
-  --cove-ocean-muted: rgba(var(--cove-ocean-flow-rgb), 0.12);
+  --cove-charcoal-soft: rgba(var(--cove-charcoal-rgb), 0.72);
+  --cove-charcoal-muted: rgba(var(--cove-charcoal-rgb), 0.48);
+  --cove-charcoal-subtle: rgba(var(--cove-charcoal-rgb), 0.24);
+  --cove-ocean-soft: rgba(var(--cove-ocean-flow-rgb), 0.18);
+  --cove-ocean-muted: rgba(var(--cove-ocean-flow-rgb), 0.1);
   --cove-ivory-tint: rgba(var(--cove-ivory-rgb), 0.72);
-  --cove-surface-color: rgba(255, 255, 255, 0.78);
-  --cove-surface-border: rgba(var(--cove-charcoal-rgb), 0.08);
-  --cove-shadow-lg: 0 34px 70px rgba(var(--cove-charcoal-rgb), 0.12);
-  --cove-shadow-md: 0 20px 44px rgba(var(--cove-charcoal-rgb), 0.12);
-  --cove-shadow-sm: 0 12px 24px rgba(var(--cove-charcoal-rgb), 0.1);
-  --cove-nav-height: 80px;
-  --cove-section-spacing: clamp(96px, 12vw, 140px);
+  --cove-surface-color: rgba(255, 255, 255, 0.72);
+  --cove-surface-border: rgba(var(--cove-charcoal-rgb), 0.06);
+  
+  /* Modern layered shadows */
+  --cove-shadow-xl: 
+    0 2px 4px rgba(var(--cove-charcoal-rgb), 0.02),
+    0 8px 20px rgba(var(--cove-charcoal-rgb), 0.04),
+    0 24px 60px rgba(var(--cove-charcoal-rgb), 0.08),
+    0 48px 100px rgba(var(--cove-charcoal-rgb), 0.06);
+  --cove-shadow-lg: 
+    0 2px 4px rgba(var(--cove-charcoal-rgb), 0.02),
+    0 8px 16px rgba(var(--cove-charcoal-rgb), 0.04),
+    0 20px 48px rgba(var(--cove-charcoal-rgb), 0.08);
+  --cove-shadow-md: 
+    0 1px 2px rgba(var(--cove-charcoal-rgb), 0.04),
+    0 4px 12px rgba(var(--cove-charcoal-rgb), 0.06),
+    0 12px 32px rgba(var(--cove-charcoal-rgb), 0.06);
+  --cove-shadow-sm: 
+    0 1px 2px rgba(var(--cove-charcoal-rgb), 0.04),
+    0 4px 8px rgba(var(--cove-charcoal-rgb), 0.04);
+  --cove-shadow-xs: 0 1px 3px rgba(var(--cove-charcoal-rgb), 0.06);
+  
+  /* Glow effects */
+  --cove-glow-ocean: 0 0 60px rgba(var(--cove-ocean-flow-rgb), 0.2);
+  
+  --cove-nav-height: 72px;
+  --cove-section-spacing: clamp(100px, 14vw, 160px);
 
   --pico-font-family: var(--cove-font-greek);
   --pico-background-color: var(--cove-ivory);
@@ -38,9 +74,12 @@
 .cove-surface {
   background: var(--cove-surface-color);
   border-radius: var(--cove-surface-radius);
-  border: 1px solid var(--cove-surface-border);
-  box-shadow: var(--cove-surface-shadow);
-  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    var(--cove-shadow-md),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 html {
@@ -156,14 +195,18 @@ html {
 
 body {
   background:
-    radial-gradient(900px circle at 80% -10%, rgba(var(--cove-ocean-flow-rgb), 0.18), transparent 55%),
-    radial-gradient(600px circle at 12% 20%, rgba(var(--cove-ocean-flow-rgb), 0.12), transparent 60%),
+    radial-gradient(ellipse 120% 80% at 85% -20%, rgba(var(--cove-ocean-flow-rgb), 0.15), transparent 50%),
+    radial-gradient(ellipse 100% 60% at 5% 30%, rgba(var(--cove-ocean-flow-rgb), 0.08), transparent 50%),
+    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(var(--cove-ocean-flow-rgb), 0.06), transparent 60%),
     var(--cove-ivory);
+  background-attachment: fixed;
   color: var(--cove-charcoal);
   line-height: 1.6;
   font-family: var(--cove-font-greek);
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -172,7 +215,8 @@ h3,
 h4 {
   font-family: var(--cove-font-greek);
   font-weight: 500;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 }
 
 .cove-page {
@@ -211,27 +255,28 @@ h4 {
 }
 
 .section-intro {
-  margin-bottom: 80px;
+  margin-bottom: 72px;
   text-align: center;
 }
 
 .section-intro--left {
-  max-width: 720px;
+  max-width: 680px;
   text-align: left;
 }
 
 .cove-section-title {
-  font-size: clamp(2.4rem, 4vw, 3.75rem);
-  line-height: 1.1;
-  margin: 12px 0 0;
-  text-wrap: balance;
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  line-height: 1.05;
+  margin: 16px 0 0;
+  letter-spacing: -0.035em;
 }
 
 .cove-section-description {
   color: var(--cove-charcoal-soft);
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin: 16px 0 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  margin: 20px 0 0;
+  text-wrap: pretty;
 }
 
 .cove-section-summary p {
@@ -241,10 +286,22 @@ h4 {
 
 .cove-eyebrow {
   color: var(--cove-ocean-flow);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cove-eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  opacity: 0.6;
 }
 
 .cove-rich-text p {
@@ -305,74 +362,84 @@ h4 {
   align-items: center;
   appearance: none;
   background: transparent;
-  border: 1px solid transparent;
+  border: 1.5px solid transparent;
   border-radius: 999px;
   cursor: pointer;
   display: inline-flex;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
   justify-content: center;
-  padding: 12px 32px;
+  padding: 14px 28px;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease,
-    color 0.2s ease;
+  transition: 
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
   font-family: inherit;
+  position: relative;
+  overflow: hidden;
 }
 
 .cove-button--solid {
-  background: linear-gradient(
-    135deg,
-    rgba(var(--cove-ocean-flow-rgb), 1),
-    rgba(var(--cove-ocean-flow-rgb), 0.86)
-  );
-  color: var(--cove-ivory);
-  box-shadow: var(--cove-shadow-sm);
+  background: var(--cove-ocean-flow);
+  color: var(--cove-charcoal);
+  box-shadow: 
+    var(--cove-shadow-sm),
+    0 0 0 0 rgba(var(--cove-ocean-flow-rgb), 0);
 }
 
 .cove-button--solid:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(var(--cove-ocean-flow-rgb), 0.98),
-    rgba(var(--cove-ocean-flow-rgb), 0.8)
-  );
-  box-shadow: var(--cove-shadow-md);
-  transform: translateY(-1px);
+  background: var(--cove-ocean-deep);
+  box-shadow: 
+    var(--cove-shadow-md),
+    0 0 40px rgba(var(--cove-ocean-flow-rgb), 0.25);
+  transform: translateY(-2px);
+}
+
+.cove-button--solid:active {
+  transform: translateY(0);
 }
 
 .cove-button--ghost {
-  background: transparent;
-  border-color: rgba(var(--cove-charcoal-rgb), 0.16);
-  border-width: 2px;
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(var(--cove-charcoal-rgb), 0.12);
   color: var(--cove-charcoal);
+  backdrop-filter: blur(8px);
 }
 
 .cove-button--ghost:hover {
-  background: rgba(var(--cove-ocean-flow-rgb), 0.15);
-  border-color: var(--cove-ocean-flow);
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(var(--cove-ocean-flow-rgb), 0.4);
+  box-shadow: var(--cove-shadow-sm);
+  transform: translateY(-2px);
 }
 
 .cove-button--lg {
-  font-size: 1rem;
-  padding: 20px 40px;
+  font-size: 0.95rem;
+  padding: 18px 36px;
+  letter-spacing: 0.01em;
 }
 
 .cove-button--nav {
-  background: var(--cove-ivory);
+  background: rgba(255, 255, 255, 0.9);
   border-color: transparent;
-  box-shadow: none;
+  box-shadow: var(--cove-shadow-xs);
   color: var(--cove-charcoal);
-  font-size: 0.85rem;
-  padding: 10px 24px;
+  font-size: 0.8rem;
+  padding: 10px 22px;
+  backdrop-filter: blur(8px);
 }
 
 .cove-button--nav:hover {
+  background: rgba(255, 255, 255, 1);
   box-shadow: var(--cove-shadow-sm);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .cove-button--nav.cove-button--lg {
-  font-size: 1rem;
-  padding: 16px 32px;
+  font-size: 0.95rem;
+  padding: 14px 28px;
 }
 
 .cove-button--full {
