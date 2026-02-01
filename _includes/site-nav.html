@@ -1,7 +1,7 @@
 {% assign site_nav = site.data.therapy_cove.site_nav %}
-<header class="cove-nav">
+<header class="cove-nav bg-cove-ocean-flow/95 backdrop-blur-md border-b border-cove-ivory/60 shadow-sm">
   <div class="cove-shell cove-nav-inner">
-    <a href="#home" class="cove-logo" aria-label="{{ site_nav.logo_alt }}">
+    <a href="#home" class="cove-logo transition-transform duration-300 hover:-translate-y-0.5" aria-label="{{ site_nav.logo_alt }}">
         <img
           alt="{{ site_nav.logo_alt }}"
           src="{{ '/assets/images/log-vector.svg' | relative_url }}"
@@ -11,11 +11,11 @@
     <input id="cove-nav-toggle" class="cove-nav-toggle" type="checkbox">
     <nav class="cove-nav-links" aria-label="Primary">
       {% for link in site_nav.links %}
-      <a class="cove-nav-link" href="{{ link.href }}">{{ link.label }}</a>
+      <a class="cove-nav-link transition-colors duration-200" href="{{ link.href }}">{{ link.label }}</a>
       {% endfor %}
     </nav>
     <div class="cove-nav-cta">
-      <a class="cove-button cove-button--nav" href="{{ site_nav.cta.primary.href }}">{{ site_nav.cta.primary.label }}</a>
+      <a class="cove-button cove-button--nav shadow-sm hover:shadow-soft transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cove-ocean-flow/40" href="{{ site_nav.cta.primary.href }}">{{ site_nav.cta.primary.label }}</a>
     </div>
     <label class="cove-nav-toggle-label" for="cove-nav-toggle" aria-label="Toggle navigation">
       <span class="cove-nav-toggle-line"></span>
@@ -35,11 +35,11 @@
         </div>
         <nav class="cove-nav-drawer-links" aria-label="Mobile">
           {% for link in site_nav.links %}
-          <a class="cove-nav-drawer-link" href="{{ link.href }}">{{ link.label }}</a>
+          <a class="cove-nav-drawer-link transition-colors duration-200" href="{{ link.href }}">{{ link.label }}</a>
           {% endfor %}
         </nav>
         <div class="cove-nav-drawer-actions">
-          <a class="cove-button cove-button--nav cove-button--lg" href="{{ site_nav.cta.primary.href }}">{{ site_nav.cta.primary.label }}</a>
+          <a class="cove-button cove-button--nav cove-button--lg shadow-sm hover:shadow-soft transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cove-ocean-flow/40" href="{{ site_nav.cta.primary.href }}">{{ site_nav.cta.primary.label }}</a>
         </div>
       </div>
     </div>

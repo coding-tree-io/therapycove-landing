@@ -3,7 +3,7 @@
 <footer class="cove-footer">
   <div class="cove-shell">
     <div class="cove-footer-content">
-      <a href="#home" class="cove-footer-logo" aria-label="{{ footer.logo_alt }}">
+      <a href="#home" class="cove-footer-logo transition-transform duration-300 hover:-translate-y-0.5" aria-label="{{ footer.logo_alt }}">
         <img
           alt="{{ footer.logo_alt }}"
           src="{{ '/assets/images/therapy-cove-logo.png' | relative_url }}"
@@ -15,7 +15,7 @@
       {% endif %}
       <nav class="cove-footer-nav" aria-label="Footer">
         {% for link in site_nav.links %}
-        <a href="{{ link.href }}" class="cove-footer-link">{{ link.label }}</a>
+        <a href="{{ link.href }}" class="cove-footer-link transition-colors duration-200">{{ link.label }}</a>
         {% endfor %}
       </nav>
       <div class="cove-footer-divider" aria-hidden="true"></div>

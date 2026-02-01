@@ -5,6 +5,9 @@
   --cove-charcoal-rgb: 51, 51, 51;
   --cove-ivory-rgb: 249, 236, 207;
   --cove-ocean-flow-rgb: 157, 198, 170;
+  --cove-font-greek: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --cove-font-display: "Fraunces", serif;
+  --cove-font-body: "Sora", sans-serif;
   --cove-surface-radius: 26px;
   --cove-surface-shadow: 0 24px 40px rgba(var(--cove-charcoal-rgb), 0.08);
 
@@ -17,7 +20,7 @@
   --cove-shadow-sm: 0 12px 24px rgba(var(--cove-charcoal-rgb), 0.12);
   --cove-nav-height: 80px;
 
-  --pico-font-family: "Noto Sans", sans-serif;
+  --pico-font-family: var(--cove-font-greek);
   --pico-background-color: var(--cove-ivory);
   --pico-color: var(--cove-charcoal);
   --pico-muted-color: var(--cove-charcoal-muted);
@@ -115,8 +118,16 @@ img {
   display: block;
 }
 
+picture {
+  display: block;
+}
+
 form {
   margin: 0;
+}
+
+.cove-hidden {
+  display: none;
 }
 
 label {
@@ -141,6 +152,7 @@ body {
   background: var(--cove-ivory);
   color: var(--cove-charcoal);
   line-height: 1.6;
+  font-family: var(--cove-font-greek);
   margin: 0;
   padding: 0;
 }
@@ -149,8 +161,8 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "STIX Two Text", serif;
-  font-weight: 400;
+  font-family: var(--cove-font-greek);
+  font-weight: 500;
 }
 
 .cove-page {
@@ -171,6 +183,20 @@ h4 {
   margin: 0;
   padding: 128px 0;
   scroll-margin-top: 96px;
+}
+
+.cove-anchor {
+  display: block;
+  height: 0;
+  scroll-margin-top: var(--cove-anchor-offset, calc(var(--cove-nav-height) + 24px));
+}
+
+.cove-anchor--therapists {
+  --cove-anchor-offset: calc(var(--cove-nav-height) + 40px);
+}
+
+.cove-anchor--contact {
+  --cove-anchor-offset: calc(var(--cove-nav-height) + 140px);
 }
 
 .section-intro {
@@ -226,12 +252,36 @@ h4 {
 .cove-rich-text blockquote {
   border-left: 3px solid var(--cove-ocean-flow);
   color: rgba(var(--cove-charcoal-rgb), 0.6);
-  font-family: "STIX Two Text", serif;
+  font-family: var(--cove-font-display);
   font-style: italic;
   font-size: 1.05rem;
   line-height: 1.7;
   margin: 24px 0 0;
   padding-left: 20px;
+}
+
+:lang(el) {
+  font-family: var(--cove-font-greek);
+}
+
+:lang(el) h1,
+:lang(el) h2,
+:lang(el) h3,
+:lang(el) h4,
+:lang(el) .cove-rich-text blockquote {
+  font-family: var(--cove-font-greek);
+}
+
+:lang(en) {
+  font-family: var(--cove-font-body);
+}
+
+:lang(en) h1,
+:lang(en) h2,
+:lang(en) h3,
+:lang(en) h4 {
+  font-family: var(--cove-font-display);
+  font-weight: 600;
 }
 
 .cove-button {

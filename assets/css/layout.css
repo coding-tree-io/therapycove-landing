@@ -18,7 +18,7 @@
 }
 
 .cove-logo-image {
-  height: 48px;
+  height: clamp(20px, 2vw, 20px);
   width: auto;
 }
 
@@ -115,7 +115,7 @@
 }
 
 .cove-nav-drawer-logo {
-  height: 48px;
+  height: clamp(40px, 4.5vw, 48px);
 }
 
 .cove-nav-close {
@@ -150,15 +150,24 @@
 }
 
 /* Hero */
-.cove-hero {
-  background: var(--cove-ivory);
-  overflow: hidden;
-  padding-top: 120px;
-  position: relative;
-}
-.cove-hero-backdrop {
-  display: none;
-}
+.cove-hero {
+
+  background: var(--cove-ivory);
+
+  overflow: hidden;
+
+  padding-top: 120px;
+
+  position: relative;
+
+}
+
+.cove-hero-backdrop {
+
+  display: none;
+
+}
+
 
 .cove-hero-shape {
   border-radius: 50%;

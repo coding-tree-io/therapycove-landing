@@ -1,0 +1,17 @@
+{
+  "name": "therapycove-landing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "flowbite": "^4.0.1",
+    "tailwindcss": "^4.1.18"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
