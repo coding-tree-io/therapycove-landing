@@ -1,69 +1,42 @@
 # Jekyll build outputs and caches
-/_site/*                     # Jekyll’s generated site
-.sass-cache/                # Sass cache directory
-.jekyll-cache/              # Jekyll build cache
-.jekyll-metadata            # Jekyll metadata file
+/_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
 
 # Ruby & Bundler
-.bundle/                    # Bundler cache directory
-vendor/                     # Vendor gem directory (if used)
+.bundle/
+vendor/
 
 # Dependency directories
-node_modules/               # Node.js dependencies
-npm-debug.log*              # npm debug logs
-yarn-error.log*             # Yarn error logs
-
-# Operating system files
-.DS_Store                   # macOS file metadata
-Thumbs.db                   # Windows image cache
-desktop.ini                 # Windows desktop configuration
-
-# JetBrains WebStorm / IntelliJ IDEA
-.idea/                      # IDE project files
-*.iml                       # Module files
-out/                        # Compiler output
-
-# Editor backups and temp files
-*~                          # Editor backup files
-*.swp                       # Vim swap files
-*.tmp                       # Temporary files
+node_modules/
+npm-debug.log*
+yarn-error.log*
 
 # Logs
-*.log                       # Log files
+logs/
+*.log
 
-# IDE-independent helpers
-.vscode/                    # VSCode settings
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
 
-# Custom Domain file
-CNAME                       # keep under source control but ignore deployment outputs
-
-# Miscellaneous
-*.pem                       # SSL certificates
-/_site/*
-
-cachedData/
-files/
-
-### IntelliJ IDEA ###
-.idea/*
-*.iws
+# JetBrains WebStorm / IntelliJ IDEA
+.idea/
 *.iml
-*.ipr
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-
-### VS Code ###
+# IDE helpers
 .vscode/
 
+# Editor backups and temp files
+*~
+*.swp
+*.tmp
 
-# Bundler installs
-vendor/
+# Miscellaneous
+*.pem
+cachedData/
+files/
+.ai/
