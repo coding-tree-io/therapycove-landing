@@ -1,7 +1,8 @@
 {% assign contact_intro = site.data.therapy_cove.contact_intro %}
 {% assign contact = site.data.therapy_cove.contact %}
 {% assign email_label = contact.email_label | default: contact.form.email_label %}
-<section id="contact" class="cove-section cove-contact" data-contact-lock>
+<span id="contact" class="cove-anchor cove-anchor--contact" data-contact-lock></span>
+<section class="cove-section cove-contact" data-contact-section>
   <div class="cove-shell">
     <div class="section-intro section-intro--left">
       {% if contact_intro.eyebrow %}
@@ -13,7 +14,7 @@
     <div class="cove-contact-grid">
       <div class="cove-contact-info">
         <div class="cove-contact-item">
-          <div class="cove-contact-icon" aria-hidden="true">
+          <div class="cove-contact-icon shadow-sm" aria-hidden="true">
             <svg viewBox="0 0 24 24">
               <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
               <path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
@@ -27,7 +28,7 @@
           </div>
         </div>
         <div class="cove-contact-item">
-          <div class="cove-contact-icon" aria-hidden="true">
+          <div class="cove-contact-icon shadow-sm" aria-hidden="true">
             <svg viewBox="0 0 24 24">
               <path d="M7.5 3h2.5l1 4-2 1.5a14 14 0 0 0 6 6l1.5-2 4 1v2.5c0 1.1-.9 2-2 2A16 16 0 0 1 4.5 5c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
             </svg>
@@ -40,7 +41,7 @@
           </div>
         </div>
         <div class="cove-contact-item">
-          <div class="cove-contact-icon" aria-hidden="true">
+          <div class="cove-contact-icon shadow-sm" aria-hidden="true">
             <svg viewBox="0 0 24 24">
               <path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z" fill="none" stroke="currentColor" stroke-width="1.5"></path>
               <circle cx="12" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
@@ -55,17 +56,28 @@
         </div>
       </div>
 
-      <form data-form-id="f8b46cd8-e768-4d05-9074-dd913e006d91" class="contact-form cove-surface">
+      <form
+        action="https://formsubmit.co/f4a0c1b47c533222fa341b16dfe2cbc6"
+        method="POST"
+        class="contact-form cove-surface bg-white/80 backdrop-blur-sm ring-1 ring-white/40 shadow-soft"
+        data-form-id="f8b46cd8-e768-4d05-9074-dd913e006d91"
+        data-contact-form
+        data-formsubmit-ajax="https://formsubmit.co/ajax/f4a0c1b47c533222fa341b16dfe2cbc6"
+      >
+        <input type="hidden" name="_subject" value="Therapy Cove | Νέα επικοινωνία">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://therapycove.gr/#contact">
+        <input type="text" name="_honey" class="cove-hidden" tabindex="-1" autocomplete="off">
         <div class="contact-form-grid">
           <div class="contact-form-field">
             <label for="contact-form-name" class="contact-form-label">{{ contact.form.name_label }}</label>
             <input
               type="text"
               id="contact-form-name"
-              name="contact-name"
+              name="name"
               placeholder="{{ contact.form.name_label }}"
               data-form-field-id="contact-form-2-name"
-              class="contact-form-input"
+              class="contact-form-input ring-1 ring-cove-charcoal/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cove-ocean-flow/30"
             >
           </div>
           <div class="contact-form-field">
@@ -73,11 +85,11 @@
             <input
               type="email"
               id="contact-form-email"
-              name="contact-email"
+              name="email"
               required
               placeholder="{{ contact.form.email_label }}"
               data-form-field-id="contact-form-2-email"
-              class="contact-form-input"
+              class="contact-form-input ring-1 ring-cove-charcoal/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cove-ocean-flow/30"
             >
           </div>
         </div>
@@ -85,16 +97,17 @@
           <label for="contact-form-message" class="contact-form-label">{{ contact.form.message_label }}</label>
           <textarea
             id="contact-form-message"
-            name="contact-message"
+            name="message"
             rows="5"
             placeholder="{{ contact.form.message_label }}"
             data-form-field-id="contact-form-2-message"
-            class="contact-form-textarea"
+            class="contact-form-textarea ring-1 ring-cove-charcoal/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cove-ocean-flow/30"
           ></textarea>
         </div>
-        <button class="cove-button cove-button--solid cove-button--full" name="contact-submit" type="submit">
+        <button class="cove-button cove-button--solid cove-button--full shadow-soft hover:shadow-cove transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cove-ocean-flow/30" name="contact-submit" type="submit">
           {{ contact.form.submit_label }}
         </button>
+        <p class="contact-form-status" data-contact-status role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>
