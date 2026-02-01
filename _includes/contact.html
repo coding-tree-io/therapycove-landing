@@ -63,6 +63,7 @@
         data-form-id="f8b46cd8-e768-4d05-9074-dd913e006d91"
         data-contact-form
         data-formsubmit-ajax="https://formsubmit.co/ajax/f4a0c1b47c533222fa341b16dfe2cbc6"
+        novalidate
       >
         <input type="hidden" name="_subject" value="Therapy Cove | Νέα επικοινωνία">
         <input type="hidden" name="_template" value="table">
@@ -75,10 +76,15 @@
               type="text"
               id="contact-form-name"
               name="name"
+              minlength="2"
+              required
               placeholder="{{ contact.form.name_label }}"
+              autocomplete="name"
               data-form-field-id="contact-form-2-name"
+              aria-describedby="contact-form-name-error"
               class="contact-form-input ring-1 ring-cove-charcoal/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cove-ocean-flow/30"
             >
+            <p id="contact-form-name-error" class="contact-form-error" data-error-for="contact-form-name" role="alert"></p>
           </div>
           <div class="contact-form-field">
             <label for="contact-form-email" class="contact-form-label">{{ contact.form.email_label }}</label>
@@ -88,9 +94,12 @@
               name="email"
               required
               placeholder="{{ contact.form.email_label }}"
+              autocomplete="email"
               data-form-field-id="contact-form-2-email"
+              aria-describedby="contact-form-email-error"
               class="contact-form-input ring-1 ring-cove-charcoal/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cove-ocean-flow/30"
             >
+            <p id="contact-form-email-error" class="contact-form-error" data-error-for="contact-form-email" role="alert"></p>
           </div>
         </div>
         <div class="contact-form-field">
@@ -99,10 +108,15 @@
             id="contact-form-message"
             name="message"
             rows="5"
+            minlength="10"
+            maxlength="1000"
+            required
             placeholder="{{ contact.form.message_label }}"
             data-form-field-id="contact-form-2-message"
+            aria-describedby="contact-form-message-error"
             class="contact-form-textarea ring-1 ring-cove-charcoal/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cove-ocean-flow/30"
           ></textarea>
+          <p id="contact-form-message-error" class="contact-form-error" data-error-for="contact-form-message" role="alert"></p>
         </div>
         <button class="cove-button cove-button--solid cove-button--full shadow-soft hover:shadow-cove transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cove-ocean-flow/30" name="contact-submit" type="submit">
           {{ contact.form.submit_label }}

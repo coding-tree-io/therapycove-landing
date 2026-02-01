@@ -398,6 +398,19 @@
   color: var(--cove-charcoal-muted);
 }
 
+.contact-form-error {
+  color: #a05858;
+  font-size: 0.78rem;
+  margin-top: 6px;
+  min-height: 1em;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.contact-form-error.is-active {
+  opacity: 1;
+}
+
 .contact-form-status {
   color: var(--cove-charcoal-soft);
   font-size: 0.85rem;
@@ -425,6 +438,10 @@
     0 0 0 3px rgba(var(--cove-ocean-flow-rgb), 0.12),
     inset 0 1px 2px rgba(var(--cove-charcoal-rgb), 0.02);
   outline: none;
+}
+
+.contact-form button[type="submit"] {
+  margin-top: 12px;
 }
 
 /* Footer */
@@ -703,4 +720,3 @@
     font-size: clamp(1.875rem, 7vw, 2.25rem);
   }
 }
-
