@@ -10,6 +10,8 @@ vendor/
 !assets/vendor/
 !assets/vendor/flowbite/
 !assets/vendor/flowbite/flowbite.min.js
+!assets/vendor/scrollama/
+!assets/vendor/scrollama/scrollama.min.js
 
 # Dependency directories
 node_modules/
