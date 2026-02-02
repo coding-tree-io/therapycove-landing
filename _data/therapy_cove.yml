@@ -114,7 +114,7 @@ contact:
   phone: "211 218 4996"
   phone_href: "tel:+302112184996"
   address: "Καρνεαδου 23, Αθήνα"
-  address_map_url: "https://www.google.com/maps/search/?api=1&query=%CE%9A%CE%B1%CF%81%CE%BD%CE%B5%CE%B1%CE%B4%CE%BF%CF%85%2023%2C%20%CE%91%CE%B8%CE%AE%CE%BD%CE%B1"
+  address_map_url: "https://www.google.com/maps/search/?api=1&query_place_id=ChIJPfN08TS9oRQRzCUSGS0TR_E"
   form:
     name_label: "Ονοματεπωνυμο"
     email_label: "Email"
