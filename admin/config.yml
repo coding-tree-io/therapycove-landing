@@ -1,11 +1,10 @@
 local_backend: true
 
 backend:
-  name: github
-  repo: SVall/therapycove
+  name: git-gateway
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
+  identity_url: https://therapycoveoauth.netlify.app/.netlify/identity
+  gateway_url: https://therapycoveoauth.netlify.app/.netlify/git
 
 commit_messages:
   create: "feat(content): create {{collection}}/{{slug}}"
