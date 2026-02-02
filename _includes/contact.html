@@ -58,12 +58,12 @@
       </div>
 
       <form
-        action="https://formsubmit.co/f4a0c1b47c533222fa341b16dfe2cbc6"
+        action="https://formsubmit.co/{{ contact.email | url_encode }}"
         method="POST"
         class="contact-form cove-surface bg-white/80 backdrop-blur-sm ring-1 ring-white/40 shadow-soft"
         data-form-id="f8b46cd8-e768-4d05-9074-dd913e006d91"
         data-contact-form
-        data-formsubmit-ajax="https://formsubmit.co/ajax/f4a0c1b47c533222fa341b16dfe2cbc6"
+        data-formsubmit-ajax="https://formsubmit.co/ajax/{{ contact.email | url_encode }}"
         data-status-invalid="{{ contact.form.messages.invalid }}"
         data-status-pending="{{ contact.form.messages.pending }}"
         data-status-success="{{ contact.form.messages.success }}"
