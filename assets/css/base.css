@@ -5,24 +5,24 @@
   --cove-charcoal-rgb: 51, 51, 51;
   --cove-ivory-rgb: 249, 236, 207;
   --cove-ocean-flow-rgb: 157, 198, 170;
-  
+
   /* Extended palette - complementary tones */
   --cove-ocean-deep: #7ab08a;
   --cove-ocean-light: #c5dece;
   --cove-warm-white: #fffef9;
-  
+
   --cove-font-greek: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --cove-font-display: "Fraunces", serif;
   --cove-font-body: "Sora", sans-serif;
-  
+
   /* Modern surface system */
   --cove-surface-radius: 20px;
   --cove-radius-sm: 12px;
   --cove-radius-lg: 28px;
   --cove-radius-xl: 36px;
-  
+
   /* Refined shadow system */
-  --cove-surface-shadow: 
+  --cove-surface-shadow:
     0 1px 2px rgba(var(--cove-charcoal-rgb), 0.04),
     0 4px 12px rgba(var(--cove-charcoal-rgb), 0.06),
     0 16px 40px rgba(var(--cove-charcoal-rgb), 0.08);
@@ -35,34 +35,34 @@
   --cove-ivory-tint: rgba(var(--cove-ivory-rgb), 0.72);
   --cove-surface-color: rgba(255, 255, 255, 0.72);
   --cove-surface-border: rgba(var(--cove-charcoal-rgb), 0.06);
-  
+
   /* Modern layered shadows */
-  --cove-shadow-xl: 
+  --cove-shadow-xl:
     0 2px 4px rgba(var(--cove-charcoal-rgb), 0.02),
     0 8px 20px rgba(var(--cove-charcoal-rgb), 0.04),
     0 24px 60px rgba(var(--cove-charcoal-rgb), 0.08),
     0 48px 100px rgba(var(--cove-charcoal-rgb), 0.06);
-  --cove-shadow-lg: 
+  --cove-shadow-lg:
     0 2px 4px rgba(var(--cove-charcoal-rgb), 0.02),
     0 8px 16px rgba(var(--cove-charcoal-rgb), 0.04),
     0 20px 48px rgba(var(--cove-charcoal-rgb), 0.08);
-  --cove-shadow-md: 
+  --cove-shadow-md:
     0 1px 2px rgba(var(--cove-charcoal-rgb), 0.04),
     0 4px 12px rgba(var(--cove-charcoal-rgb), 0.06),
     0 12px 32px rgba(var(--cove-charcoal-rgb), 0.06);
-  --cove-shadow-sm: 
+  --cove-shadow-sm:
     0 1px 2px rgba(var(--cove-charcoal-rgb), 0.04),
     0 4px 8px rgba(var(--cove-charcoal-rgb), 0.04);
   --cove-shadow-xs: 0 1px 3px rgba(var(--cove-charcoal-rgb), 0.06);
-  
+
   /* Glow effects */
   --cove-glow-ocean: 0 0 60px rgba(var(--cove-ocean-flow-rgb), 0.2);
-  
+
   --cove-nav-height: 72px;
   --cove-section-spacing: clamp(100px, 14vw, 160px);
   --cove-logo-header-size: clamp(22px, 2.2vw, 28px);
-  --cove-logo-hero-size: clamp(160px, 20vw, 240px);
-  --cove-logo-footer-size: clamp(52px, 6vw, 72px);
+  --cove-logo-hero-size: clamp(240px, 65vw, 320px);
+  --cove-logo-footer-size: clamp(80px, 20vw, 120px);
 
   --pico-font-family: var(--cove-font-greek);
   --pico-background-color: var(--cove-ivory);
@@ -78,7 +78,7 @@
   background: var(--cove-surface-color);
   border-radius: var(--cove-surface-radius);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 
+  box-shadow:
     var(--cove-shadow-md),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(20px);
@@ -274,6 +274,10 @@ h4 {
   letter-spacing: -0.035em;
 }
 
+.cove-section-title--eyebrow {
+  margin-top: 0;
+}
+
 .cove-section-description {
   color: var(--cove-charcoal-soft);
   font-size: 1.125rem;
@@ -374,7 +378,7 @@ h4 {
   justify-content: center;
   padding: 14px 28px;
   text-decoration: none;
-  transition: 
+  transition:
     transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.25s ease,
     background 0.2s ease,
@@ -387,14 +391,14 @@ h4 {
 .cove-button--solid {
   background: var(--cove-ocean-flow);
   color: var(--cove-charcoal);
-  box-shadow: 
+  box-shadow:
     var(--cove-shadow-sm),
     0 0 0 0 rgba(var(--cove-ocean-flow-rgb), 0);
 }
 
 .cove-button--solid:hover {
   background: var(--cove-ocean-deep);
-  box-shadow: 
+  box-shadow:
     var(--cove-shadow-md),
     0 0 40px rgba(var(--cove-ocean-flow-rgb), 0.25);
   transform: translateY(-2px);
