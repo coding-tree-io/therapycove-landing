@@ -4,6 +4,8 @@ baseurl: ""
 url: "https://www.therapycove.gr"
 permalink: pretty
 lang: "el"
+flags:
+  show_lang_toggle: false
 plugins:
   - jekyll-seo-tag
   - jekyll-polyglot

@@ -13,6 +13,7 @@
 {% assign switch_permalink = switch_permalink | remove_first: "/" %}
 {% capture switch_href %}{{ site.baseurl }}/{% if switch_lang != site.default_lang %}{{ switch_lang }}/{% endif %}{% if switch_permalink != "" %}{{ switch_permalink }}{% endif %}{% endcapture %}
 {% assign switch_href = switch_href | strip %}
+{% assign show_lang_toggle = site.flags.show_lang_toggle | default: true %}
 <header class="cove-nav bg-cove-ocean-flow/95 backdrop-blur-md border-b border-cove-ivory/60 shadow-sm">
   <div class="cove-shell cove-nav-inner">
     <a href="#home" class="cove-logo transition-transform duration-300 hover:-translate-y-0.5" aria-label="{{ site_nav.logo_alt }}">
@@ -29,7 +30,8 @@
       {% endfor %}
     </nav>
     <div class="cove-nav-cta">
-      <a class="cove-nav-lang" href="{{ switch_href }}" aria-label="{{ site_nav.lang_toggle.aria_label }}">
+      {% if show_lang_toggle %}
+      <a class="cove-nav-lang" href="{{ switch_href }}" data-lang-toggle data-base-href="{{ switch_href }}" aria-label="{{ site_nav.lang_toggle.aria_label }}">
         <span class="cove-nav-lang-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
@@ -38,6 +40,7 @@
         </span>
         <span>{{ site_nav.lang_toggle.label }}</span>
       </a>
+      {% endif %}
       <a class="cove-button cove-button--nav shadow-sm hover:shadow-soft transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cove-ocean-flow/40" href="{{ site_nav.cta.primary.href }}">{{ site_nav.cta.primary.label }}</a>
     </div>
     <label class="cove-nav-toggle-label" for="cove-nav-toggle" aria-label="Toggle navigation">
@@ -62,7 +65,8 @@
           {% endfor %}
         </nav>
         <div class="cove-nav-drawer-actions">
-          <a class="cove-nav-lang" href="{{ switch_href }}" aria-label="{{ site_nav.lang_toggle.aria_label }}">
+          {% if show_lang_toggle %}
+          <a class="cove-nav-lang" href="{{ switch_href }}" data-lang-toggle data-base-href="{{ switch_href }}" aria-label="{{ site_nav.lang_toggle.aria_label }}">
             <span class="cove-nav-lang-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
@@ -71,6 +75,7 @@
             </span>
             <span>{{ site_nav.lang_toggle.label }}</span>
           </a>
+          {% endif %}
           <a class="cove-button cove-button--nav cove-button--lg shadow-sm hover:shadow-soft transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cove-ocean-flow/40" href="{{ site_nav.cta.primary.href }}">{{ site_nav.cta.primary.label }}</a>
         </div>
       </div>
