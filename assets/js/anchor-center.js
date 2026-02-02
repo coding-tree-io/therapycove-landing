@@ -36,19 +36,51 @@
     return element;
   };
 
+  const getCenterElement = (target) => {
+    if (!target) {
+      return null;
+    }
+    const selector = target.getAttribute("data-anchor-center-target");
+    if (selector) {
+      const candidate = target.querySelector(selector);
+      if (candidate) {
+        return candidate;
+      }
+    }
+    return target;
+  };
+
+  const getCenterOffset = (target) => {
+    if (!target) {
+      return 0;
+    }
+    const raw = target.getAttribute("data-anchor-center-offset");
+    const parsed = parseFloat(raw);
+    return Number.isFinite(parsed) ? parsed : 0;
+  };
+
   const centerTarget = (target, behavior = "smooth") => {
     if (!target) {
       return;
     }
+    const centerEl = getCenterElement(target);
+    if (!centerEl) {
+      return;
+    }
     const { height, offsetTop } = getViewportMetrics();
     const navHeight = getNavHeight();
-    const rect = target.getBoundingClientRect();
+    const rect = centerEl.getBoundingClientRect();
     const currentCenter = rect.top + rect.height / 2;
     const desiredCenter = offsetTop + height / 2 + navHeight / 2;
+    const offset = getCenterOffset(target);
     const delta = currentCenter - desiredCenter;
     const maxScroll =
       document.documentElement.scrollHeight - window.innerHeight;
-    const targetTop = clamp(window.scrollY + delta, 0, Math.max(0, maxScroll));
+    const targetTop = clamp(
+      window.scrollY + delta + offset,
+      0,
+      Math.max(0, maxScroll)
+    );
     window.scrollTo({
       top: targetTop,
       behavior: prefersReducedMotion ? "auto" : behavior,
