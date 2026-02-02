@@ -17,6 +17,53 @@
     return;
   }
 
+  const draftStorageKey = `cove-contact-draft:${window.location.pathname}`;
+  const loadDraft = () => {
+    if (!window.sessionStorage) {
+      return;
+    }
+    const raw = window.sessionStorage.getItem(draftStorageKey);
+    if (!raw) {
+      return;
+    }
+    try {
+      const saved = JSON.parse(raw);
+      fields.forEach((field) => {
+        if (field.value) {
+          return;
+        }
+        if (saved && typeof saved[field.name] === "string") {
+          field.value = saved[field.name];
+        }
+      });
+    } catch (error) {
+      window.sessionStorage.removeItem(draftStorageKey);
+    }
+  };
+
+  const persistDraft = () => {
+    if (!window.sessionStorage) {
+      return;
+    }
+    const isEmpty = fields.every((field) => !field.value.trim());
+    if (isEmpty) {
+      clearDraft();
+      return;
+    }
+    const payload = fields.reduce((acc, field) => {
+      acc[field.name] = field.value;
+      return acc;
+    }, {});
+    window.sessionStorage.setItem(draftStorageKey, JSON.stringify(payload));
+  };
+
+  const clearDraft = () => {
+    if (!window.sessionStorage) {
+      return;
+    }
+    window.sessionStorage.removeItem(draftStorageKey);
+  };
+
   const setStatus = (message, state) => {
     if (!status) {
       return;
@@ -128,6 +175,7 @@
     field.addEventListener("input", () => {
       validateField(field);
       updateButtonState();
+      persistDraft();
     });
     field.addEventListener("blur", () => {
       validateField(field);
@@ -135,6 +183,7 @@
     });
   });
 
+  loadDraft();
   updateButtonState();
 
   form.addEventListener("submit", async (event) => {
@@ -168,6 +217,7 @@
         form.reset();
         fields.forEach((field) => setFieldError(field, ""));
         updateButtonState();
+        clearDraft();
         setStatus(statusMessages.success, "success");
       } else {
         const data = await response.json().catch(() => null);
