@@ -28,7 +28,7 @@ jobs:
           ruby-version: "3.2"
           bundler-cache: true
       - name: Build site for link check
-        run: bundle exec jekyll build --config _config.yml,_config.local.yml
+        run: bundle exec jekyll build --config _config.yml
         env:
           JEKYLL_ENV: production
       - name: Restore lychee cache
