@@ -1,7 +1,7 @@
 {% assign data_lang = page.lang | default: site.active_lang | default: site.default_lang | default: site.lang | default: 'el' %}
 {% assign cove = site.data[data_lang].therapy_cove | default: site.data.therapy_cove %}
-{% assign contact_intro = cove.contact_intro %}
 {% assign contact = cove.contact %}
+{% assign contact_intro = contact.intro %}
 {% assign email_label = contact.email_label | default: contact.form.email_label %}
 <span id="contact" class="cove-anchor cove-anchor--contact" data-contact-lock></span>
 <section class="cove-section cove-contact" data-contact-section>

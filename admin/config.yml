@@ -20,30 +20,6 @@ public_folder: "/assets/images"
 locale: "el"
 
 collections:
-  - name: site_el
-    label: Greek (EL)
-    files:
-      - name: metadata
-        label: Page Metadata
-        file: index.md
-        fields:
-          - { label: Layout, name: layout, widget: hidden, default: default }
-          - { label: Page Title, name: title, widget: string }
-          - { label: Meta Description, name: description, widget: text }
-          - { label: Language, name: lang, widget: hidden, default: "el" }
-
-  - name: site_en
-    label: English (EN)
-    files:
-      - name: metadata
-        label: Page Metadata
-        file: en/index.md
-        fields:
-          - { label: Layout, name: layout, widget: hidden, default: default }
-          - { label: Page Title, name: title, widget: string }
-          - { label: Meta Description, name: description, widget: text }
-          - { label: Language, name: lang, widget: hidden, default: "en" }
-
   - name: therapy_cove_el
     label: Therapy Cove (EL)
     files:
@@ -55,18 +31,6 @@ collections:
             name: site_nav
             widget: object
             fields:
-              - { label: Logo Alt Text, name: logo_alt, widget: string }
-              - label: Menu Links
-                name: links
-                widget: list
-                summary: "{{fields.label}} → {{fields.href}}"
-                allow_add: false
-                allow_delete: false
-                min: 4
-                max: 4
-                fields:
-                  - { label: Label, name: label, widget: string }
-                  - { label: Link, name: href, widget: hidden }
               - label: Call To Action
                 name: cta
                 widget: object
@@ -91,12 +55,6 @@ collections:
                     fields:
                       - { label: Label, name: label, widget: string }
                       - { label: Link, name: href, widget: hidden }
-              - label: Language Toggle
-                name: lang_toggle
-                widget: object
-                fields:
-                  - { label: Button Label, name: label, widget: string }
-                  - { label: Aria Label, name: aria_label, widget: string }
           - label: Hero
             name: hero
             widget: object
@@ -136,10 +94,6 @@ collections:
             name: audiences
             widget: object
             fields:
-              - label: Intro
-                name: intro
-                widget: markdown
-                hint: "Short paragraphs; separate with a blank line."
               - label: For Clients
                 name: clients
                 widget: object
@@ -176,7 +130,6 @@ collections:
             widget: object
             fields:
               - { label: Heading, name: heading, widget: string }
-              - { label: Summary, name: summary, widget: markdown, hint: "Keep this concise (1–3 sentences)." }
               - label: Tabs
                 name: tabs
                 widget: list
@@ -194,16 +147,16 @@ collections:
                     fields:
                       - { label: Image, name: src, widget: image }
                       - { label: Alt Text, name: alt, widget: string }
-          - label: Contact Intro
-            name: contact_intro
-            widget: object
-            fields:
-              - { label: Eyebrow, name: eyebrow, widget: string }
-              - { label: Heading, name: heading, widget: text }
           - label: Contact Details
             name: contact
             widget: object
             fields:
+              - label: Intro
+                name: intro
+                widget: object
+                fields:
+                  - { label: Eyebrow, name: eyebrow, widget: string }
+                  - { label: Heading, name: heading, widget: text }
               - { label: Heading, name: heading, widget: string }
               - { label: Email Label, name: email_label, widget: string }
               - { label: Phone Label, name: phone_label, widget: string }
@@ -273,9 +226,8 @@ collections:
             name: footer
             widget: object
             fields:
-              - { label: Logo Alt Text, name: logo_alt, widget: string }
               - { label: Tagline, name: tagline, widget: text, required: false }
-              - { label: Copyright, name: copyright, widget: string }
+              - { label: Copyright, name: copyright, widget: hidden }
 
   - name: therapy_cove_en
     label: Therapy Cove (EN)
@@ -288,18 +240,6 @@ collections:
             name: site_nav
             widget: object
             fields:
-              - { label: Logo Alt Text, name: logo_alt, widget: string }
-              - label: Menu Links
-                name: links
-                widget: list
-                summary: "{{fields.label}} → {{fields.href}}"
-                allow_add: false
-                allow_delete: false
-                min: 4
-                max: 4
-                fields:
-                  - { label: Label, name: label, widget: string }
-                  - { label: Link, name: href, widget: hidden }
               - label: Call To Action
                 name: cta
                 widget: object
@@ -316,12 +256,6 @@ collections:
                     fields:
                       - { label: Label, name: label, widget: string }
                       - { label: Link, name: href, widget: hidden }
-              - label: Language Toggle
-                name: lang_toggle
-                widget: object
-                fields:
-                  - { label: Button Label, name: label, widget: string }
-                  - { label: Aria Label, name: aria_label, widget: string }
           - label: Hero
             name: hero
             widget: object
@@ -369,10 +303,6 @@ collections:
             name: audiences
             widget: object
             fields:
-              - label: Intro
-                name: intro
-                widget: markdown
-                hint: "Short paragraphs; separate with a blank line."
               - label: For Clients
                 name: clients
                 widget: object
@@ -409,7 +339,6 @@ collections:
             widget: object
             fields:
               - { label: Heading, name: heading, widget: string }
-              - { label: Summary, name: summary, widget: markdown, hint: "Keep this concise (1–3 sentences)." }
               - label: Tabs
                 name: tabs
                 widget: list
@@ -427,16 +356,16 @@ collections:
                     fields:
                       - { label: Image, name: src, widget: image }
                       - { label: Alt Text, name: alt, widget: string }
-          - label: Contact Intro
-            name: contact_intro
-            widget: object
-            fields:
-              - { label: Eyebrow, name: eyebrow, widget: string }
-              - { label: Heading, name: heading, widget: text }
           - label: Contact Details
             name: contact
             widget: object
             fields:
+              - label: Intro
+                name: intro
+                widget: object
+                fields:
+                  - { label: Eyebrow, name: eyebrow, widget: string }
+                  - { label: Heading, name: heading, widget: text }
               - { label: Heading, name: heading, widget: string }
               - { label: Email Label, name: email_label, widget: string }
               - { label: Phone Label, name: phone_label, widget: string }
@@ -506,6 +435,5 @@ collections:
             name: footer
             widget: object
             fields:
-              - { label: Logo Alt Text, name: logo_alt, widget: string }
               - { label: Tagline, name: tagline, widget: text, required: false }
-              - { label: Copyright, name: copyright, widget: string }
+              - { label: Copyright, name: copyright, widget: hidden }

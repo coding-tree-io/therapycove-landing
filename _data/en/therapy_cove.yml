@@ -100,11 +100,10 @@ approaches:
         src: "/assets/images/find-the-best-therapist.jpg"
         alt: "Find the right therapist"
 
-contact_intro:
-  eyebrow: "Contact"
-  heading: "Get in touch to learn more about session duration and fees."
-
 contact:
+  intro:
+    eyebrow: "Contact"
+    heading: "Get in touch to learn more about session duration and fees."
   heading: "Contact details"
   email_label: "Email"
   phone_label: "Phone"
