@@ -321,7 +321,14 @@
   max-width: 760px;
 }
 
+.cove-hero-content.cove-reveal {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
 .cove-hero-title {
+  color: var(--cove-charcoal);
   font-size: clamp(2.1rem, 4.6vw, 3.4rem);
   letter-spacing: -0.03em;
   line-height: 1.08;

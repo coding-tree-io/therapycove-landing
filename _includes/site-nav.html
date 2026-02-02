@@ -13,7 +13,10 @@
 {% assign switch_permalink = switch_permalink | remove_first: "/" %}
 {% capture switch_href %}{{ site.baseurl }}/{% if switch_lang != site.default_lang %}{{ switch_lang }}/{% endif %}{% if switch_permalink != "" %}{{ switch_permalink }}{% endif %}{% endcapture %}
 {% assign switch_href = switch_href | strip %}
-{% assign show_lang_toggle = site.flags.show_lang_toggle | default: true %}
+{% assign show_lang_toggle = site.flags.show_lang_toggle %}
+{% if show_lang_toggle == nil %}
+  {% assign show_lang_toggle = true %}
+{% endif %}
 <header class="cove-nav bg-cove-ocean-flow/95 backdrop-blur-md border-b border-cove-ivory/60 shadow-sm">
   <div class="cove-shell cove-nav-inner">
     <a href="#home" class="cove-logo transition-transform duration-300 hover:-translate-y-0.5" aria-label="{{ site_nav.logo_alt }}">
