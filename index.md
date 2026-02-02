@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Therapy Cove"
-description: "Secure, personalized online therapy in Greece."
+description: "Σύγχρονο κέντρο ψυχολογικής υγείας στην Αθήνα για ενήλικες."
 lang: "el"
 permalink: /
 page_id: home

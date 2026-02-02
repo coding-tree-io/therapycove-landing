@@ -1,13 +1,16 @@
 title: Therapy Cove
-description: Secure, personalized online therapy in Greece.
+description: Σύγχρονο κέντρο ψυχολογικής υγείας στην Αθήνα για ενήλικες.
 baseurl: ""
 url: "https://www.therapycove.gr"
 permalink: pretty
 lang: "el"
+logo: "/assets/images/therapy-cove-logo.png"
+image: "/assets/images/therapy-cove-space-hero.jpg"
 flags:
   show_lang_toggle: false
 plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
   - jekyll-polyglot
 languages:
   - "el"
