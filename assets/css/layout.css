@@ -22,7 +22,7 @@
 }
 
 .cove-logo-image {
-  height: clamp(20px, 2vw, 26px);
+  height: var(--cove-logo-header-size);
   width: auto;
   transition: transform 0.3s ease;
 }
@@ -135,7 +135,7 @@
 }
 
 .cove-nav-drawer-logo {
-  height: clamp(32px, 4vw, 40px);
+  height: var(--cove-logo-header-size);
 }
 
 .cove-nav-close {
@@ -259,7 +259,7 @@
 
 .cove-hero-logo {
   height: auto;
-  width: clamp(140px, 18vw, 200px);
+  width: var(--cove-logo-hero-size);
   filter: drop-shadow(0 20px 40px rgba(var(--cove-charcoal-rgb), 0.12));
 }
 

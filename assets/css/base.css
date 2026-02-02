@@ -60,6 +60,9 @@
   
   --cove-nav-height: 72px;
   --cove-section-spacing: clamp(100px, 14vw, 160px);
+  --cove-logo-header-size: clamp(22px, 2.2vw, 28px);
+  --cove-logo-hero-size: clamp(160px, 20vw, 240px);
+  --cove-logo-footer-size: clamp(52px, 6vw, 72px);
 
   --pico-font-family: var(--cove-font-greek);
   --pico-background-color: var(--cove-ivory);
