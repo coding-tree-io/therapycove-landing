@@ -274,10 +274,6 @@ h4 {
   letter-spacing: -0.035em;
 }
 
-.cove-section-title--eyebrow {
-  margin-top: 0;
-}
-
 .cove-section-description {
   color: var(--cove-charcoal-soft);
   font-size: 1.125rem;
@@ -293,7 +289,7 @@ h4 {
 
 .cove-eyebrow {
   color: var(--cove-ocean-flow);
-  font-size: 0.7rem;
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
