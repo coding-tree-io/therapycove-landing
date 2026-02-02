@@ -15,7 +15,7 @@
   <div class="cove-shell">
     {% assign approaches_summary = approaches.summary | strip %}
     {% assign approaches_first = approaches.tabs[0].description | strip %}
-    <div class="section-intro" data-approaches-lock>
+    <div class="section-intro section-intro--left" data-approaches-lock>
       {% if approaches_label != '' %}
       <p class="cove-eyebrow">{{ approaches_label }}</p>
       {% endif %}
