@@ -20,6 +20,7 @@
 
   const prefersReducedMotion =
     window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const anchorCenterEnabled = Boolean(window.__coveAnchorCenter);
 
   const lockTarget =
     approachesSection.querySelector("[data-approaches-lock]") || approachesSection;
@@ -391,6 +392,9 @@
   };
 
   const onHashChange = () => {
+    if (anchorCenterEnabled) {
+      return;
+    }
     const hash = window.location.hash;
     if (!hash) {
       return;
@@ -407,6 +411,9 @@
   };
 
   document.addEventListener("click", (event) => {
+    if (event.defaultPrevented) {
+      return;
+    }
     const anchor = event.target.closest('a[href="#contact"]');
     if (anchor) {
       event.preventDefault();
@@ -429,6 +436,9 @@
   });
 
   document.addEventListener("keydown", (event) => {
+    if (event.defaultPrevented) {
+      return;
+    }
     if (event.key !== "Enter" && event.key !== " ") {
       return;
     }
@@ -446,5 +456,16 @@
   window.addEventListener("touchcancel", onTouchEnd, { passive: true });
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("hashchange", onHashChange, { passive: true });
+  window.addEventListener("cove:anchor-center", (event) => {
+    const hash = event?.detail?.hash;
+    if (!hash) {
+      return;
+    }
+    if (hash === "#contact") {
+      enableBypass(5000);
+      return;
+    }
+    enableAnchorBypass(2000);
+  });
   onHashChange();
 })();
