@@ -91,7 +91,7 @@ approaches:
       description: |
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       image:
-        src: "/assets/images/psychotherapeutic-approaches.jpg"
+        src: "/assets/images/psychotherapy-benefits.jpg"
         alt: "Benefits of psychotherapy"
     - title: "Find the right therapist"
       description: |
