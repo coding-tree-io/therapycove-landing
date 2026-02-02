@@ -30,6 +30,11 @@ exclude_from_localization:
   - "package-lock.json"
   - "README.md"
 parallel_localization: false
+defaults:
+  - scope:
+      path: "admin"
+    values:
+      sitemap: false
 exclude:
   - ".idea/"
   - "node_modules/"
