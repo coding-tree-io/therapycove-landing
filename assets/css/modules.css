@@ -407,6 +407,17 @@
     background 0.2s ease;
 }
 
+.contact-form-input:invalid,
+.contact-form-textarea:invalid {
+  background-image: none !important;
+  background-repeat: no-repeat;
+}
+
+.contact-form-input:-moz-ui-invalid,
+.contact-form-textarea:-moz-ui-invalid {
+  background-image: none !important;
+}
+
 .contact-form-input::placeholder,
 .contact-form-textarea::placeholder {
   color: var(--cove-charcoal-muted);
