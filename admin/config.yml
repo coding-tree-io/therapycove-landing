@@ -42,7 +42,7 @@ collections:
     files:
       - name: therapy_cove
         label: Therapy Cove Sections
-        file: _data/therapy_cove.yml
+        file: _data/el/therapy_cove.yml
         fields:
           - label: Navigation
             name: site_nav
@@ -96,6 +96,12 @@ collections:
                             "^(#[-a-zA-Z0-9]+|https?://.+)$",
                             "Use an anchor (#section) or a full URL."
                           ]
+              - label: Language Toggle
+                name: lang_toggle
+                widget: object
+                fields:
+                  - { label: Button Label, name: label, widget: string }
+                  - { label: Aria Label, name: aria_label, widget: string }
           - label: Hero
             name: hero
             widget: object
@@ -225,7 +231,12 @@ collections:
                     "^[0-9+()\\s-]{7,}$",
                     "Use digits and optional +, spaces, or dashes."
                   ]
+              - label: Phone Link
+                name: phone_href
+                widget: string
+                hint: "Use a tel: link, e.g. tel:+302112184996"
               - { label: Address, name: address, widget: string }
+              - { label: Address Map URL, name: address_map_url, widget: string }
               - label: Form Labels
                 name: form
                 widget: object
@@ -234,6 +245,37 @@ collections:
                   - { label: Email Label, name: email_label, widget: string }
                   - { label: Message Label, name: message_label, widget: string }
                   - { label: Submit Button Label, name: submit_label, widget: string }
+                  - label: Status Messages
+                    name: messages
+                    widget: object
+                    fields:
+                      - { label: Invalid Form, name: invalid, widget: string }
+                      - { label: Pending, name: pending, widget: string }
+                      - { label: Success, name: success, widget: string }
+                      - { label: Error, name: error, widget: string }
+                      - { label: Send Error, name: send_error, widget: string }
+                  - label: Field Errors
+                    name: field_errors
+                    widget: object
+                    fields:
+                      - label: Name Field
+                        name: name
+                        widget: object
+                        fields:
+                          - { label: Missing, name: valueMissing, widget: string }
+                          - { label: Too Short, name: tooShort, widget: string }
+                      - label: Email Field
+                        name: email
+                        widget: object
+                        fields:
+                          - { label: Missing, name: valueMissing, widget: string }
+                          - { label: Invalid Email, name: typeMismatch, widget: string }
+                      - label: Message Field
+                        name: message
+                        widget: object
+                        fields:
+                          - { label: Missing, name: valueMissing, widget: string }
+                          - { label: Too Short, name: tooShort, widget: string }
           - label: Footer
             name: footer
             widget: object

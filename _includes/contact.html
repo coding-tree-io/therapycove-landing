@@ -1,5 +1,7 @@
-{% assign contact_intro = site.data.therapy_cove.contact_intro %}
-{% assign contact = site.data.therapy_cove.contact %}
+{% assign data_lang = page.lang | default: site.active_lang | default: site.default_lang | default: site.lang | default: 'el' %}
+{% assign cove = site.data[data_lang].therapy_cove | default: site.data.therapy_cove %}
+{% assign contact_intro = cove.contact_intro %}
+{% assign contact = cove.contact %}
 {% assign email_label = contact.email_label | default: contact.form.email_label %}
 <span id="contact" class="cove-anchor cove-anchor--contact" data-contact-lock></span>
 <section class="cove-section cove-contact" data-contact-section>
@@ -12,7 +14,7 @@
     </div>
     <div class="cove-contact-grid">
       <div class="cove-contact-info">
-        <a class="cove-contact-item cove-contact-link" href="mailto:{{ contact.email }}" aria-label="Στείλε email στο {{ contact.email }}">
+        <a class="cove-contact-item cove-contact-link" href="mailto:{{ contact.email }}" aria-label="{{ email_label }} {{ contact.email }}">
           <div class="cove-contact-icon shadow-sm" aria-hidden="true">
             <svg viewBox="0 0 24 24">
               <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
@@ -26,7 +28,7 @@
             <span class="cove-contact-value">{{ contact.email }}</span>
           </div>
         </a>
-        <a class="cove-contact-item cove-contact-link" href="{{ contact.phone_href }}" aria-label="Κάλεσε στο {{ contact.phone }}">
+        <a class="cove-contact-item cove-contact-link" href="{{ contact.phone_href }}" aria-label="{{ contact.phone_label }} {{ contact.phone }}">
           <div class="cove-contact-icon shadow-sm" aria-hidden="true">
             <svg viewBox="0 0 24 24">
               <path d="M7.5 3h2.5l1 4-2 1.5a14 14 0 0 0 6 6l1.5-2 4 1v2.5c0 1.1-.9 2-2 2A16 16 0 0 1 4.5 5c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
@@ -39,7 +41,7 @@
             <span class="cove-contact-value">{{ contact.phone }}</span>
           </div>
         </a>
-        <a class="cove-contact-item cove-contact-link" href="{{ contact.address_map_url }}" target="_blank" rel="noopener" aria-label="Άνοιγμα διεύθυνσης στο Google Maps">
+        <a class="cove-contact-item cove-contact-link" href="{{ contact.address_map_url }}" target="_blank" rel="noopener" aria-label="{{ contact.address_label }} {{ contact.address }}">
           <div class="cove-contact-icon shadow-sm" aria-hidden="true">
             <svg viewBox="0 0 24 24">
               <path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z" fill="none" stroke="currentColor" stroke-width="1.5"></path>
@@ -62,6 +64,11 @@
         data-form-id="f8b46cd8-e768-4d05-9074-dd913e006d91"
         data-contact-form
         data-formsubmit-ajax="https://formsubmit.co/ajax/f4a0c1b47c533222fa341b16dfe2cbc6"
+        data-status-invalid="{{ contact.form.messages.invalid }}"
+        data-status-pending="{{ contact.form.messages.pending }}"
+        data-status-success="{{ contact.form.messages.success }}"
+        data-status-error="{{ contact.form.messages.error }}"
+        data-status-send-error="{{ contact.form.messages.send_error }}"
         novalidate
       >
         <input type="hidden" name="_subject" value="Therapy Cove | Νέα επικοινωνία">
@@ -80,6 +87,8 @@
               placeholder="{{ contact.form.name_label }}"
               autocomplete="name"
               data-form-field-id="contact-form-2-name"
+              data-error-value-missing="{{ contact.form.field_errors.name.valueMissing }}"
+              data-error-too-short="{{ contact.form.field_errors.name.tooShort }}"
               aria-describedby="contact-form-name-error"
               class="contact-form-input ring-1 ring-cove-charcoal/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cove-ocean-flow/30"
             >
@@ -95,6 +104,8 @@
               placeholder="{{ contact.form.email_label }}"
               autocomplete="email"
               data-form-field-id="contact-form-2-email"
+              data-error-value-missing="{{ contact.form.field_errors.email.valueMissing }}"
+              data-error-type-mismatch="{{ contact.form.field_errors.email.typeMismatch }}"
               aria-describedby="contact-form-email-error"
               class="contact-form-input ring-1 ring-cove-charcoal/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cove-ocean-flow/30"
             >
@@ -112,6 +123,8 @@
             required
             placeholder="{{ contact.form.message_label }}"
             data-form-field-id="contact-form-2-message"
+            data-error-value-missing="{{ contact.form.field_errors.message.valueMissing }}"
+            data-error-too-short="{{ contact.form.field_errors.message.tooShort }}"
             aria-describedby="contact-form-message-error"
             class="contact-form-textarea ring-1 ring-cove-charcoal/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cove-ocean-flow/30"
           ></textarea>

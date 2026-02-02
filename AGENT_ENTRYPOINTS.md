@@ -22,7 +22,8 @@ This file lists the highest-value files and commands to read first when working 
 - _includes/seo.html
 
 ## Data (primary content)
-- _data/therapy_cove.yml
+- _data/el/therapy_cove.yml
+- _data/en/therapy_cove.yml
 
 ## Styles
 - assets/css/base.css

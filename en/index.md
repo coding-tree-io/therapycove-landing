@@ -1,9 +1,9 @@
 ---
 layout: default
 title: "Therapy Cove"
-description: "Secure, personalized online therapy in Greece."
-lang: "el"
-permalink: /
+description: "Modern psychological care in Athens."
+lang: "en"
+permalink: /en/
 page_id: home
 ---
 

@@ -1,4 +1,6 @@
-{% assign audiences = site.data.therapy_cove.audiences %}
+{% assign data_lang = page.lang | default: site.active_lang | default: site.default_lang | default: site.lang | default: 'el' %}
+{% assign cove = site.data[data_lang].therapy_cove | default: site.data.therapy_cove %}
+{% assign audiences = cove.audiences %}
 <section id="audiences" class="cove-section cove-audiences">
   <div class="cove-shell">
     <div class="cove-audiences-grid">

@@ -29,19 +29,21 @@
     }
   };
 
-  const fieldMessages = {
-    name: {
-      valueMissing: "Συμπλήρωσε το ονοματεπώνυμο.",
-      tooShort: "Το ονοματεπώνυμο πρέπει να έχει τουλάχιστον 2 χαρακτήρες.",
-    },
-    email: {
-      valueMissing: "Συμπλήρωσε το email.",
-      typeMismatch: "Χρησιμοποίησε ένα έγκυρο email.",
-    },
-    message: {
-      valueMissing: "Συμπλήρωσε το μήνυμα.",
-      tooShort: "Το μήνυμα πρέπει να έχει τουλάχιστον 10 χαρακτήρες.",
-    },
+  const fieldMessages = fields.reduce((messages, field) => {
+    messages[field.name] = {
+      valueMissing: field.dataset.errorValueMissing,
+      tooShort: field.dataset.errorTooShort,
+      typeMismatch: field.dataset.errorTypeMismatch,
+    };
+    return messages;
+  }, {});
+
+  const statusMessages = {
+    invalid: form.dataset.statusInvalid || "Παρακαλούμε συμπλήρωσε σωστά τα πεδία.",
+    pending: form.dataset.statusPending || "Αποστολή...",
+    success: form.dataset.statusSuccess || "Το μήνυμα στάλθηκε. Θα επικοινωνήσουμε σύντομα.",
+    error: form.dataset.statusError || "Παρουσιάστηκε σφάλμα. Δοκιμάστε ξανά.",
+    sendError: form.dataset.statusSendError || "Δεν ήταν δυνατή η αποστολή. Δοκιμάστε ξανά.",
   };
 
   const trimRules = {
@@ -144,12 +146,12 @@
     }
 
     if (!validateForm(true)) {
-      setStatus("Παρακαλούμε συμπλήρωσε σωστά τα πεδία.", "error");
+      setStatus(statusMessages.invalid, "error");
       updateButtonState();
       return;
     }
 
-    setStatus("Αποστολή...", "pending");
+    setStatus(statusMessages.pending, "pending");
     if (submitButton) {
       submitButton.disabled = true;
       submitButton.setAttribute("aria-busy", "true");
@@ -166,15 +168,15 @@
         form.reset();
         fields.forEach((field) => setFieldError(field, ""));
         updateButtonState();
-        setStatus("Το μήνυμα στάλθηκε. Θα επικοινωνήσουμε σύντομα.", "success");
+        setStatus(statusMessages.success, "success");
       } else {
         const data = await response.json().catch(() => null);
         const message =
-          data?.message || "Δεν ήταν δυνατή η αποστολή. Δοκιμάστε ξανά.";
+          data?.message || statusMessages.sendError;
         setStatus(message, "error");
       }
     } catch (error) {
-      setStatus("Παρουσιάστηκε σφάλμα. Δοκιμάστε ξανά.", "error");
+      setStatus(statusMessages.error, "error");
     } finally {
       if (submitButton) {
         submitButton.disabled = false;

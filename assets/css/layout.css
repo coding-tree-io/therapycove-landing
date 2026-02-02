@@ -64,6 +64,49 @@
 .cove-nav-cta {
   display: flex;
   flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+}
+
+.cove-nav-lang {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  padding: 6px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.cove-nav-lang-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cove-nav-lang-icon svg {
+  height: 16px;
+  width: 16px;
+}
+
+.cove-nav-lang:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.cove-nav-lang:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 4px;
 }
 
 .cove-nav-toggle {
@@ -185,6 +228,17 @@
   gap: 12px;
   margin-top: auto;
   padding-bottom: 32px;
+}
+
+.cove-nav-drawer-actions .cove-nav-lang {
+  font-size: 0.9rem;
+  padding: 10px 18px;
+  gap: 8px;
+}
+
+.cove-nav-drawer-actions .cove-nav-lang-icon svg {
+  height: 18px;
+  width: 18px;
 }
 
 /* Hero */

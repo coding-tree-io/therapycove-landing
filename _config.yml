@@ -6,6 +6,25 @@ permalink: pretty
 lang: "el"
 plugins:
   - jekyll-seo-tag
+  - jekyll-polyglot
+languages:
+  - "el"
+  - "en"
+default_lang: "el"
+exclude_from_localization:
+  - "assets"
+  - "admin"
+  - "scripts"
+  - "node_modules"
+  - "vendor"
+  - ".bundle"
+  - ".idea"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "package.json"
+  - "package-lock.json"
+  - "README.md"
+parallel_localization: false
 exclude:
   - ".idea/"
   - "node_modules/"

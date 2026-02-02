@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'el' }}">
+<html lang="{{ page.lang | default: site.active_lang | default: site.lang | default: site.default_lang | default: 'el' }}">
 <head>
   {% include seo.html %}
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@2/css/pico.min.css">

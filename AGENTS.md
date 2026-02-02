@@ -40,6 +40,7 @@
 
 ## Current site state (as of 2026-01-31)
 - Layout sections are defined in `_includes/`: hero (`#home`), audiences (`#audiences`), therapists (`#therapists`), approaches (`#approaches`), contact (`#contact`), footer.
+- Localized content lives in `_data/el/therapy_cove.yml` (Greek) and `_data/en/therapy_cove.yml` (English placeholders).
 - Navigation uses `assets/images/log-vector.svg` in the header and drawer; hero + footer use `assets/images/therapy-cove-logo.png`.
 - Styles are a mix of Pico CSS (CDN), custom CSS (`assets/css/base.css`, `assets/css/layout.css`, `assets/css/modules.css` via `assets/css/therapy-cove.css`), and a Tailwind build (`assets/css/tailwind-build.css`) with Flowbite plugin utilities.
 - Flowbite JS is loaded locally from `assets/vendor/flowbite/flowbite.min.js`.

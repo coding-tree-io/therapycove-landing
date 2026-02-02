@@ -1,5 +1,7 @@
-{% assign therapists = site.data.therapy_cove.therapists %}
-{% assign site_nav = site.data.therapy_cove.site_nav %}
+{% assign data_lang = page.lang | default: site.active_lang | default: site.default_lang | default: site.lang | default: 'el' %}
+{% assign cove = site.data[data_lang].therapy_cove | default: site.data.therapy_cove %}
+{% assign therapists = cove.therapists %}
+{% assign site_nav = cove.site_nav %}
 {% assign therapists_label = '' %}
 {% for link in site_nav.links %}
   {% if link.href == '#therapists' %}
