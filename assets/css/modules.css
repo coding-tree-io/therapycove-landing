@@ -677,7 +677,8 @@
   }
 
   .cove-nav-toggle-label {
-    display: flex;
+    display: grid !important;
+    place-items: center;
   }
 
   .cove-nav-inner {
