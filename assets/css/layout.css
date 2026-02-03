@@ -389,7 +389,7 @@
   line-height: 1.75;
   margin: 36px auto 0;
   max-width: 720px;
-  text-align: justify;
+  text-align: left;
   color: var(--cove-charcoal-soft);
   letter-spacing: 0.005em;
 }
@@ -400,16 +400,11 @@
 }
 
 .cove-hero-lead span {
-  display: inline-block;
-  line-height: 1.75;
+  display: inline;
+  line-height: inherit;
 }
 
-.cove-hero-lead:first-letter {
-  font-size: clamp(1.8rem, 2.8vw, 2.2rem);
-  font-weight: 500;
-  float: left;
-  line-height: 0.85;
-  padding-right: 0.3rem;
+.cove-hero-lead p:first-child::first-letter {
   color: var(--cove-ocean-flow);
 }
 
@@ -428,7 +423,7 @@
   .cove-hero-lead {
     column-count: 2;
     column-gap: 3rem;
-    text-align: justify;
+    text-align: left;
   }
 }
 
@@ -452,13 +447,8 @@
     display: none;
   }
 
-  .cove-hero-lead:first-letter {
+  .cove-hero-lead p:first-child::first-letter {
     color: inherit;
-    float: none;
-    font-size: inherit;
-    font-weight: inherit;
-    line-height: inherit;
-    padding-right: 0;
   }
 
   .cove-hero-actions {
