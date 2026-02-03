@@ -433,6 +433,10 @@
     padding-bottom: 48px;
   }
 
+  .cove-hero-shape {
+    animation: none;
+  }
+
   .cove-hero-brand {
     margin-bottom: 16px;
   }

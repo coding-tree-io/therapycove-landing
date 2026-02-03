@@ -653,6 +653,12 @@
     --cove-section-spacing: clamp(48px, 8vw, 72px);
   }
 
+  .cove-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
   .cove-section {
     padding: 48px 0;
   }
