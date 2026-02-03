@@ -257,19 +257,11 @@
     background 0.2s ease;
 }
 
-.approaches-toggle-icon,
-.approaches-toggle-icon::before {
-  background: currentColor;
-  border-radius: 999px;
-  content: '';
-  height: 2px;
-  position: absolute;
-  width: 12px;
-}
-
-.approaches-toggle-icon::before {
-  transform: rotate(90deg);
-  transition: transform 0.2s ease, opacity 0.2s ease;
+.approaches-toggle-icon {
+  display: block;
+  height: 14px;
+  width: 14px;
+  transition: transform 0.2s ease;
 }
 
 .approaches-tab.is-open {
@@ -299,9 +291,8 @@
   color: var(--cove-ocean-flow);
 }
 
-.approaches-tab.is-open .approaches-toggle-icon::before {
-  opacity: 0;
-  transform: rotate(0deg);
+.approaches-tab.is-open .approaches-toggle-icon {
+  transform: rotate(180deg);
 }
 
 .approaches-panels {

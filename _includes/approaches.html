@@ -48,7 +48,9 @@
           <span class="approaches-title">{{ tab.title }}</span>
           <div class="approaches-description cove-rich-text">{{ tab.description | markdownify }}</div>
           <span class="approaches-toggle" aria-hidden="true">
-            <span class="approaches-toggle-icon"></span>
+            <svg class="approaches-toggle-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </span>
         </label>
         {% endfor %}
