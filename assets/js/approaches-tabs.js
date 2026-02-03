@@ -18,17 +18,35 @@
     approachesSection.querySelectorAll(".approaches-panel")
   );
 
-  const getActiveIndex = () => tabInputs.findIndex((tab) => tab.checked);
-  const setActiveVisuals = (index) => {
+  const getOpenIndices = () =>
+    tabInputs.reduce((indices, tab, index) => {
+      if (tab.checked) {
+        indices.push(index);
+      }
+      return indices;
+    }, []);
+  const getLastOpenedIndex = () => {
+    const openIndices = getOpenIndices();
+    if (!openIndices.length) {
+      return 0;
+    }
+    return Math.max(...openIndices);
+  };
+  const syncOpenVisuals = () => {
     tabLabels.forEach((label, labelIndex) => {
-      label.classList.toggle("is-active", labelIndex === index);
+      const isOpen = tabInputs[labelIndex]?.checked;
+      label.classList.toggle("is-open", isOpen);
+      label.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
     tabPanels.forEach((panel, panelIndex) => {
-      panel.classList.toggle("is-active", panelIndex === index);
+      panel.classList.toggle("is-open", Boolean(tabInputs[panelIndex]?.checked));
     });
   };
-  const setActiveIndex = (index) => {
+  const openIndex = (index) => {
     if (index < 0 || index >= tabInputs.length) {
+      return;
+    }
+    if (tabInputs[index].checked) {
       return;
     }
     tabInputs[index].checked = true;
@@ -37,14 +55,11 @@
 
   tabInputs.forEach((tab, index) => {
     tab.addEventListener("change", () => {
-      if (!tab.checked) {
-        return;
-      }
-      setActiveVisuals(index);
+      syncOpenVisuals();
     });
   });
 
-  setActiveVisuals(getActiveIndex());
+  syncOpenVisuals();
 
   const prefersReducedMotion =
     window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -78,10 +93,10 @@
         threshold: 4,
       })
       .onStepEnter((response) => {
-        if (response.index === getActiveIndex()) {
+        if (tabInputs[response.index]?.checked) {
           return;
         }
-        setActiveIndex(response.index);
+        openIndex(response.index);
       });
 
     window.addEventListener("resize", () => {
@@ -242,7 +257,7 @@
     if (lockDisabled) {
       return false;
     }
-    const activeIndex = getActiveIndex();
+    const activeIndex = getLastOpenedIndex();
     const now = Date.now();
     lastNaturalScroll = now;
     if (!isSectionActive()) {
@@ -267,7 +282,7 @@
       return true;
     }
 
-    if (activeIndex < 0 || rawDelta === 0) {
+    if (rawDelta === 0) {
       return false;
     }
 
@@ -305,21 +320,7 @@
 
       accumulatedDelta += clampDelta(rawDelta);
       if (Math.abs(accumulatedDelta) >= minDeltaPerTab) {
-        setActiveIndex(activeIndex + 1);
-        accumulatedDelta = 0;
-        lastSwitchTime = now;
-      }
-      return true;
-    }
-
-    if (direction < 0 && activeIndex > 0) {
-      if (now - lastSwitchTime < cooldownMs) {
-        return true;
-      }
-
-      accumulatedDelta += clampDelta(rawDelta);
-      if (Math.abs(accumulatedDelta) >= minDeltaPerTab) {
-        setActiveIndex(activeIndex - 1);
+        openIndex(activeIndex + 1);
         accumulatedDelta = 0;
         lastSwitchTime = now;
       }

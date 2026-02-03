@@ -28,25 +28,41 @@
       <input
         id="approach-tab-{{ forloop.index0 }}"
         class="approaches-tab-toggle"
-        type="radio"
+        type="checkbox"
         name="approaches-tabs"
         {% if forloop.first %}checked{% endif %}
       >
       {% endfor %}
 
-      <div class="approaches-tab-list" role="tablist">
+      <div class="approaches-tab-list" role="list">
         {% for tab in approaches.tabs %}
-        <label class="approaches-tab ring-1 ring-cove-charcoal/5 hover:bg-white/60 transition" for="approach-tab-{{ forloop.index0 }}" role="tab">
+        <label
+          id="approach-tab-label-{{ forloop.index0 }}"
+          class="approaches-tab ring-1 ring-cove-charcoal/5 hover:bg-white/60 transition"
+          for="approach-tab-{{ forloop.index0 }}"
+          role="button"
+          aria-expanded="false"
+          aria-controls="approach-panel-{{ forloop.index0 }}"
+        >
           <span class="approaches-dot"></span>
           <span class="approaches-title">{{ tab.title }}</span>
           <div class="approaches-description cove-rich-text">{{ tab.description | markdownify }}</div>
+          <span class="approaches-toggle" aria-hidden="true">
+            <span class="approaches-toggle-icon"></span>
+          </span>
         </label>
         {% endfor %}
       </div>
 
       <div class="approaches-panels">
         {% for tab in approaches.tabs %}
-        <div class="approaches-panel cove-surface ring-1 ring-white/40 shadow-soft" data-approach-index="{{ forloop.index0 }}">
+        <div
+          id="approach-panel-{{ forloop.index0 }}"
+          class="approaches-panel cove-surface ring-1 ring-white/40 shadow-soft"
+          data-approach-index="{{ forloop.index0 }}"
+          role="region"
+          aria-labelledby="approach-tab-label-{{ forloop.index0 }}"
+        >
           {% include picture.html
             src=tab.image.src
             alt=tab.image.alt

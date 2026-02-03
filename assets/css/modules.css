@@ -196,9 +196,9 @@
   cursor: pointer;
   display: grid;
   grid-template-areas:
-    "dot title"
-    "dot description";
-  grid-template-columns: auto 1fr;
+    "dot title toggle"
+    "dot description toggle";
+  grid-template-columns: auto 1fr auto;
   column-gap: 14px;
   row-gap: 10px;
   padding: 20px 24px;
@@ -239,7 +239,40 @@
   grid-area: description;
 }
 
-.approaches-tab.is-active {
+.approaches-toggle {
+  align-items: center;
+  border: 1px solid rgba(var(--cove-charcoal-rgb), 0.15);
+  border-radius: 999px;
+  color: var(--cove-charcoal);
+  display: inline-flex;
+  grid-area: toggle;
+  height: 26px;
+  justify-content: center;
+  margin-top: 2px;
+  position: relative;
+  width: 26px;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.approaches-toggle-icon,
+.approaches-toggle-icon::before {
+  background: currentColor;
+  border-radius: 999px;
+  content: '';
+  height: 2px;
+  position: absolute;
+  width: 12px;
+}
+
+.approaches-toggle-icon::before {
+  transform: rotate(90deg);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.approaches-tab.is-open {
   background: rgba(255, 255, 255, 0.8);
   border-color: rgba(var(--cove-ocean-flow-rgb), 0.25);
   box-shadow: 
@@ -248,7 +281,7 @@
   transform: translateX(4px);
 }
 
-.approaches-tab.is-active .approaches-dot {
+.approaches-tab.is-open .approaches-dot {
   background: var(--cove-ocean-flow);
   box-shadow: 
     0 0 0 4px rgba(var(--cove-ocean-flow-rgb), 0.15),
@@ -256,8 +289,19 @@
   transform: scale(1.15);
 }
 
-.approaches-tab.is-active .approaches-description {
+.approaches-tab.is-open .approaches-description {
   display: block;
+}
+
+.approaches-tab.is-open .approaches-toggle {
+  background: rgba(var(--cove-ocean-flow-rgb), 0.12);
+  border-color: rgba(var(--cove-ocean-flow-rgb), 0.3);
+  color: var(--cove-ocean-flow);
+}
+
+.approaches-tab.is-open .approaches-toggle-icon::before {
+  opacity: 0;
+  transform: rotate(0deg);
 }
 
 .approaches-panels {
@@ -272,8 +316,12 @@
   border-radius: var(--cove-radius-lg);
 }
 
-.approaches-panel.is-active {
+.approaches-panel.is-open {
   display: block;
+}
+
+.approaches-panel.is-open + .approaches-panel.is-open {
+  margin-top: 18px;
 }
 
 .approaches-image {
