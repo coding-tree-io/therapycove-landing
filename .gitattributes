@@ -1,0 +1,3 @@
+# Keep hook scripts and generated bundle stable across platforms.
+.husky/* text eol=lf
+assets/css/site.bundle.css text eol=lf
