@@ -6,13 +6,28 @@
   <div class="cove-shell">
     <div class="cove-footer-content">
       <a href="#home" class="cove-footer-logo transition-transform duration-300 hover:-translate-y-0.5" aria-label="{{ footer.logo_alt }}">
-        <img
-          alt="{{ footer.logo_alt }}"
-          src="{{ '/assets/images/therapy-cove-logo.png' | relative_url }}"
-          width="1584"
-          height="1584"
-          class="cove-footer-logo-image"
-        >
+        <picture>
+          <source
+            type="image/avif"
+            srcset="{{ '/assets/images/therapy-cove-logo-160.avif' | relative_url }} 160w, {{ '/assets/images/therapy-cove-logo-240.avif' | relative_url }} 240w, {{ '/assets/images/therapy-cove-logo-320.avif' | relative_url }} 320w, {{ '/assets/images/therapy-cove-logo-480.avif' | relative_url }} 480w, {{ '/assets/images/therapy-cove-logo-640.avif' | relative_url }} 640w"
+            sizes="(min-width: 1024px) 160px, 120px"
+          >
+          <source
+            type="image/webp"
+            srcset="{{ '/assets/images/therapy-cove-logo-160.webp' | relative_url }} 160w, {{ '/assets/images/therapy-cove-logo-240.webp' | relative_url }} 240w, {{ '/assets/images/therapy-cove-logo-320.webp' | relative_url }} 320w, {{ '/assets/images/therapy-cove-logo-480.webp' | relative_url }} 480w, {{ '/assets/images/therapy-cove-logo-640.webp' | relative_url }} 640w"
+            sizes="(min-width: 1024px) 160px, 120px"
+          >
+          <img
+            alt="{{ footer.logo_alt }}"
+            src="{{ '/assets/images/therapy-cove-logo-240.png' | relative_url }}"
+            srcset="{{ '/assets/images/therapy-cove-logo-160.png' | relative_url }} 160w, {{ '/assets/images/therapy-cove-logo-240.png' | relative_url }} 240w, {{ '/assets/images/therapy-cove-logo-320.png' | relative_url }} 320w, {{ '/assets/images/therapy-cove-logo-480.png' | relative_url }} 480w, {{ '/assets/images/therapy-cove-logo-640.png' | relative_url }} 640w"
+            sizes="(min-width: 1024px) 160px, 120px"
+            width="240"
+            height="240"
+            class="cove-footer-logo-image"
+            decoding="async"
+          >
+        </picture>
       </a>
       {% if footer.tagline %}
       <p class="cove-footer-tagline">{{ footer.tagline }}</p>

@@ -10,13 +10,28 @@
   </div>
   <div class="cove-shell cove-hero-inner">
     <div class="cove-hero-brand cove-reveal" style="--delay: 0ms;">
-      <img
-        alt="{{ site_nav.logo_alt }}"
-        src="{{ '/assets/images/therapy-cove-logo.png' | relative_url }}"
-        width="1584"
-        height="1584"
-        class="cove-hero-logo drop-shadow-[0_18px_40px_rgba(51,51,51,0.18)]"
-      >
+      <picture>
+        <source
+          type="image/avif"
+          srcset="{{ '/assets/images/therapy-cove-logo-160.avif' | relative_url }} 160w, {{ '/assets/images/therapy-cove-logo-240.avif' | relative_url }} 240w, {{ '/assets/images/therapy-cove-logo-320.avif' | relative_url }} 320w, {{ '/assets/images/therapy-cove-logo-480.avif' | relative_url }} 480w, {{ '/assets/images/therapy-cove-logo-640.avif' | relative_url }} 640w"
+          sizes="(min-width: 1024px) 240px, (min-width: 768px) 200px, 160px"
+        >
+        <source
+          type="image/webp"
+          srcset="{{ '/assets/images/therapy-cove-logo-160.webp' | relative_url }} 160w, {{ '/assets/images/therapy-cove-logo-240.webp' | relative_url }} 240w, {{ '/assets/images/therapy-cove-logo-320.webp' | relative_url }} 320w, {{ '/assets/images/therapy-cove-logo-480.webp' | relative_url }} 480w, {{ '/assets/images/therapy-cove-logo-640.webp' | relative_url }} 640w"
+          sizes="(min-width: 1024px) 240px, (min-width: 768px) 200px, 160px"
+        >
+        <img
+          alt="{{ site_nav.logo_alt }}"
+          src="{{ '/assets/images/therapy-cove-logo-320.png' | relative_url }}"
+          srcset="{{ '/assets/images/therapy-cove-logo-160.png' | relative_url }} 160w, {{ '/assets/images/therapy-cove-logo-240.png' | relative_url }} 240w, {{ '/assets/images/therapy-cove-logo-320.png' | relative_url }} 320w, {{ '/assets/images/therapy-cove-logo-480.png' | relative_url }} 480w, {{ '/assets/images/therapy-cove-logo-640.png' | relative_url }} 640w"
+          sizes="(min-width: 1024px) 240px, (min-width: 768px) 200px, 160px"
+          width="320"
+          height="320"
+          class="cove-hero-logo drop-shadow-[0_18px_40px_rgba(51,51,51,0.18)]"
+          decoding="async"
+        >
+      </picture>
     </div>
     <div class="cove-hero-content cove-reveal" style="--delay: 120ms;">
       <h1 id="hero-title" class="cove-hero-title tracking-tight">{{ hero_title }}</h1>
