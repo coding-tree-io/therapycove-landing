@@ -473,7 +473,7 @@
 .cove-footer {
   background: transparent;
   border-top: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.12);
-  padding: clamp(18px, 2.2vw, 28px) 0 clamp(12px, 1.6vw, 20px);
+  padding: clamp(12px, 1.6vw, 18px) 0 clamp(8px, 1.2vw, 14px);
   position: relative;
 }
 
@@ -493,13 +493,13 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   text-align: center;
   position: relative;
 }
 
 .cove-footer-logo-image {
-  height: clamp(56px, 12vw, 88px);
+  height: clamp(44px, 10vw, 64px);
   width: auto;
   transition: transform 0.3s ease;
 }
@@ -510,15 +510,15 @@
 
 .cove-footer-tagline {
   color: var(--cove-charcoal-soft);
-  font-size: 0.85rem;
-  max-width: 480px;
-  line-height: 1.6;
+  font-size: 0.78rem;
+  max-width: 360px;
+  line-height: 1.5;
 }
 
 .cove-footer-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 2px;
   justify-content: center;
   margin: 0;
   padding: 0;
@@ -526,9 +526,9 @@
 
 .cove-footer-link {
   color: var(--cove-charcoal-muted);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   text-decoration: none;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: 999px;
   transition: 
     color 0.2s ease,
@@ -548,8 +548,8 @@
     transparent
   );
   height: 1px;
-  width: 160px;
-  margin: 6px 0;
+  width: 120px;
+  margin: 4px 0;
 }
 
 .cove-footer-bottom {
@@ -647,18 +647,28 @@
 
 @media (max-width: 768px) {
   :root {
-    --cove-nav-height: 58px;
-    --cove-logo-hero-size: clamp(170px, 56vw, 230px);
-    --cove-logo-header-size: clamp(20px, 6vw, 24px);
-    --cove-section-spacing: clamp(64px, 10vw, 96px);
+    --cove-nav-height: 54px;
+    --cove-logo-hero-size: clamp(120px, 40vw, 170px);
+    --cove-logo-header-size: clamp(18px, 5.5vw, 22px);
+    --cove-section-spacing: clamp(48px, 8vw, 72px);
   }
 
   .cove-section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 
   .section-intro {
-    margin-bottom: 36px;
+    margin-bottom: 24px;
+  }
+
+  .cove-section-description {
+    font-size: 1rem;
+    margin-top: 14px;
+  }
+
+  .cove-eyebrow {
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
   }
 
   .cove-nav-links,
@@ -668,42 +678,32 @@
 
   .cove-nav-toggle-label {
     display: flex;
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.45);
   }
 
-  .cove-nav-toggle-line {
-    height: 2.5px;
-    width: 24px;
-  }
-
-  .cove-hero-inner {
-    min-height: auto;
-    padding-bottom: 40px;
-  }
-
-  .cove-hero-brand {
-    margin-bottom: 24px;
+  .cove-nav-inner {
+    gap: 12px;
   }
 
   .cove-hero-lead {
-    font-size: 0.98rem;
-    margin-top: 20px;
     column-count: 1;
     text-align: left;
   }
 
   .cove-audiences-grid,
-  .cove-therapists-grid,
-  .contact-form-grid {
+  .cove-therapists-grid {
     grid-template-columns: 1fr;
+  }
+
+  .contact-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .cove-hero-actions {
     flex-direction: column;
-    margin-top: 24px;
+    margin-top: 20px;
     width: 100%;
-    max-width: 320px;
+    max-width: 300px;
+    gap: 10px;
   }
   
   .cove-hero-actions .cove-button {
@@ -711,29 +711,140 @@
   }
 
   .cove-hero-media {
-    margin-top: 32px;
+    margin-top: 28px;
+    width: 100%;
+  }
+
+  .cove-rich-text p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-top: 12px;
+  }
+
+  .cove-rich-text blockquote {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .cove-therapists-featured {
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+
+  .cove-therapists-featured-content {
+    justify-content: flex-start;
+  }
+
+  .cove-therapists-grid {
+    gap: 16px;
+  }
+
+  .cove-therapists-card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+    gap: 12px;
+    padding: 14px;
+    align-items: start;
+  }
+
+  .cove-therapists-card-body {
+    margin-top: 0;
+  }
+
+  .cove-therapists-card-meta {
+    padding: 10px;
+    gap: 4px;
+  }
+
+  .cove-therapists-card-meta p,
+  .cove-therapists-card-meta h3 {
+    padding: 3px 10px;
+  }
+
+  .cove-therapists-card-role {
+    font-size: 0.6rem;
+  }
+
+  .cove-therapists-card-name {
+    font-size: 1.1rem;
+  }
+
+  .cove-contact-grid {
+    gap: 28px;
+  }
+
+  .cove-contact-info {
+    gap: 6px;
   }
 
   .contact-form {
-    padding: 20px;
+    padding: 16px;
   }
-  
+
+  .contact-form-grid {
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .contact-form-label {
+    font-size: 0.75rem;
+  }
+
+  .contact-form-input {
+    height: 42px;
+  }
+
+  .contact-form-textarea {
+    height: 120px;
+    min-height: 120px;
+  }
+
+  .contact-form-error {
+    font-size: 0.72rem;
+  }
+
+  .contact-form button[type="submit"] {
+    margin-top: 10px;
+  }
+
   .cove-contact-item {
-    padding: 14px;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .cove-contact-icon {
+    height: 44px;
+    width: 44px;
+  }
+
+  .cove-contact-icon svg {
+    height: 18px;
+    width: 18px;
+  }
+
+  .cove-contact-label {
+    font-size: 0.65rem;
+  }
+
+  .cove-contact-value {
+    font-size: 1rem;
+    margin-top: 4px;
   }
   
   .approaches-tab {
     padding: 14px 18px;
   }
-  
-  .cove-therapists-card {
-    padding: 18px;
-  }
 }
 
 @media (max-width: 480px) {
+  :root {
+    --cove-logo-hero-size: clamp(110px, 46vw, 150px);
+  }
+
   .cove-section {
-    padding: 64px 0;
+    padding: 40px 0;
   }
 
   .cove-shell {
@@ -745,7 +856,7 @@
   }
 
   .cove-therapists-card-meta {
-    padding: 12px;
+    padding: 8px;
   }
   
   .cove-audiences-card {
@@ -753,6 +864,14 @@
   }
   
   .cove-section-title {
-    font-size: clamp(1.875rem, 7vw, 2.25rem);
+    font-size: clamp(1.65rem, 7vw, 2.1rem);
+  }
+
+  .cove-hero-actions {
+    max-width: 260px;
+  }
+
+  .contact-form-grid {
+    grid-template-columns: 1fr;
   }
 }

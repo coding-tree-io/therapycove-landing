@@ -115,23 +115,31 @@
 
 .cove-nav-toggle-label {
   display: none;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(var(--cove-charcoal-rgb), 0.12);
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
   cursor: pointer;
-  padding: 8px;
-  border-radius: 8px;
-  transition: background 0.2s ease;
+  height: 44px;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  width: 44px;
 }
 
 .cove-nav-toggle-label:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
 }
 
 .cove-nav-toggle-line {
   background: rgba(255, 255, 255, 0.9);
   border-radius: 999px;
   height: 2px;
-  width: 22px;
+  width: 20px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -157,6 +165,24 @@
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+.cove-nav-toggle:checked ~ .cove-nav-toggle-label {
+  background: rgba(255, 255, 255, 0.32);
+  box-shadow: 0 10px 22px rgba(var(--cove-charcoal-rgb), 0.18);
+}
+
+.cove-nav-toggle:checked ~ .cove-nav-toggle-label .cove-nav-toggle-line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.cove-nav-toggle:checked ~ .cove-nav-toggle-label .cove-nav-toggle-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0.2);
+}
+
+.cove-nav-toggle:checked ~ .cove-nav-toggle-label .cove-nav-toggle-line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 .cove-nav-drawer-inner {
@@ -337,7 +363,8 @@
 
 @media (max-width: 768px) {
   .cove-hero-title {
-    font-size: clamp(1.7rem, 6.4vw, 2.3rem);
+    font-size: clamp(1.5rem, 6vw, 2.1rem);
+    line-height: 1.15;
   }
 }
 
@@ -386,6 +413,54 @@
     column-count: 2;
     column-gap: 3rem;
     text-align: justify;
+  }
+}
+
+@media (max-width: 768px) {
+  .cove-hero-inner {
+    min-height: calc(100svh - var(--cove-nav-height));
+    padding-bottom: 48px;
+  }
+
+  .cove-hero-brand {
+    margin-bottom: 16px;
+  }
+
+  .cove-hero-lead {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-top: 16px;
+  }
+
+  .cove-hero-lead::after {
+    display: none;
+  }
+
+  .cove-hero-lead:first-letter {
+    color: inherit;
+    float: none;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    padding-right: 0;
+  }
+
+  .cove-hero-actions {
+    margin-top: 20px;
+  }
+
+  .cove-hero-actions .cove-button--lg {
+    font-size: 0.9rem;
+    padding: 14px 24px;
+  }
+
+  .cove-hero-media {
+    margin-top: 28px;
+    max-width: min(90vw, 420px);
+  }
+
+  .cove-hero-scroll {
+    display: none;
   }
 }
 
