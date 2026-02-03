@@ -4,7 +4,7 @@
 - Always read `AGENT_ENTRYPOINTS.md` early; it is the repo-local index for key files and commands.
 
 ## Project identity
-- Therapy Cove is a modern center for psychological health in Athens, serving adults.
+- Therapy Cove is a modern mental health center in Athens, serving adults.
 - The site represents a real practice with three practicing psychologists and must communicate trust, calm, and professionalism.
 - Domain reference: https://therapycove.gr
 
