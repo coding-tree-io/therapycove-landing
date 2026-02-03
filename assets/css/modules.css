@@ -473,7 +473,7 @@
 .cove-footer {
   background: transparent;
   border-top: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.12);
-  padding: clamp(28px, 3vw, 40px) 0 clamp(20px, 2.5vw, 32px);
+  padding: clamp(18px, 2.2vw, 28px) 0 clamp(12px, 1.6vw, 20px);
   position: relative;
 }
 
@@ -493,13 +493,13 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   text-align: center;
   position: relative;
 }
 
 .cove-footer-logo-image {
-  height: var(--cove-logo-footer-size);
+  height: clamp(56px, 12vw, 88px);
   width: auto;
   transition: transform 0.3s ease;
 }
@@ -510,7 +510,7 @@
 
 .cove-footer-tagline {
   color: var(--cove-charcoal-soft);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   max-width: 480px;
   line-height: 1.6;
 }
@@ -518,7 +518,7 @@
 .cove-footer-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px;
   justify-content: center;
   margin: 0;
   padding: 0;
@@ -528,7 +528,7 @@
   color: var(--cove-charcoal-muted);
   font-size: 0.8rem;
   text-decoration: none;
-  padding: 6px 12px;
+  padding: 4px 10px;
   border-radius: 999px;
   transition: 
     color 0.2s ease,
@@ -548,8 +548,8 @@
     transparent
   );
   height: 1px;
-  width: 200px;
-  margin: 8px 0;
+  width: 160px;
+  margin: 6px 0;
 }
 
 .cove-footer-bottom {
@@ -559,7 +559,7 @@
 
 .cove-footer-copy {
   color: var(--cove-charcoal-muted);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   letter-spacing: 0.01em;
 }
 
