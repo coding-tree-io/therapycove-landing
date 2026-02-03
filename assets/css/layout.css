@@ -116,10 +116,10 @@
 .cove-nav-toggle-label {
   display: none;
   align-items: center;
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: var(--cove-ocean-deep);
+  border: 2px solid rgba(255, 255, 255, 0.9);
   border-radius: 999px;
-  box-shadow: 0 8px 18px rgba(var(--cove-charcoal-rgb), 0.12);
+  box-shadow: 0 10px 20px rgba(var(--cove-charcoal-rgb), 0.18);
   flex-direction: column;
   gap: 4px;
   cursor: pointer;
@@ -131,15 +131,15 @@
 }
 
 .cove-nav-toggle-label:hover {
-  background: rgba(255, 255, 255, 0.28);
+  background: var(--cove-ocean-flow);
   transform: translateY(-1px);
 }
 
 .cove-nav-toggle-line {
-  background: rgba(255, 255, 255, 0.9);
+  background: #fff;
   border-radius: 999px;
   height: 2px;
-  width: 20px;
+  width: 18px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -168,8 +168,8 @@
 }
 
 .cove-nav-toggle:checked ~ .cove-nav-toggle-label {
-  background: rgba(255, 255, 255, 0.32);
-  box-shadow: 0 10px 22px rgba(var(--cove-charcoal-rgb), 0.18);
+  background: var(--cove-ocean-flow);
+  box-shadow: 0 12px 24px rgba(var(--cove-charcoal-rgb), 0.2);
 }
 
 .cove-nav-toggle:checked ~ .cove-nav-toggle-label .cove-nav-toggle-line:nth-child(1) {
