@@ -37,3 +37,4 @@ This file lists the highest-value files and commands to read first when working 
 ## Build / Dev commands
 - PowerShell (Windows): `pwsh ./scripts/dev.ps1`
 - Jekyll (manual): `bundle exec jekyll serve --config _config.yml,_config.local.yml`
+- CSS bundle: `npm run build:css`
