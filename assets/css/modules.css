@@ -647,15 +647,18 @@
 
 @media (max-width: 768px) {
   :root {
-    --cove-nav-height: 64px;
+    --cove-nav-height: 58px;
+    --cove-logo-hero-size: clamp(170px, 56vw, 230px);
+    --cove-logo-header-size: clamp(20px, 6vw, 24px);
+    --cove-section-spacing: clamp(64px, 10vw, 96px);
   }
 
   .cove-section {
-    padding: 80px 0;
+    padding: 64px 0;
   }
 
   .section-intro {
-    margin-bottom: 48px;
+    margin-bottom: 36px;
   }
 
   .cove-nav-links,
@@ -665,19 +668,27 @@
 
   .cove-nav-toggle-label {
     display: flex;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+  }
+
+  .cove-nav-toggle-line {
+    height: 2.5px;
+    width: 24px;
   }
 
   .cove-hero-inner {
     min-height: auto;
-    padding-bottom: 56px;
+    padding-bottom: 40px;
   }
 
   .cove-hero-brand {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   .cove-hero-lead {
-    margin-top: 24px;
+    font-size: 0.98rem;
+    margin-top: 20px;
     column-count: 1;
     text-align: left;
   }
@@ -690,7 +701,7 @@
 
   .cove-hero-actions {
     flex-direction: column;
-    margin-top: 32px;
+    margin-top: 24px;
     width: 100%;
     max-width: 320px;
   }
@@ -700,23 +711,23 @@
   }
 
   .cove-hero-media {
-    margin-top: 48px;
+    margin-top: 32px;
   }
 
   .contact-form {
-    padding: 24px;
+    padding: 20px;
   }
   
   .cove-contact-item {
-    padding: 16px;
+    padding: 14px;
   }
   
   .approaches-tab {
-    padding: 16px 20px;
+    padding: 14px 18px;
   }
   
   .cove-therapists-card {
-    padding: 20px;
+    padding: 18px;
   }
 }
 
