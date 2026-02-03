@@ -121,11 +121,12 @@
   border-radius: 999px;
   box-shadow: 0 10px 20px rgba(var(--cove-charcoal-rgb), 0.18);
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   cursor: pointer;
   height: 44px;
   justify-content: center;
   padding: 0;
+  position: relative;
   transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   width: 44px;
 }
@@ -139,8 +140,9 @@
   background: #fff;
   border-radius: 999px;
   display: block;
-  height: 2.4px;
-  width: 20px;
+  height: 3px;
+  width: 22px;
+  transform-origin: center;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
