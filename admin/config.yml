@@ -2,7 +2,8 @@ backend:
   name: github
   repo: coding-tree-io/therapycove
   branch: main
-  auth_endpoint: https://therapycove-cms-auth.s-d-vallianos.workers.dev/auth
+  base_url: https://therapycove-cms-auth.s-d-vallianos.workers.dev
+  auth_endpoint: auth
 
 commit_messages:
   create: "feat(content): create {{collection}}/{{slug}}"
