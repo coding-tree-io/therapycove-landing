@@ -1,10 +1,10 @@
 local_backend: true
 
 backend:
-  name: git-gateway
+  name: github
+  repo: coding-tree-io/therapycove
   branch: main
-  identity_url: https://therapycoveoauth.netlify.app/.netlify/identity
-  gateway_url: https://therapycoveoauth.netlify.app/.netlify/git
+  auth_endpoint: https://YOUR-CLOUDFLARE-WORKER.example.workers.dev/auth
 
 commit_messages:
   create: "feat(content): create {{collection}}/{{slug}}"
