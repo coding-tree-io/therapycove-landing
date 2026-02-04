@@ -4,7 +4,7 @@ backend:
   name: github
   repo: coding-tree-io/therapycove
   branch: main
-  auth_endpoint: https://YOUR-CLOUDFLARE-WORKER.example.workers.dev/auth
+  auth_endpoint: https://therapycove-cms-auth.s-d-vallianos.workers.dev/auth
 
 commit_messages:
   create: "feat(content): create {{collection}}/{{slug}}"
