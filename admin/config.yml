@@ -6,14 +6,13 @@ backend:
   branch: main
   base_url: https://therapycove-cms-auth.s-d-vallianos.workers.dev
   auth_endpoint: auth
-
-commit_messages:
-  create: "docs(content): create {{collection}}/{{slug}}"
-  update: "docs(content): update {{collection}}/{{slug}}"
-  delete: "docs(content): delete {{collection}}/{{slug}}"
-  uploadMedia: "docs(media): upload {{path}}"
-  deleteMedia: "docs(media): delete {{path}}"
-  openAuthoring: "docs(content): open {{collection}}/{{slug}}"
+  commit_messages:
+    create: "docs(content): create {{collection}}/{{slug}}"
+    update: "docs(content): update {{collection}}/{{slug}}"
+    delete: "docs(content): delete {{collection}}/{{slug}}"
+    uploadMedia: "docs(media): upload {{path}}"
+    deleteMedia: "docs(media): delete {{path}}"
+    openAuthoring: "docs(content): open {{collection}}/{{slug}}"
 
 media_folder: "/assets/images"
 public_folder: "/assets/images"
