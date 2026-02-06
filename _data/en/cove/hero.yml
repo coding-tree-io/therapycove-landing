@@ -1,12 +1,14 @@
-heading: "A space for you"
-lead: |
-  Lorem2 ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+heading: A space for you
+lead: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  consequat.
 primary_cta:
-  label: "The space"
+  label: The space
   href: "#space"
 secondary_cta:
-  label: "Meet the team"
+  label: Meet the team
   href: "#therapists"
 space_image:
-  src: "/assets/images/therapy-cove-space-hero.jpg"
-  alt: "Therapy Cove space"
+  src: /assets/images/therapy-cove-space-hero.jpg
+  alt: Therapy Cove space
