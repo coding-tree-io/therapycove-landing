@@ -3,7 +3,7 @@ description: Σύγχρονο κέντρο ψυχολογικής υγείας �
 baseurl: ""
 url: "https://www.therapycove.gr"
 permalink: pretty
-lang: "el"
+lang: "gr"
 logo: "/assets/images/therapy-cove-logo.png"
 image: "/assets/images/therapy-cove-space-hero.jpg"
 flags:
@@ -13,9 +13,9 @@ plugins:
   - jekyll-sitemap
   - jekyll-polyglot
 languages:
-  - "el"
+  - "gr"
   - "en"
-default_lang: "el"
+default_lang: "gr"
 exclude_from_localization:
   - "assets"
   - "admin"

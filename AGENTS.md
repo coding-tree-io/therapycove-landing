@@ -40,7 +40,7 @@
 
 ## Current site state (as of 2026-02-03)
 - Layout sections are defined in `_includes/`: hero (`#home`), audiences (`#audiences`), therapists (`#therapists`), approaches (`#approaches`), contact (`#contact`), footer.
-- Localization is enabled via `jekyll-polyglot` with content in `_data/el/therapy_cove.yml` (Greek) and `_data/en/therapy_cove.yml` (English placeholders).
+- Localization is enabled via `jekyll-polyglot` with content split per section/entity under `_data/gr/cove/` (Greek) and `_data/en/cove/` (English placeholders).
 - Language toggle is controlled by `_config.yml` `flags.show_lang_toggle` (currently `false`).
 - Navigation uses `assets/images/log-vector.svg` in the header and drawer; hero + footer use `assets/images/therapy-cove-logo.png`.
 - Styles are a mix of Pico CSS (CDN), custom CSS (`assets/css/base.css`, `assets/css/layout.css`, `assets/css/modules.css` via `assets/css/therapy-cove.css`), and a Tailwind build (`assets/css/tailwind-build.css`) with Flowbite plugin utilities.

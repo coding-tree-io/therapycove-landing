@@ -1,10 +1,10 @@
-{% assign data_lang = page.lang | default: site.active_lang | default: site.default_lang | default: site.lang | default: 'el' %}
-{% assign cove = site.data[data_lang].therapy_cove | default: site.data.therapy_cove %}
+{% assign data_lang = page.lang | default: site.active_lang | default: site.default_lang | default: site.lang | default: 'gr' %}
+{% assign cove = site.data[data_lang].cove | default: site.data.cove %}
 {% assign site_nav = cove.site_nav %}
 {% assign current_lang = data_lang %}
 {% assign switch_lang = "en" %}
 {% if current_lang == "en" %}
-  {% assign switch_lang = "el" %}
+  {% assign switch_lang = "gr" %}
 {% endif %}
 {% assign switch_permalink = "/" %}
 {% if page.permalink_lang and page.permalink_lang[switch_lang] %}

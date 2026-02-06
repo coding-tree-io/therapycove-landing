@@ -1,0 +1,20 @@
+logo_alt: "Therapy Cove logo"
+links:
+  - label: "Home"
+    href: "#home"
+  - label: "Team"
+    href: "#therapists"
+  - label: "Approaches"
+    href: "#approaches"
+  - label: "Contact"
+    href: "#contact"
+cta:
+  primary:
+    label: "Book a Session"
+    href: "#contact"
+  secondary:
+    label: "Contact"
+    href: "#contact"
+lang_toggle:
+  label: "GR"
+  aria_label: "Switch to Greek"

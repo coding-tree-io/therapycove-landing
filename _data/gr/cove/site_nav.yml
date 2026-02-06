@@ -1,0 +1,20 @@
+logo_alt: "Therapy Cove logo"
+links:
+  - label: "Αρχική"
+    href: "#home"
+  - label: "Η ομάδα"
+    href: "#therapists"
+  - label: "Προσεγγίσεις"
+    href: "#approaches"
+  - label: "Επικοινωνία"
+    href: "#contact"
+cta:
+  primary:
+    label: "Κλείσε Ραντεβού"
+    href: "#contact"
+  secondary:
+    label: "Επικοινωνία"
+    href: "#contact"
+lang_toggle:
+  label: "EN"
+  aria_label: "Switch to English"

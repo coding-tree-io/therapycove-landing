@@ -2,7 +2,7 @@
 layout: default
 title: "Therapy Cove"
 description: "Σύγχρονο κέντρο ψυχολογικής υγείας στην Αθήνα για ενήλικες."
-lang: "el"
+lang: "gr"
 permalink: /
 page_id: home
 ---

@@ -1,3 +1,5 @@
+local_backend: true
+
 backend:
   name: github
   repo: coding-tree-io/therapycove
@@ -6,432 +8,362 @@ backend:
   auth_endpoint: auth
 
 commit_messages:
-  create: "feat(content): create {{collection}}/{{slug}}"
-  update: "chore(content): update {{collection}}/{{slug}}"
-  delete: "chore(content): delete {{collection}}/{{slug}}"
-  uploadMedia: "chore(media): upload {{path}}"
-  deleteMedia: "chore(media): delete {{path}}"
-  openAuthoring: "chore(content): open {{collection}}/{{slug}}"
+  create: "docs(content): create {{collection}}/{{slug}}"
+  update: "docs(content): update {{collection}}/{{slug}}"
+  delete: "docs(content): delete {{collection}}/{{slug}}"
+  uploadMedia: "docs(media): upload {{path}}"
+  deleteMedia: "docs(media): delete {{path}}"
+  openAuthoring: "docs(content): open {{collection}}/{{slug}}"
 
 media_folder: "/assets/images"
 public_folder: "/assets/images"
-locale: "el"
+locale: "gr"
 
 collections:
-  - name: therapy_cove_el
-    label: Therapy Cove (EL)
+  - name: gr-sections
+    label: GR • Sections
     files:
-      - name: therapy_cove
-        label: Therapy Cove Sections
-        file: _data/el/therapy_cove.yml
+      - name: hero
+        label: Hero (GR)
+        file: _data/gr/cove/hero.yml
         fields:
-          - label: Navigation
-            name: site_nav
+          - { label: Heading, name: heading, widget: string }
+          - { label: Lead Text, name: lead, widget: markdown }
+          - label: Primary Button
+            name: primary_cta
             widget: object
             fields:
-              - label: Call To Action
-                name: cta
-                widget: object
-                fields:
-                  - label: Primary Action
-                    name: primary
-                    widget: object
-                    fields:
-                      - { label: Label, name: label, widget: string }
-                      - label: Link
-                        name: href
-                        widget: string
-                        hint: "Use an anchor (#section) or a full URL."
-                        pattern:
-                          [
-                            "^(#[-a-zA-Z0-9]+|https?://.+)$",
-                            "Use an anchor (#section) or a full URL."
-                          ]
-                  - label: Secondary Action
-                    name: secondary
-                    widget: object
-                    fields:
-                      - { label: Label, name: label, widget: string }
-                      - { label: Link, name: href, widget: hidden }
-          - label: Hero
-            name: hero
-            widget: object
-            fields:
-              - { label: Heading, name: heading, widget: string }
-              - label: Lead Text
-                name: lead
-                widget: markdown
-                hint: "Short intro (1–2 sentences)."
-              - label: Primary Button
-                name: primary_cta
-                widget: object
-                fields:
-                      - { label: Label, name: label, widget: string }
-                      - { label: Link, name: href, widget: hidden }
-              - label: Secondary Button
-                name: secondary_cta
-                widget: object
-                fields:
-                  - { label: Label, name: label, widget: string }
-                  - label: Link
-                    name: href
-                    widget: string
-                    hint: "Use an anchor (#section) or a full URL."
-                    pattern:
-                      [
-                        "^(#[-a-zA-Z0-9]+|https?://.+)$",
-                        "Use an anchor (#section) or a full URL."
-                      ]
-              - label: Space Image
-                name: space_image
-                widget: object
-                fields:
-                  - { label: Image, name: src, widget: image }
-                  - { label: Alt Text, name: alt, widget: string }
-          - label: Info (Clients & Therapists)
-            name: audiences
-            widget: object
-            fields:
-              - label: For Clients
-                name: clients
-                widget: object
-                fields:
-                  - { label: Heading, name: heading, widget: string }
-                  - { label: Body, name: body, widget: markdown, hint: "Short paragraphs; separate with a blank line." }
-              - label: For Therapists
-                name: therapist
-                widget: object
-                fields:
-                  - { label: Heading, name: heading, widget: string }
-                  - { label: Body, name: body, widget: markdown, hint: "Short paragraphs; separate with a blank line." }
-          - label: Therapists
-            name: therapists
-            widget: object
-            fields:
-              - { label: Heading, name: heading, widget: string }
-              - label: Members
-                name: members
-                widget: list
-                summary: "{{fields.name}} — {{fields.role}}"
-                min: 3
-                max: 3
-                allow_add: false
-                allow_delete: false
-                fields:
-                  - { label: Name, name: name, widget: string }
-                  - { label: Role, name: role, widget: string }
-                  - { label: Image, name: image, widget: image }
-                  - { label: Alt Text, name: alt, widget: string }
-                  - { label: Bio, name: bio, widget: markdown, hint: "Use a blockquote (>) for a quote if desired." }
-          - label: Approaches
-            name: approaches
-            widget: object
-            fields:
-              - { label: Heading, name: heading, widget: string }
-              - label: Tabs
-                name: tabs
-                widget: list
-                summary: "{{fields.title}}"
-                min: 3
-                max: 3
-                allow_add: false
-                allow_delete: false
-                fields:
-                  - { label: Title, name: title, widget: string }
-                  - { label: Description, name: description, widget: markdown, hint: "Short paragraph." }
-                  - label: Image
-                    name: image
-                    widget: object
-                    fields:
-                      - { label: Image, name: src, widget: image }
-                      - { label: Alt Text, name: alt, widget: string }
-          - label: Contact Details
-            name: contact
-            widget: object
-            fields:
-              - label: Intro
-                name: intro
-                widget: object
-                fields:
-                  - { label: Eyebrow, name: eyebrow, widget: string }
-                  - { label: Heading, name: heading, widget: text }
-              - { label: Heading, name: heading, widget: string }
-              - { label: Email Label, name: email_label, widget: string }
-              - { label: Phone Label, name: phone_label, widget: string }
-              - { label: Address Label, name: address_label, widget: string }
-              - label: Email
-                name: email
+              - { label: Label, name: label, widget: string }
+              - label: Link
+                name: href
                 widget: string
                 pattern:
                   [
-                    "^\\S+@\\S+\\.[A-Za-z]{2,}$",
-                    "Enter a valid email address."
+                    "^(#[-a-zA-Z0-9]+|https?://.+)$",
+                    "Use an anchor (#section) or a full URL."
                   ]
-              - label: Phone
-                name: phone
+          - label: Secondary Button
+            name: secondary_cta
+            widget: object
+            fields:
+              - { label: Label, name: label, widget: string }
+              - label: Link
+                name: href
                 widget: string
                 pattern:
                   [
-                    "^[0-9+()\\s-]{7,}$",
-                    "Use digits and optional +, spaces, or dashes."
+                    "^(#[-a-zA-Z0-9]+|https?://.+)$",
+                    "Use an anchor (#section) or a full URL."
                   ]
-              - label: Phone Link
-                name: phone_href
-                widget: string
-                hint: "Use a tel: link, e.g. tel:+302112184996"
-              - { label: Address, name: address, widget: string }
-              - { label: Address Map URL, name: address_map_url, widget: string }
-              - label: Form Labels
-                name: form
-                widget: object
-                fields:
-                  - { label: Name Label, name: name_label, widget: string }
-                  - { label: Email Label, name: email_label, widget: string }
-                  - { label: Message Label, name: message_label, widget: string }
-                  - { label: Submit Button Label, name: submit_label, widget: string }
-                  - label: Status Messages
-                    name: messages
-                    widget: object
-                    fields:
-                      - { label: Invalid Form, name: invalid, widget: hidden }
-                      - { label: Pending, name: pending, widget: hidden }
-                      - { label: Success, name: success, widget: hidden }
-                      - { label: Error, name: error, widget: hidden }
-                      - { label: Send Error, name: send_error, widget: hidden }
-                  - label: Field Errors
-                    name: field_errors
-                    widget: object
-                    fields:
-                      - label: Name Field
-                        name: name
-                        widget: object
-                        fields:
-                          - { label: Missing, name: valueMissing, widget: hidden }
-                          - { label: Too Short, name: tooShort, widget: hidden }
-                      - label: Email Field
-                        name: email
-                        widget: object
-                        fields:
-                          - { label: Missing, name: valueMissing, widget: hidden }
-                          - { label: Invalid Email, name: typeMismatch, widget: hidden }
-                      - label: Message Field
-                        name: message
-                        widget: object
-                        fields:
-                          - { label: Missing, name: valueMissing, widget: hidden }
-                          - { label: Too Short, name: tooShort, widget: hidden }
-          - label: Footer
-            name: footer
+          - label: Space Image
+            name: space_image
             widget: object
             fields:
-              - { label: Tagline, name: tagline, widget: text, required: false }
-              - { label: Copyright, name: copyright, widget: hidden }
+              - { label: Image, name: src, widget: image }
+              - { label: Alt Text, name: alt, widget: string }
 
-  - name: therapy_cove_en
-    label: Therapy Cove (EN)
-    files:
-      - name: therapy_cove
-        label: Therapy Cove Sections
-        file: _data/en/therapy_cove.yml
+      - name: audiences
+        label: Audiences (GR)
+        file: _data/gr/cove/audiences.yml
         fields:
-          - label: Navigation
-            name: site_nav
-            widget: object
-            fields:
-              - label: Call To Action
-                name: cta
-                widget: object
-                fields:
-                  - label: Primary Action
-                    name: primary
-                    widget: object
-                    fields:
-                      - { label: Label, name: label, widget: string }
-                      - { label: Link, name: href, widget: hidden }
-                  - label: Secondary Action
-                    name: secondary
-                    widget: object
-                    fields:
-                      - { label: Label, name: label, widget: string }
-                      - { label: Link, name: href, widget: hidden }
-          - label: Hero
-            name: hero
+          - { label: Intro, name: intro, widget: string, required: false }
+          - label: For Clients
+            name: clients
             widget: object
             fields:
               - { label: Heading, name: heading, widget: string }
-              - label: Lead Text
-                name: lead
-                widget: markdown
-                hint: "Short intro (1–2 sentences)."
-              - label: Primary Button
-                name: primary_cta
-                widget: object
-                fields:
-                  - { label: Label, name: label, widget: string }
-                  - label: Link
-                    name: href
-                    widget: string
-                    hint: "Use an anchor (#section) or a full URL."
-                    pattern:
-                      [
-                        "^(#[-a-zA-Z0-9]+|https?://.+)$",
-                        "Use an anchor (#section) or a full URL."
-                      ]
-              - label: Secondary Button
-                name: secondary_cta
-                widget: object
-                fields:
-                  - { label: Label, name: label, widget: string }
-                  - label: Link
-                    name: href
-                    widget: string
-                    hint: "Use an anchor (#section) or a full URL."
-                    pattern:
-                      [
-                        "^(#[-a-zA-Z0-9]+|https?://.+)$",
-                        "Use an anchor (#section) or a full URL."
-                      ]
-              - label: Space Image
-                name: space_image
-                widget: object
-                fields:
-                  - { label: Image, name: src, widget: image }
-                  - { label: Alt Text, name: alt, widget: string }
-          - label: Info (Clients & Therapists)
-            name: audiences
-            widget: object
-            fields:
-              - label: For Clients
-                name: clients
-                widget: object
-                fields:
-                  - { label: Heading, name: heading, widget: string }
-                  - { label: Body, name: body, widget: markdown, hint: "Short paragraphs; separate with a blank line." }
-              - label: For Therapists
-                name: therapist
-                widget: object
-                fields:
-                  - { label: Heading, name: heading, widget: string }
-                  - { label: Body, name: body, widget: markdown, hint: "Short paragraphs; separate with a blank line." }
-          - label: Therapists
-            name: therapists
+              - { label: Body, name: body, widget: markdown }
+          - label: For Therapists
+            name: therapist
             widget: object
             fields:
               - { label: Heading, name: heading, widget: string }
-              - label: Members
-                name: members
-                widget: list
-                summary: "{{fields.name}} — {{fields.role}}"
-                min: 3
-                max: 3
-                allow_add: false
-                allow_delete: false
-                fields:
-                  - { label: Name, name: name, widget: string }
-                  - { label: Role, name: role, widget: string }
-                  - { label: Image, name: image, widget: image }
-                  - { label: Alt Text, name: alt, widget: string }
-                  - { label: Bio, name: bio, widget: markdown, hint: "Use a blockquote (>) for a quote if desired." }
-          - label: Approaches
-            name: approaches
+              - { label: Body, name: body, widget: markdown }
+
+      - name: contact
+        label: Contact (GR)
+        file: _data/gr/cove/contact.yml
+        fields:
+          - label: Intro
+            name: intro
             widget: object
             fields:
-              - { label: Heading, name: heading, widget: string }
-              - label: Tabs
-                name: tabs
-                widget: list
-                summary: "{{fields.title}}"
-                min: 3
-                max: 3
-                allow_add: false
-                allow_delete: false
-                fields:
-                  - { label: Title, name: title, widget: string }
-                  - { label: Description, name: description, widget: markdown, hint: "Short paragraph." }
-                  - label: Image
-                    name: image
-                    widget: object
-                    fields:
-                      - { label: Image, name: src, widget: image }
-                      - { label: Alt Text, name: alt, widget: string }
-          - label: Contact Details
-            name: contact
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Heading, name: heading, widget: text }
+          - { label: Heading, name: heading, widget: string }
+          - { label: Email Label, name: email_label, widget: string }
+          - { label: Phone Label, name: phone_label, widget: string }
+          - { label: Address Label, name: address_label, widget: string }
+          - label: Email
+            name: email
+            widget: string
+            pattern:
+              [
+                "^\\S+@\\S+\\.[A-Za-z]{2,}$",
+                "Enter a valid email address."
+              ]
+          - label: Phone
+            name: phone
+            widget: string
+            pattern:
+              [
+                "^[0-9+()\\s-]{7,}$",
+                "Use digits and optional +, spaces, or dashes."
+              ]
+          - { label: Phone Link, name: phone_href, widget: string }
+          - { label: Address, name: address, widget: string }
+          - { label: Address Map URL, name: address_map_url, widget: string }
+          - label: Form Labels
+            name: form
             widget: object
             fields:
-              - label: Intro
-                name: intro
-                widget: object
-                fields:
-                  - { label: Eyebrow, name: eyebrow, widget: string }
-                  - { label: Heading, name: heading, widget: text }
-              - { label: Heading, name: heading, widget: string }
+              - { label: Name Label, name: name_label, widget: string }
               - { label: Email Label, name: email_label, widget: string }
-              - { label: Phone Label, name: phone_label, widget: string }
-              - { label: Address Label, name: address_label, widget: string }
-              - label: Email
-                name: email
-                widget: string
-                pattern:
-                  [
-                    "^\\S+@\\S+\\.[A-Za-z]{2,}$",
-                    "Enter a valid email address."
-                  ]
-              - label: Phone
-                name: phone
-                widget: string
-                pattern:
-                  [
-                    "^[0-9+()\\s-]{7,}$",
-                    "Use digits and optional +, spaces, or dashes."
-                  ]
-              - label: Phone Link
-                name: phone_href
-                widget: string
-                hint: "Use a tel: link, e.g. tel:+302112184996"
-              - { label: Address, name: address, widget: string }
-              - { label: Address Map URL, name: address_map_url, widget: string }
-              - label: Form Labels
-                name: form
+              - { label: Message Label, name: message_label, widget: string }
+              - { label: Submit Button Label, name: submit_label, widget: string }
+              - label: Status Messages
+                name: messages
                 widget: object
                 fields:
-                  - { label: Name Label, name: name_label, widget: string }
-                  - { label: Email Label, name: email_label, widget: string }
-                  - { label: Message Label, name: message_label, widget: string }
-                  - { label: Submit Button Label, name: submit_label, widget: string }
-                  - label: Status Messages
-                    name: messages
+                  - { label: Invalid Form, name: invalid, widget: hidden }
+                  - { label: Pending, name: pending, widget: hidden }
+                  - { label: Success, name: success, widget: hidden }
+                  - { label: Error, name: error, widget: hidden }
+                  - { label: Send Error, name: send_error, widget: hidden }
+              - label: Field Errors
+                name: field_errors
+                widget: object
+                fields:
+                  - label: Name Field
+                    name: name
                     widget: object
                     fields:
-                      - { label: Invalid Form, name: invalid, widget: hidden }
-                      - { label: Pending, name: pending, widget: hidden }
-                      - { label: Success, name: success, widget: hidden }
-                      - { label: Error, name: error, widget: hidden }
-                      - { label: Send Error, name: send_error, widget: hidden }
-                  - label: Field Errors
-                    name: field_errors
+                      - { label: Missing, name: valueMissing, widget: hidden }
+                      - { label: Too Short, name: tooShort, widget: hidden }
+                  - label: Email Field
+                    name: email
                     widget: object
                     fields:
-                      - label: Name Field
-                        name: name
-                        widget: object
-                        fields:
-                          - { label: Missing, name: valueMissing, widget: hidden }
-                          - { label: Too Short, name: tooShort, widget: hidden }
-                      - label: Email Field
-                        name: email
-                        widget: object
-                        fields:
-                          - { label: Missing, name: valueMissing, widget: hidden }
-                          - { label: Invalid Email, name: typeMismatch, widget: hidden }
-                      - label: Message Field
-                        name: message
-                        widget: object
-                        fields:
-                          - { label: Missing, name: valueMissing, widget: hidden }
-                          - { label: Too Short, name: tooShort, widget: hidden }
-          - label: Footer
-            name: footer
+                      - { label: Missing, name: valueMissing, widget: hidden }
+                      - { label: Invalid Email, name: typeMismatch, widget: hidden }
+                  - label: Message Field
+                    name: message
+                    widget: object
+                    fields:
+                      - { label: Missing, name: valueMissing, widget: hidden }
+                      - { label: Too Short, name: tooShort, widget: hidden }
+
+      - name: footer
+        label: Footer (GR)
+        file: _data/gr/cove/footer.yml
+        fields:
+          - { label: Logo Alt Text, name: logo_alt, widget: string }
+          - { label: Tagline, name: tagline, widget: text, required: false }
+          - { label: Copyright, name: copyright, widget: hidden }
+
+  - name: gr-therapists
+    label: GR • Therapists
+    folder: _data/gr/cove/therapists
+    extension: yml
+    format: yml
+    create: false
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - { label: Name, name: name, widget: string }
+      - { label: Role, name: role, widget: string }
+      - { label: Image, name: image, widget: image }
+      - { label: Alt Text, name: alt, widget: string }
+      - { label: Bio, name: bio, widget: markdown }
+
+  - name: gr-approaches
+    label: GR • Approaches
+    folder: _data/gr/cove/approaches
+    extension: yml
+    format: yml
+    create: false
+    slug: "{{slug}}"
+    identifier_field: title
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: markdown }
+      - label: Image
+        name: image
+        widget: object
+        fields:
+          - { label: Image, name: src, widget: image }
+          - { label: Alt Text, name: alt, widget: string }
+
+  - name: en-sections
+    label: EN • Sections
+    files:
+      - name: hero
+        label: Hero (EN)
+        file: _data/en/cove/hero.yml
+        fields:
+          - { label: Heading, name: heading, widget: string }
+          - { label: Lead Text, name: lead, widget: markdown }
+          - label: Primary Button
+            name: primary_cta
             widget: object
             fields:
-              - { label: Tagline, name: tagline, widget: text, required: false }
-              - { label: Copyright, name: copyright, widget: hidden }
+              - { label: Label, name: label, widget: string }
+              - label: Link
+                name: href
+                widget: string
+                pattern:
+                  [
+                    "^(#[-a-zA-Z0-9]+|https?://.+)$",
+                    "Use an anchor (#section) or a full URL."
+                  ]
+          - label: Secondary Button
+            name: secondary_cta
+            widget: object
+            fields:
+              - { label: Label, name: label, widget: string }
+              - label: Link
+                name: href
+                widget: string
+                pattern:
+                  [
+                    "^(#[-a-zA-Z0-9]+|https?://.+)$",
+                    "Use an anchor (#section) or a full URL."
+                  ]
+          - label: Space Image
+            name: space_image
+            widget: object
+            fields:
+              - { label: Image, name: src, widget: image }
+              - { label: Alt Text, name: alt, widget: string }
+
+      - name: audiences
+        label: Audiences (EN)
+        file: _data/en/cove/audiences.yml
+        fields:
+          - { label: Intro, name: intro, widget: string, required: false }
+          - label: For Clients
+            name: clients
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Body, name: body, widget: markdown }
+          - label: For Therapists
+            name: therapist
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Body, name: body, widget: markdown }
+
+      - name: contact
+        label: Contact (EN)
+        file: _data/en/cove/contact.yml
+        fields:
+          - label: Intro
+            name: intro
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Heading, name: heading, widget: text }
+          - { label: Heading, name: heading, widget: string }
+          - { label: Email Label, name: email_label, widget: string }
+          - { label: Phone Label, name: phone_label, widget: string }
+          - { label: Address Label, name: address_label, widget: string }
+          - label: Email
+            name: email
+            widget: string
+            pattern:
+              [
+                "^\\S+@\\S+\\.[A-Za-z]{2,}$",
+                "Enter a valid email address."
+              ]
+          - label: Phone
+            name: phone
+            widget: string
+            pattern:
+              [
+                "^[0-9+()\\s-]{7,}$",
+                "Use digits and optional +, spaces, or dashes."
+              ]
+          - { label: Phone Link, name: phone_href, widget: string }
+          - { label: Address, name: address, widget: string }
+          - { label: Address Map URL, name: address_map_url, widget: string }
+          - label: Form Labels
+            name: form
+            widget: object
+            fields:
+              - { label: Name Label, name: name_label, widget: string }
+              - { label: Email Label, name: email_label, widget: string }
+              - { label: Message Label, name: message_label, widget: string }
+              - { label: Submit Button Label, name: submit_label, widget: string }
+              - label: Status Messages
+                name: messages
+                widget: object
+                fields:
+                  - { label: Invalid Form, name: invalid, widget: hidden }
+                  - { label: Pending, name: pending, widget: hidden }
+                  - { label: Success, name: success, widget: hidden }
+                  - { label: Error, name: error, widget: hidden }
+                  - { label: Send Error, name: send_error, widget: hidden }
+              - label: Field Errors
+                name: field_errors
+                widget: object
+                fields:
+                  - label: Name Field
+                    name: name
+                    widget: object
+                    fields:
+                      - { label: Missing, name: valueMissing, widget: hidden }
+                      - { label: Too Short, name: tooShort, widget: hidden }
+                  - label: Email Field
+                    name: email
+                    widget: object
+                    fields:
+                      - { label: Missing, name: valueMissing, widget: hidden }
+                      - { label: Invalid Email, name: typeMismatch, widget: hidden }
+                  - label: Message Field
+                    name: message
+                    widget: object
+                    fields:
+                      - { label: Missing, name: valueMissing, widget: hidden }
+                      - { label: Too Short, name: tooShort, widget: hidden }
+
+      - name: footer
+        label: Footer (EN)
+        file: _data/en/cove/footer.yml
+        fields:
+          - { label: Logo Alt Text, name: logo_alt, widget: string }
+          - { label: Tagline, name: tagline, widget: text, required: false }
+          - { label: Copyright, name: copyright, widget: hidden }
+
+  - name: en-therapists
+    label: EN • Therapists
+    folder: _data/en/cove/therapists
+    extension: yml
+    format: yml
+    create: false
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - { label: Name, name: name, widget: string }
+      - { label: Role, name: role, widget: string }
+      - { label: Image, name: image, widget: image }
+      - { label: Alt Text, name: alt, widget: string }
+      - { label: Bio, name: bio, widget: markdown }
+
+  - name: en-approaches
+    label: EN • Approaches
+    folder: _data/en/cove/approaches
+    extension: yml
+    format: yml
+    create: false
+    slug: "{{slug}}"
+    identifier_field: title
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: markdown }
+      - label: Image
+        name: image
+        widget: object
+        fields:
+          - { label: Image, name: src, widget: image }
+          - { label: Alt Text, name: alt, widget: string }

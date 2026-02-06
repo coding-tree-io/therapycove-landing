@@ -44,8 +44,8 @@ This generates `assets/css/site.bundle.css` and must be committed.
 - `assets/js/` behavior
 
 ## 🌍 Localization
-- Greek: `_data/el/therapy_cove.yml`
-- English: `_data/en/therapy_cove.yml`
+- Greek: `_data/gr/cove/`
+- English: `_data/en/cove/`
 
 Language toggle: `_config.yml` → `flags.show_lang_toggle`.
 
@@ -62,6 +62,13 @@ GitHub Pages via `.github/workflows/pages.yml` on `main`.
 
 ## 🔐 CMS (Decap)
 Decap CMS is configured; local backend can be started by the dev script when Node is available.
+
+### Commit policy (Decap)
+- Direct to `main`
+- One commit per save
+- Content create/update/delete: `docs(content): <action> <locale>/<entry-slug>`
+- Media upload/delete: `docs(media): <action> <path>`
+- Locale + area derive from Decap collection names: `gr-sections`, `gr-therapists`, `gr-approaches`, `en-sections`, `en-therapists`, `en-approaches`
 
 ---
 

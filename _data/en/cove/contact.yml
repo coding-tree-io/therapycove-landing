@@ -1,0 +1,33 @@
+intro:
+  eyebrow: "Contact"
+  heading: "Get in touch to learn more about session duration and fees."
+heading: "Contact details"
+email_label: "Email"
+phone_label: "Phone"
+address_label: "Address"
+email: "info@therapycove.gr"
+phone: "211 218 4996"
+phone_href: "tel:+302112184996"
+address: "Karneadou 23, Athens"
+address_map_url: "https://www.google.com/maps/search/?api=1&query=Therapy%20Cove%2C%20Karneadou%2023%2C%20Athina%2010675%2C%20Greece&query_place_id=ChIJPfN08TS9oRQRzCUSGS0TR_E"
+form:
+  name_label: "Full name"
+  email_label: "Email"
+  message_label: "Message"
+  submit_label: "Send"
+  messages:
+    invalid: "Please complete the fields correctly."
+    pending: "Sending..."
+    success: "Message sent. We will be in touch soon."
+    error: "Something went wrong. Please try again."
+    send_error: "Unable to send. Please try again."
+  field_errors:
+    name:
+      valueMissing: "Please enter your full name."
+      tooShort: "Your name must be at least 2 characters."
+    email:
+      valueMissing: "Please enter your email."
+      typeMismatch: "Please use a valid email address."
+    message:
+      valueMissing: "Please enter a message."
+      tooShort: "Your message must be at least 10 characters."

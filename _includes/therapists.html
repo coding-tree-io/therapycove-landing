@@ -1,6 +1,8 @@
-{% assign data_lang = page.lang | default: site.active_lang | default: site.default_lang | default: site.lang | default: 'el' %}
-{% assign cove = site.data[data_lang].therapy_cove | default: site.data.therapy_cove %}
+{% assign data_lang = page.lang | default: site.active_lang | default: site.default_lang | default: site.lang | default: 'gr' %}
+{% assign cove = site.data[data_lang].cove | default: site.data.cove %}
 {% assign therapists = cove.therapists %}
+{% assign therapists_section = cove.therapists_section %}
+{% assign therapist_ids = "artemis-rentoumi|viviana-koukou|evelina-moustaka" | split: "|" %}
 {% assign site_nav = cove.site_nav %}
 {% assign therapists_label = '' %}
 {% for link in site_nav.links %}
@@ -8,7 +10,8 @@
     {% assign therapists_label = link.label %}
   {% endif %}
 {% endfor %}
-{% assign featured = therapists.members[0] %}
+{% assign featured_id = therapist_ids[0] %}
+{% assign featured = therapists[featured_id] %}
 <span id="therapists" class="cove-anchor cove-anchor--therapists"></span>
 <section class="cove-section cove-therapists" data-anchor-center-target=".cove-therapists-featured">
   <div class="cove-shell">
@@ -45,7 +48,8 @@
     {% endif %}
 
     <div class="cove-therapists-grid">
-      {% for member in therapists.members offset:1 %}
+      {% for member_id in therapist_ids offset:1 %}
+      {% assign member = therapists[member_id] %}
       <article class="cove-therapists-card transition hover:-translate-y-1">
         <div class="cove-therapists-card-media ring-1 ring-white/40">
           {% include picture.html

@@ -1,5 +1,5 @@
-{%- assign data_lang = page.lang | default: site.active_lang | default: site.lang | default: site.default_lang | default: 'el' -%}
-{%- assign cove = site.data[data_lang].therapy_cove | default: site.data.therapy_cove -%}
+{%- assign data_lang = page.lang | default: site.active_lang | default: site.lang | default: site.default_lang | default: 'gr' -%}
+{%- assign cove = site.data[data_lang].cove | default: site.data.cove -%}
 {%- assign contact = cove.contact -%}
 {%- assign address_parts = contact.address | split: ',' -%}
 {%- assign street_address = address_parts[0] | strip -%}

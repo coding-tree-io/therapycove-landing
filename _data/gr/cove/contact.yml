@@ -1,0 +1,33 @@
+intro:
+  eyebrow: "Επικοινωνία"
+  heading: "Επικοινώνησε μαζί μας για να μάθεις περισσότερες λεπτομέρειες για τη διάρκεια και το κόστος των συνεδριών μας."
+heading: "Στοιχεία επικοινωνίας"
+email_label: "Email"
+phone_label: "Τηλέφωνο"
+address_label: "Διεύθυνση"
+email: "info@therapycove.gr"
+phone: "211 218 4996"
+phone_href: "tel:+302112184996"
+address: "Καρνεαδου 23, Αθήνα"
+address_map_url: "https://www.google.com/maps/search/?api=1&query=Therapy%20Cove%2C%20Karneadou%2023%2C%20Athina%2010675%2C%20Greece&query_place_id=ChIJPfN08TS9oRQRzCUSGS0TR_E"
+form:
+  name_label: "Ονοματεπώνυμο"
+  email_label: "Email"
+  message_label: "Μήνυμα"
+  submit_label: "Αποστολή"
+  messages:
+    invalid: "Παρακαλούμε συμπλήρωσε σωστά τα πεδία."
+    pending: "Αποστολή…"
+    success: "Το μήνυμα στάλθηκε. Θα επικοινωνήσουμε σύντομα."
+    error: "Παρουσιάστηκε σφάλμα. Δοκιμάστε ξανά."
+    send_error: "Δεν ήταν δυνατή η αποστολή. Δοκιμάστε ξανά."
+  field_errors:
+    name:
+      valueMissing: "Συμπλήρωσε το ονοματεπώνυμο."
+      tooShort: "Το ονοματεπώνυμο πρέπει να έχει τουλάχιστον 2 χαρακτήρες."
+    email:
+      valueMissing: "Συμπλήρωσε το email."
+      typeMismatch: "Χρησιμοποίησε ένα έγκυρο email."
+    message:
+      valueMissing: "Συμπλήρωσε το μήνυμα."
+      tooShort: "Το μήνυμα πρέπει να έχει τουλάχιστον 10 χαρακτήρες."

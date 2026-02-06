@@ -1,6 +1,8 @@
-{% assign data_lang = page.lang | default: site.active_lang | default: site.default_lang | default: site.lang | default: 'el' %}
-{% assign cove = site.data[data_lang].therapy_cove | default: site.data.therapy_cove %}
+{% assign data_lang = page.lang | default: site.active_lang | default: site.default_lang | default: site.lang | default: 'gr' %}
+{% assign cove = site.data[data_lang].cove | default: site.data.cove %}
 {% assign approaches = cove.approaches %}
+{% assign approaches_section = cove.approaches_section %}
+{% assign approach_ids = "psychotherapeutic-approaches|psychotherapy-benefits|find-the-right-therapist" | split: "|" %}
 {% assign site_nav = cove.site_nav %}
 {% assign approaches_label = '' %}
 {% for link in site_nav.links %}
@@ -9,22 +11,23 @@
   {% endif %}
 {% endfor %}
 {% if approaches_label == '' %}
-  {% assign approaches_label = approaches.heading %}
+  {% assign approaches_label = approaches_section.heading %}
 {% endif %}
 <section id="approaches" class="cove-section cove-approaches">
   <div class="cove-shell">
-    {% assign approaches_summary = approaches.summary | strip %}
-    {% assign approaches_first = approaches.tabs[0].description | strip %}
+    {% assign approaches_summary = approaches_section.summary | strip %}
+    {% assign first_approach_id = approach_ids[0] %}
+    {% assign approaches_first = approaches[first_approach_id].description | strip %}
     <div class="section-intro section-intro--left" data-approaches-lock>
       {% if approaches_label != '' %}
       <p class="cove-eyebrow">{{ approaches_label }}</p>
       {% endif %}
       {% if approaches_summary != '' and approaches_summary != approaches_first %}
-      <div class="cove-section-summary cove-rich-text">{{ approaches.summary | markdownify }}</div>
+      <div class="cove-section-summary cove-rich-text">{{ approaches_section.summary | markdownify }}</div>
       {% endif %}
     </div>
     <div class="approaches-tabs">
-      {% for tab in approaches.tabs %}
+      {% for tab_id in approach_ids %}
       <input
         id="approach-tab-{{ forloop.index0 }}"
         class="approaches-tab-toggle"
@@ -35,7 +38,8 @@
       {% endfor %}
 
       <div class="approaches-tab-list" role="list">
-        {% for tab in approaches.tabs %}
+        {% for tab_id in approach_ids %}
+        {% assign tab = approaches[tab_id] %}
         <label
           id="approach-tab-label-{{ forloop.index0 }}"
           class="approaches-tab ring-1 ring-cove-charcoal/5 hover:bg-white/60 transition"
@@ -57,7 +61,8 @@
       </div>
 
       <div class="approaches-panels">
-        {% for tab in approaches.tabs %}
+        {% for tab_id in approach_ids %}
+        {% assign tab = approaches[tab_id] %}
         <div
           id="approach-panel-{{ forloop.index0 }}"
           class="approaches-panel cove-surface ring-1 ring-white/40 shadow-soft"
