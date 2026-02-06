@@ -1,141 +1,154 @@
 site_nav:
-  logo_alt: "Therapy Cove logo"
+  logo_alt: Therapy Cove logo
   links:
-    - label: "Home"
+    - label: Home
       href: "#home"
-    - label: "Team"
+    - label: Team
       href: "#therapists"
-    - label: "Approaches"
+    - label: Approaches
       href: "#approaches"
-    - label: "Contact"
+    - label: Contact
       href: "#contact"
   cta:
     primary:
-      label: "Book a Session"
+      label: Book a Session
       href: "#contact"
     secondary:
-      label: "Contact"
+      label: Contact
       href: "#contact"
   lang_toggle:
-    label: "EL"
-    aria_label: "Switch to Greek"
-
+    label: EL
+    aria_label: Switch to Greek
 hero:
-  heading: "A space for you"
-  lead: |
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  heading: A space for you
+  lead: Lorem2 ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
   primary_cta:
-    label: "The space"
+    label: The space
     href: "#space"
   secondary_cta:
-    label: "Meet the team"
+    label: Meet the team
     href: "#therapists"
   space_image:
-    src: "/assets/images/therapy-cove-space-hero.jpg"
-    alt: "Therapy Cove space"
-
+    src: /assets/images/therapy-cove-space-hero.jpg
+    alt: Therapy Cove space
 audiences:
   intro: ""
   clients:
-    heading: "For clients"
-    body: |
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    heading: For clients
+    body: >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure
+      dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+      nulla pariatur.
+
 
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
   therapist:
-    heading: "For therapists"
-    body: |
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    heading: For therapists
+    body: >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+
 
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse.
-
 therapists:
-  heading: "Meet the Therapy Cove team"
+  heading: Meet the Therapy Cove team
   members:
-    - name: "Artemis Rentoumi"
-      role: "Psychologist - Psychotherapist"
-      image: "/assets/images/therapist-artemis-rentoumi.jpg"
-      alt: "Artemis Rentoumi"
-      bio: |
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    - name: Artemis Rentoumi
+      role: Psychologist - Psychotherapist
+      image: /assets/images/therapist-artemis-rentoumi.jpg
+      alt: Artemis Rentoumi
+      bio: >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+
 
         > *"Lorem ipsum dolor sit amet, consectetur adipiscing elit."*
-    - name: "Viviana Koukou"
-      role: "Social worker - Psychotherapist"
-      image: "/assets/images/therapist-viviana-koukou.jpg"
-      alt: "Viviana Koukou"
-      bio: |
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    - name: Viviana Koukou
+      role: Social worker - Psychotherapist
+      image: /assets/images/therapist-viviana-koukou.jpg
+      alt: Viviana Koukou
+      bio: >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+        nulla pariatur.
+
 
         > *"Lorem ipsum dolor sit amet, consectetur adipiscing elit."*
-    - name: "Evelina Moustaka"
-      role: "Psychologist - Psychotherapist"
-      image: "/assets/images/therapist-evelina-moustaka.jpg"
-      alt: "Evelina Moustaka"
-      bio: |
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    - name: Evelina Moustaka
+      role: Psychologist - Psychotherapist
+      image: /assets/images/therapist-evelina-moustaka.jpg
+      alt: Evelina Moustaka
+      bio: >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad
+        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+        ex ea commodo consequat.
+
 
         > *"Lorem ipsum dolor sit amet, consectetur adipiscing elit."*
-
 approaches:
-  heading: "Psychotherapy approaches"
-  summary:
+  heading: Psychotherapy approaches
+  summary: null
   tabs:
-    - title: "Psychotherapy approaches"
-      description: |
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
+    - title: Psychotherapy approaches
+      description: >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore.
       image:
-        src: "/assets/images/psychotherapeutic-approaches.jpg"
-        alt: "Psychotherapy approaches"
-    - title: "Benefits of psychotherapy"
-      description: |
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        src: /assets/images/psychotherapeutic-approaches.jpg
+        alt: Psychotherapy approaches
+    - title: Benefits of psychotherapy
+      description: >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
       image:
-        src: "/assets/images/psychotherapy-benefits.jpg"
-        alt: "Benefits of psychotherapy"
-    - title: "Find the right therapist"
-      description: |
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+        src: /assets/images/psychotherapy-benefits.jpg
+        alt: Benefits of psychotherapy
+    - title: Find the right therapist
+      description: >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad
+        minim veniam, quis nostrud exercitation ullamco laboris.
       image:
-        src: "/assets/images/find-the-best-therapist.jpg"
-        alt: "Find the right therapist"
-
+        src: /assets/images/find-the-best-therapist.jpg
+        alt: Find the right therapist
 contact:
-  intro:
-    eyebrow: "Contact"
-    heading: "Get in touch to learn more about session duration and fees."
-  heading: "Contact details"
-  email_label: "Email"
-  phone_label: "Phone"
-  address_label: "Address"
-  email: "info@therapycove.gr"
-  phone: "211 218 4996"
-  phone_href: "tel:+302112184996"
-  address: "Karneadou 23, Athens"
-  address_map_url: "https://www.google.com/maps/search/?api=1&query=Therapy%20Cove%2C%20Karneadou%2023%2C%20Athina%2010675%2C%20Greece&query_place_id=ChIJPfN08TS9oRQRzCUSGS0TR_E"
+  address_map_url: https://www.google.com/maps/search/?api=1&query=Therapy%20Cove%2C%20Karneadou%2023%2C%20Athina%2010675%2C%20Greece&query_place_id=ChIJPfN08TS9oRQRzCUSGS0TR_E
+  heading: Contact details
+  phone_label: Phone
   form:
-    name_label: "Full name"
-    email_label: "Email"
-    message_label: "Message"
-    submit_label: "Send"
+    name_label: Full name
+    email_label: Email
+    message_label: Message
+    submit_label: Send
     messages:
-      invalid: "Please complete the fields correctly."
-      pending: "Sending..."
-      success: "Message sent. We will be in touch soon."
-      error: "Something went wrong. Please try again."
-      send_error: "Unable to send. Please try again."
+      invalid: Please complete the fields correctly.
+      pending: Sending...
+      success: Message sent. We will be in touch soon.
+      error: Something went wrong. Please try again.
+      send_error: Unable to send. Please try again.
     field_errors:
       name:
-        valueMissing: "Please enter your full name."
-        tooShort: "Your name must be at least 2 characters."
+        valueMissing: Please enter your full name.
+        tooShort: Your name must be at least 2 characters.
       email:
-        valueMissing: "Please enter your email."
-        typeMismatch: "Please use a valid email address."
+        valueMissing: Please enter your email.
+        typeMismatch: Please use a valid email address.
       message:
-        valueMissing: "Please enter a message."
-        tooShort: "Your message must be at least 10 characters."
-
+        valueMissing: Please enter a message.
+        tooShort: Your message must be at least 10 characters.
+  address_label: Address
+  intro:
+    eyebrow: Contact
+    heading: Get in touch to learn more about session duration and fees.
+  phone: 211 218 4996
+  email_label: Email
+  address: Karneadou 23, Athens
+  phone_href: tel:+302112184996
+  email: info@therapycove.gr
 footer:
-  logo_alt: "Therapy Cove logo"
-  tagline: "A safe and supportive mental health space in central Athens."
-  copyright: "© 2026 Therapy Cove"
+  logo_alt: Therapy Cove logo
+  tagline: A safe and supportive mental health space in central Athens.
+  copyright: © 2026 Therapy Cove
