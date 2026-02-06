@@ -1,6 +1,7 @@
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
     if (request.method === "OPTIONS") {
       return new Response(null, {
         status: 204,
@@ -48,12 +49,11 @@ export default {
       return new Response("Server misconfigured", { status: 500 });
     }
 
-    const payload = {
-      token: env.GITHUB_TOKEN,
-      provider: "github",
-    };
-
     const targetOrigin = env.CMS_ORIGIN || "*";
+    const startMessage = "authorizing:github";
+    const successMessage = `authorization:github:success:${JSON.stringify({
+      token: env.GITHUB_TOKEN,
+    })}`;
 
     const html = `<!doctype html>
 <html lang="en">
@@ -64,14 +64,36 @@ export default {
   <body>
     <script>
       (function () {
-        var payload = ${JSON.stringify(payload)};
-        try {
-          if (window.opener) {
-            window.opener.postMessage(payload, ${JSON.stringify(targetOrigin)});
+        var targetOrigin = ${JSON.stringify(targetOrigin)};
+        var startMessage = ${JSON.stringify(startMessage)};
+        var successMessage = ${JSON.stringify(successMessage)};
+
+        function finalize() {
+          try {
+            if (window.opener) {
+              window.opener.postMessage(successMessage, targetOrigin);
+            }
+          } finally {
+            window.close();
           }
-        } finally {
-          window.close();
         }
+
+        function receiveMessage() {
+          window.removeEventListener("message", receiveMessage, false);
+          finalize();
+        }
+
+        if (!window.opener) {
+          return;
+        }
+
+        window.addEventListener("message", receiveMessage, false);
+        window.opener.postMessage(startMessage, targetOrigin);
+
+        // Fallback for browsers/extensions that block the opener handshake event.
+        setTimeout(function () {
+          receiveMessage();
+        }, 1000);
       })();
     </script>
   </body>
