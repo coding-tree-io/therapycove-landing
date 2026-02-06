@@ -9,6 +9,7 @@
   /* Extended palette - complementary tones */
   --cove-ocean-deep: #7ab08a;
   --cove-ocean-light: #c5dece;
+  --cove-ocean-ink: #3f5f4b;
   --cove-warm-white: #fffef9;
 
   --cove-font-greek: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -288,7 +289,7 @@ h4 {
 }
 
 .cove-eyebrow {
-  color: var(--cove-ocean-flow);
+  color: var(--cove-ocean-ink);
   font-size: clamp(0.95rem, 1.4vw, 1.2rem);
   font-weight: 600;
   letter-spacing: 0.18em;

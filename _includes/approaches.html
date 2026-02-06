@@ -37,14 +37,14 @@
       >
       {% endfor %}
 
-      <div class="approaches-tab-list" role="list">
+      <div class="approaches-tab-list">
         {% for tab_id in approach_ids %}
         {% assign tab = approaches[tab_id] %}
         <label
           id="approach-tab-label-{{ forloop.index0 }}"
           class="approaches-tab ring-1 ring-cove-charcoal/5 hover:bg-white/60 transition"
           for="approach-tab-{{ forloop.index0 }}"
-          role="button"
+          tabindex="0"
           aria-expanded="false"
           aria-controls="approach-panel-{{ forloop.index0 }}"
         >

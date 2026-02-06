@@ -59,6 +59,21 @@
     });
   });
 
+  tabLabels.forEach((label, index) => {
+    label.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") {
+        return;
+      }
+      event.preventDefault();
+      const tab = tabInputs[index];
+      if (!tab) {
+        return;
+      }
+      tab.checked = !tab.checked;
+      tab.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+  });
+
   syncOpenVisuals();
 
   const prefersReducedMotion =

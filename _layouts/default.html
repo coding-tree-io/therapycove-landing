@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.active_lang | default: site.lang | default: site.default_lang | default: 'gr' }}">
+{% assign resolved_lang = page.lang | default: site.active_lang | default: site.lang | default: site.default_lang | default: 'gr' %}
+{% assign html_lang = resolved_lang %}
+{% if resolved_lang == 'gr' %}
+  {% assign html_lang = 'el' %}
+{% endif %}
+<html lang="{{ html_lang }}">
 <head>
   {% include seo.html %}
   <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -405,7 +405,7 @@
 }
 
 .cove-hero-lead p:first-child::first-letter {
-  color: var(--cove-ocean-flow);
+  color: var(--cove-ocean-ink);
 }
 
 .cove-hero-lead::after {

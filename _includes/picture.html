@@ -2,6 +2,7 @@
 {%- assign base = include.src | replace: '.jpg', '' | replace: '.jpeg', '' | replace: '.png', '' -%}
 {%- assign base_url = base | relative_url -%}
 {%- assign sizes_attr = include.sizes | default: '100vw' -%}
+{%- assign fallback_width = widths[0] | strip -%}
 
 {%- capture srcset_avif -%}
 {%- for w in widths -%}
@@ -26,7 +27,7 @@
   <source type="image/webp" srcset="{{ srcset_webp | strip }}" sizes="{{ sizes_attr }}">
   <img
     alt="{{ include.alt }}"
-    src="{{ include.src | relative_url }}"
+    src="{{ base_url }}-{{ fallback_width }}.jpg"
     srcset="{{ srcset_jpg | strip }}"
     sizes="{{ sizes_attr }}"
     {% if include.width %}width="{{ include.width }}"{% endif %}

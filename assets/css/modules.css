@@ -117,7 +117,7 @@
 }
 
 .cove-therapists-card-meta p,
-.cove-therapists-card-meta h3 {
+.cove-therapists-card-meta h2 {
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 999px;
@@ -369,7 +369,7 @@
   background: rgba(var(--cove-ocean-flow-rgb), 0.12);
   border: 1px solid rgba(var(--cove-ocean-flow-rgb), 0.15);
   border-radius: var(--cove-radius-sm);
-  color: var(--cove-ocean-flow);
+  color: var(--cove-ocean-ink);
   display: flex;
   height: 52px;
   justify-content: center;
@@ -391,7 +391,7 @@
 }
 
 .cove-contact-label {
-  color: var(--cove-charcoal-muted);
+  color: var(--cove-charcoal-soft);
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -822,7 +822,7 @@
   }
 
   .cove-therapists-card-meta p,
-  .cove-therapists-card-meta h3 {
+  .cove-therapists-card-meta h2 {
     background: transparent;
     border: 0;
     padding: 0;
