@@ -27,40 +27,52 @@
       {% endif %}
     </div>
     <div class="approaches-tabs">
-      {% for tab_id in approach_ids %}
-      <input
-        id="approach-tab-{{ forloop.index0 }}"
-        class="approaches-tab-toggle"
-        type="checkbox"
-        name="approaches-tabs"
-        {% if forloop.first %}checked{% endif %}
-      >
-      {% endfor %}
-
       <div class="approaches-tab-list">
         {% for tab_id in approach_ids %}
         {% assign tab = approaches[tab_id] %}
-        <label
-          id="approach-tab-label-{{ forloop.index0 }}"
-          class="approaches-tab ring-1 ring-cove-charcoal/5 hover:bg-white/60 transition"
-          for="approach-tab-{{ forloop.index0 }}"
-          tabindex="0"
-          aria-expanded="false"
-          aria-controls="approach-panel-{{ forloop.index0 }}"
-        >
-          <span class="approaches-dot"></span>
-          <span class="approaches-title">{{ tab.title }}</span>
-          <div class="approaches-description cove-rich-text">{{ tab.description | markdownify }}</div>
-          <span class="approaches-toggle" aria-hidden="true">
-            <svg class="approaches-toggle-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-              <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </span>
-        </label>
+        <article class="approaches-tab-card ring-1 ring-cove-charcoal/5" data-approach-index="{{ forloop.index0 }}">
+          <button
+            id="approach-tab-button-{{ forloop.index0 }}"
+            class="approaches-tab hover:bg-white/60 transition"
+            type="button"
+            aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+            aria-controls="approach-content-{{ forloop.index0 }}"
+          >
+            <span class="approaches-dot"></span>
+            <span class="approaches-title">{{ tab.title }}</span>
+            <span class="approaches-toggle" aria-hidden="true">
+              <svg class="approaches-toggle-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </button>
+
+          <div
+            id="approach-content-{{ forloop.index0 }}"
+            class="approaches-content"
+            role="region"
+            aria-labelledby="approach-tab-button-{{ forloop.index0 }}"
+            {% unless forloop.first %}hidden{% endunless %}
+          >
+            <div class="approaches-description cove-rich-text">{{ tab.description | markdownify }}</div>
+            <div class="approaches-inline-panel cove-surface ring-1 ring-white/40 shadow-soft">
+              {% include picture.html
+                src=tab.image.src
+                alt=tab.image.alt
+                widths="480,720,960,1280,1600"
+                sizes="(max-width: 1024px) 100vw, 0px"
+                width="960"
+                height="540"
+                class="approaches-image"
+                loading="lazy"
+              %}
+            </div>
+          </div>
+        </article>
         {% endfor %}
       </div>
 
-      <div class="approaches-panels">
+      <div class="approaches-panels" aria-hidden="true">
         {% for tab_id in approach_ids %}
         {% assign tab = approaches[tab_id] %}
         <div

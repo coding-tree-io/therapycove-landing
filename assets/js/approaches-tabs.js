@@ -4,73 +4,129 @@
     return;
   }
 
-  const tabInputs = Array.from(
-    approachesSection.querySelectorAll("input.approaches-tab-toggle")
+  const tabCards = Array.from(
+    approachesSection.querySelectorAll(".approaches-tab-card")
   );
-  if (tabInputs.length < 2) {
+  const tabButtons = Array.from(
+    approachesSection.querySelectorAll(".approaches-tab-list .approaches-tab")
+  );
+  const tabContents = Array.from(
+    approachesSection.querySelectorAll(".approaches-content")
+  );
+  const tabPanels = Array.from(
+    approachesSection.querySelectorAll(".approaches-panels .approaches-panel")
+  );
+
+  if (tabButtons.length < 2) {
     return;
   }
 
-  const tabLabels = Array.from(
-    approachesSection.querySelectorAll(".approaches-tab")
-  );
-  const tabPanels = Array.from(
-    approachesSection.querySelectorAll(".approaches-panel")
-  );
+  let openIndices = new Set([0]);
+  let autoSequenceCompleted = false;
+  let onOpenIndex = null;
+
+  const normalizeOpenSet = (indices) => {
+    const normalized = [];
+    Array.from(indices).forEach((value) => {
+      const index = Number(value);
+      if (!Number.isInteger(index)) {
+        return;
+      }
+      if (index < 0 || index >= tabButtons.length) {
+        return;
+      }
+      if (!normalized.includes(index)) {
+        normalized.push(index);
+      }
+    });
+
+    if (!normalized.length) {
+      normalized.push(0);
+    }
+
+    return new Set(normalized);
+  };
 
   const getOpenIndices = () =>
-    tabInputs.reduce((indices, tab, index) => {
-      if (tab.checked) {
-        indices.push(index);
-      }
-      return indices;
-    }, []);
+    Array.from(openIndices).sort((left, right) => left - right);
+
   const getLastOpenedIndex = () => {
-    const openIndices = getOpenIndices();
-    if (!openIndices.length) {
+    const sorted = getOpenIndices();
+    if (!sorted.length) {
       return 0;
     }
-    return Math.max(...openIndices);
+    return sorted[sorted.length - 1];
   };
+
   const syncOpenVisuals = () => {
-    tabLabels.forEach((label, labelIndex) => {
-      const isOpen = tabInputs[labelIndex]?.checked;
-      label.classList.toggle("is-open", isOpen);
-      label.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    tabButtons.forEach((button, index) => {
+      const isOpen = openIndices.has(index);
+      button.classList.toggle("is-open", isOpen);
+      button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      tabCards[index]?.classList.toggle("is-open", isOpen);
+
+      const content = tabContents[index];
+      if (content) {
+        content.hidden = !isOpen;
+      }
     });
-    tabPanels.forEach((panel, panelIndex) => {
-      panel.classList.toggle("is-open", Boolean(tabInputs[panelIndex]?.checked));
+
+    tabPanels.forEach((panel, index) => {
+      panel.classList.toggle("is-open", openIndices.has(index));
     });
   };
+
+  const setOpenState = (nextIndices) => {
+    openIndices = normalizeOpenSet(nextIndices);
+    if (!autoSequenceCompleted && openIndices.size === tabButtons.length) {
+      autoSequenceCompleted = true;
+    }
+    syncOpenVisuals();
+    if (typeof onOpenIndex === "function") {
+      onOpenIndex(getLastOpenedIndex());
+    }
+  };
+
   const openIndex = (index) => {
-    if (index < 0 || index >= tabInputs.length) {
-      return;
+    if (index < 0 || index >= tabButtons.length) {
+      return false;
     }
-    if (tabInputs[index].checked) {
-      return;
+    if (openIndices.has(index)) {
+      return false;
     }
-    tabInputs[index].checked = true;
-    tabInputs[index].dispatchEvent(new Event("change", { bubbles: true }));
+
+    const next = new Set(openIndices);
+    next.add(index);
+    setOpenState(next);
+    return true;
   };
 
-  tabInputs.forEach((tab, index) => {
-    tab.addEventListener("change", () => {
-      syncOpenVisuals();
-    });
-  });
+  const toggleIndex = (index) => {
+    if (index < 0 || index >= tabButtons.length) {
+      return;
+    }
 
-  tabLabels.forEach((label, index) => {
-    label.addEventListener("keydown", (event) => {
-      if (event.key !== "Enter" && event.key !== " ") {
+    const next = new Set(openIndices);
+    if (next.has(index)) {
+      if (next.size === 1) {
+        if (index === 0) {
+          return;
+        }
+        setOpenState(new Set([0]));
         return;
       }
-      event.preventDefault();
-      const tab = tabInputs[index];
-      if (!tab) {
-        return;
-      }
-      tab.checked = !tab.checked;
-      tab.dispatchEvent(new Event("change", { bubbles: true }));
+
+      next.delete(index);
+    } else {
+      next.add(index);
+    }
+
+    setOpenState(next);
+  };
+
+  tabButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      toggleIndex(index);
     });
   });
 
@@ -82,11 +138,6 @@
     return;
   }
 
-  const isCoarsePointer =
-    window.matchMedia &&
-    (window.matchMedia("(pointer: coarse)").matches ||
-      window.matchMedia("(hover: none)").matches);
-
   const getLockOffset = () => {
     const navHeight =
       parseFloat(
@@ -95,28 +146,43 @@
     return navHeight + 16;
   };
 
-  if (isCoarsePointer) {
+  const isSingleColumnLayout =
+    window.matchMedia && window.matchMedia("(max-width: 1024px)").matches;
+
+  if (isSingleColumnLayout) {
     if (typeof window.scrollama !== "function") {
       return;
     }
-    const getOffset = () => `${Math.round(getLockOffset() + 32)}px`;
+
     const scroller = window.scrollama();
+    const getOffset = () => `${Math.round(getLockOffset() + 24)}px`;
+    const onResize = () => {
+      scroller.resize();
+    };
+    const stopAutoOpen = () => {
+      window.removeEventListener("resize", onResize);
+      if (typeof scroller.destroy === "function") {
+        scroller.destroy();
+      }
+    };
+
     scroller
       .setup({
-        step: tabLabels,
+        step: tabCards,
         offset: getOffset(),
         threshold: 4,
       })
       .onStepEnter((response) => {
-        if (tabInputs[response.index]?.checked) {
+        if (autoSequenceCompleted) {
           return;
         }
         openIndex(response.index);
+        if (autoSequenceCompleted) {
+          stopAutoOpen();
+        }
       });
 
-    window.addEventListener("resize", () => {
-      scroller.resize();
-    });
+    window.addEventListener("resize", onResize);
     return;
   }
 
@@ -198,24 +264,20 @@
     window.scrollTo({ top: getLockTop(), behavior: "auto" });
   };
 
-  tabInputs.forEach((tab, index) => {
-    tab.addEventListener("change", () => {
-      if (!tab.checked) {
-        return;
-      }
-      const now = Date.now();
-      startDwell(now);
-      lastSwitchTime = now;
-      edgeUnlocked = false;
-      if (index === tabInputs.length - 1) {
-        lockDisabled = true;
-        edgeUnlocked = true;
-      }
-      if (index < tabInputs.length - 1) {
-        accumulatedDelta = 0;
-      }
-    });
-  });
+  onOpenIndex = (index) => {
+    const now = Date.now();
+    startDwell(now);
+    lastSwitchTime = now;
+    edgeUnlocked = false;
+    lockDisabled = index === tabButtons.length - 1;
+    if (lockDisabled) {
+      edgeUnlocked = true;
+    } else {
+      accumulatedDelta = 0;
+    }
+  };
+
+  onOpenIndex(getLastOpenedIndex());
 
   const contactAnchor = document.getElementById("contact");
   const contactSection =
@@ -265,6 +327,9 @@
   };
 
   const processDelta = (rawDelta) => {
+    if (autoSequenceCompleted) {
+      return false;
+    }
     if (isContactActive()) {
       resetState();
       return false;
@@ -272,6 +337,7 @@
     if (lockDisabled) {
       return false;
     }
+
     const activeIndex = getLastOpenedIndex();
     const now = Date.now();
     lastNaturalScroll = now;
@@ -301,7 +367,7 @@
       return false;
     }
 
-    if (activeIndex < tabInputs.length - 1) {
+    if (activeIndex < tabButtons.length - 1) {
       edgeUnlocked = false;
     }
 
@@ -328,7 +394,7 @@
     lastDirection = direction;
     lastScrollTime = now;
 
-    if (direction > 0 && activeIndex < tabInputs.length - 1) {
+    if (direction > 0 && activeIndex < tabButtons.length - 1) {
       if (now - lastSwitchTime < cooldownMs) {
         return true;
       }
@@ -342,7 +408,7 @@
       return true;
     }
 
-    if (direction > 0 && activeIndex === tabInputs.length - 1) {
+    if (direction > 0 && activeIndex === tabButtons.length - 1) {
       if (edgeUnlocked) {
         return false;
       }
@@ -360,6 +426,7 @@
       }
       return true;
     }
+
     return false;
   };
 
@@ -388,6 +455,9 @@
       }
       if (!isSectionActive()) {
         resetState();
+        return;
+      }
+      if (autoSequenceCompleted) {
         return;
       }
       if (lockDisabled) {
@@ -488,5 +558,6 @@
     }
     enableAnchorBypass(2000);
   });
+
   onHashChange();
 })();
