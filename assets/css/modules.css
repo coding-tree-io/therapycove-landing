@@ -186,7 +186,12 @@
 }
 
 .approaches-tab-card {
+  margin: 0;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(var(--cove-charcoal-rgb), 0.08);
   border-radius: var(--cove-surface-radius);
+  box-shadow: var(--cove-shadow-xs);
 }
 
 .approaches-tab {
@@ -526,21 +531,26 @@
   max-width: 860px;
   margin: 0 auto;
   padding: clamp(24px, 4vw, 40px);
-  background: rgba(255, 255, 255, 0.92);
+  background: #ffffff;
   border: 1px solid rgba(var(--cove-charcoal-rgb), 0.12);
   border-radius: 10px;
   box-shadow: none;
+  color: #2f3642;
 }
 
 .cove-legal-document h1 {
+  color: #2f3642;
   font-size: clamp(1.65rem, 2.4vw, 2.1rem);
+  font-weight: 600;
   margin-top: 0;
   margin-bottom: 1rem;
   letter-spacing: -0.01em;
 }
 
 .cove-legal-document h2 {
+  color: #2f3642;
   font-size: 1.1rem;
+  font-weight: 600;
   margin-top: 1.8rem;
   margin-bottom: 0.5rem;
 }
@@ -549,7 +559,7 @@
 .cove-legal-document li {
   font-size: 0.98rem;
   line-height: 1.7;
-  color: var(--cove-charcoal-soft);
+  color: #3f4856;
 }
 
 .cove-legal-document ul {
@@ -559,7 +569,8 @@
 
 .cove-legal-link,
 .cove-legal-document a {
-  color: var(--cove-charcoal);
+  color: #2f3642;
+  font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -1006,6 +1017,10 @@
   
   .approaches-tab {
     padding: 14px 18px;
+  }
+
+  .approaches-tab-card {
+    padding: 10px;
   }
 
   .approaches-content {
