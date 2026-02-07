@@ -2,10 +2,21 @@
 {% assign cove = site.data[data_lang].cove | default: site.data.cove %}
 {% assign footer = cove.footer %}
 {% assign site_nav = cove.site_nav %}
+{% assign home_href = '/' | relative_url %}
+{% if data_lang == 'en' %}
+{% assign home_href = '/en/' | relative_url %}
+{% endif %}
+{% if data_lang == 'en' %}
+{% assign legal_href = '/en/legal/' | relative_url %}
+{% assign legal_label = 'Privacy & Legal' %}
+{% else %}
+{% assign legal_href = '/legal/' | relative_url %}
+{% assign legal_label = 'Απόρρητο & Νομικά' %}
+{% endif %}
 <footer class="cove-footer">
   <div class="cove-shell">
     <div class="cove-footer-content">
-      <a href="#home" class="cove-footer-logo transition-transform duration-300 hover:-translate-y-0.5" aria-label="{{ footer.logo_alt }}">
+      <a href="{{ home_href }}#home" class="cove-footer-logo transition-transform duration-300 hover:-translate-y-0.5" aria-label="{{ footer.logo_alt }}">
         <picture>
           <source
             type="image/avif"
@@ -34,11 +45,16 @@
       {% endif %}
       <nav class="cove-footer-nav" aria-label="Footer">
         {% for link in site_nav.links %}
-        <a href="{{ link.href }}" class="cove-footer-link transition-colors duration-200">{{ link.label }}</a>
+        {% assign footer_href = link.href %}
+        {% if footer_href and footer_href | slice: 0, 1 == '#' %}
+        {% assign footer_href = home_href | append: footer_href %}
+        {% endif %}
+        <a href="{{ footer_href }}" class="cove-footer-link transition-colors duration-200">{{ link.label }}</a>
         {% endfor %}
       </nav>
       <div class="cove-footer-divider" aria-hidden="true"></div>
       <div class="cove-footer-bottom">
+        <a href="{{ legal_href }}" class="cove-footer-link transition-colors duration-200">{{ legal_label }}</a>
         <span class="cove-footer-copy">{{ footer.copyright }}</span>
       </div>
     </div>

@@ -9,9 +9,7 @@
   const fields = Array.from(form.querySelectorAll("input, textarea")).filter(
     (field) => field.name && !field.name.startsWith("_")
   );
-  const ajaxEndpoint =
-    form.getAttribute("data-formsubmit-ajax") ||
-    (form.getAttribute("action") || "").replace("formsubmit.co/", "formsubmit.co/ajax/");
+  const ajaxEndpoint = form.getAttribute("data-contact-endpoint") || form.getAttribute("action") || "";
 
   if (!ajaxEndpoint) {
     return;
@@ -212,17 +210,17 @@
         body: formData,
         headers: { Accept: "application/json" },
       });
+      const data = await response.clone().json().catch(() => null);
 
-      if (response.ok) {
+      if (response.ok && data?.success !== false) {
         form.reset();
         fields.forEach((field) => setFieldError(field, ""));
         updateButtonState();
         clearDraft();
         setStatus(statusMessages.success, "success");
       } else {
-        const data = await response.json().catch(() => null);
         const message =
-          data?.message || statusMessages.sendError;
+          data?.message || data?.error_msg || statusMessages.sendError;
         setStatus(message, "error");
       }
     } catch (error) {

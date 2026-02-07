@@ -3,6 +3,11 @@
 {% assign contact = cove.contact %}
 {% assign contact_intro = contact.intro %}
 {% assign email_label = contact.email_label | default: contact.form.email_label %}
+{% if data_lang == 'en' %}
+{% assign legal_href = '/en/legal/' | relative_url %}
+{% else %}
+{% assign legal_href = '/legal/' | relative_url %}
+{% endif %}
 <span id="contact" class="cove-anchor cove-anchor--contact" data-contact-lock></span>
 <section class="cove-section cove-contact" data-contact-section>
   <div class="cove-shell">
@@ -58,12 +63,12 @@
       </div>
 
       <form
-        action="https://formsubmit.co/{{ contact.email | url_encode }}"
+        action="https://form.taxi/s/4tp77agl"
         method="POST"
         class="contact-form cove-surface bg-white/80 backdrop-blur-sm ring-1 ring-white/40 shadow-soft"
         data-form-id="f8b46cd8-e768-4d05-9074-dd913e006d91"
         data-contact-form
-        data-formsubmit-ajax="https://formsubmit.co/ajax/{{ contact.email | url_encode }}"
+        data-contact-endpoint="https://form.taxi/s/4tp77agl"
         data-status-invalid="{{ contact.form.messages.invalid }}"
         data-status-pending="{{ contact.form.messages.pending }}"
         data-status-success="{{ contact.form.messages.success }}"
@@ -71,9 +76,7 @@
         data-status-send-error="{{ contact.form.messages.send_error }}"
         novalidate
       >
-        <input type="hidden" name="_subject" value="Therapy Cove | Νέα επικοινωνία">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://therapycove.gr/#contact">
+        <input type="hidden" name="_subject" value="Therapy Cove contact form">
         <input type="text" name="_honey" class="cove-hidden" tabindex="-1" autocomplete="off">
         <div class="contact-form-grid">
           <div class="contact-form-field">
@@ -133,6 +136,17 @@
         <button class="cove-button cove-button--solid cove-button--full shadow-soft hover:shadow-cove transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cove-ocean-flow/30" name="contact-submit" type="submit">
           {{ contact.form.submit_label }}
         </button>
+        {% if data_lang == 'en' %}
+        <p class="contact-form-disclosure">
+          By submitting, you agree to the processing of your data to respond to your request.
+          Read our <a href="{{ legal_href }}">Privacy & Legal Notice</a>.
+        </p>
+        {% else %}
+        <p class="contact-form-disclosure">
+          Με την υποβολή, συναινείς στην επεξεργασία των στοιχείων σου για απάντηση στο αίτημά σου.
+          Διάβασε την <a href="{{ legal_href }}">Πολιτική Απορρήτου & Νομική Ενημέρωση</a>.
+        </p>
+        {% endif %}
         <p class="contact-form-status" data-contact-status role="status" aria-live="polite"></p>
       </form>
     </div>

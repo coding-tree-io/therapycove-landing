@@ -34,6 +34,7 @@ out/
 
 # IDE helpers
 .vscode/
+.wrangler/
 
 # Editor backups and temp files
 *~

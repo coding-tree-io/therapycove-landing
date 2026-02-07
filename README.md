@@ -63,6 +63,17 @@ GitHub Pages via `.github/workflows/pages.yml` on `main`.
 ## 🔐 CMS (Decap)
 Decap CMS is configured; local backend can be started by the dev script when Node is available.
 
+## 📬 Contact Form Delivery
+- Delivery target is configured in Form.taxi dashboard.
+
+## ⚖️ Privacy & Legal
+- Greek legal notice: `/legal/`
+- English legal notice: `/en/legal/`
+
+## 📄 Licensing
+- Code license: `LICENSE` (MIT)
+- Asset rights and attributions: `ASSET_RIGHTS.md`
+
 ### Commit policy (Decap)
 - Direct to `main`
 - One commit per save

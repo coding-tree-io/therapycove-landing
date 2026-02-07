@@ -30,6 +30,8 @@ exclude_from_localization:
   - "package.json"
   - "package-lock.json"
   - "README.md"
+  - "LICENSE"
+  - "ASSET_RIGHTS.md"
 parallel_localization: false
 defaults:
   - scope:
@@ -51,3 +53,5 @@ exclude:
   - "public/"
   - "locales/"
   - "README.md"
+  - "LICENSE"
+  - "ASSET_RIGHTS.md"
