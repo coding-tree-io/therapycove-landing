@@ -1,8 +1,17 @@
 heading: A space for you
-lead: Lorem ipsum dolor sit amet sit, consectetur adipiscing elit. Sed do
-  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-  commodo consequat.
+lead: >-
+  **Therapy Cove is a contemporary mental health center and training hub,
+  welcoming adults who are seeking meaningful support. Our team consists of
+  experienced psychologists and psychotherapists with a strong professional
+  background, offering care across a broad range of areas, including young
+  adulthood, parenting, family dynamics, relationships, anxiety, mental health
+  challenges, and personal growth.**
+
+
+  **Alongside clinical services, Therapy Cove supports individuals who are training or practicing in psychotherapy and are looking for a professional environment that encourages growth and collaboration. The center offers educational seminars, professional practice spaces, opportunities for clinical experience, and ongoing support from established mental health professionals, contributing to the development of the next generation of practitioners.**
+
+
+  **Therapy Cove is an inclusive space, open to all adult individuals regardless of their needs, identity, or previous experience with psychotherapy.**
 primary_cta:
   label: The space
   href: "#space"
