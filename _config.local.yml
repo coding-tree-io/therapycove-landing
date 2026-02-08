@@ -1,4 +1,4 @@
 url: ""
 baseurl: ""
 flags:
-  show_lang_toggle: false
+  show_lang_toggle: true

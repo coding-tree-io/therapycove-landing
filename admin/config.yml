@@ -160,6 +160,22 @@ collections:
           - { label: Tagline, name: tagline, widget: text, required: false }
           - { label: Copyright, name: copyright, widget: hidden }
 
+  - name: gr-legal
+    label: GR • Legal
+    files:
+      - name: legal
+        label: Legal (GR)
+        file: legal.md
+        fields:
+          - { label: Layout, name: layout, widget: hidden, default: legal }
+          - { label: Title, name: title, widget: string }
+          - { label: Description, name: description, widget: text }
+          - { label: Language, name: lang, widget: hidden, default: gr }
+          - { label: Permalink, name: permalink, widget: hidden, default: /legal/ }
+          - { label: Page ID, name: page_id, widget: hidden, default: legal }
+          - { label: Sitemap, name: sitemap, widget: hidden, default: true }
+          - { label: Body, name: body, widget: markdown }
+
   - name: gr-therapists
     label: GR • Therapists
     folder: _data/gr/cove/therapists
@@ -333,6 +349,22 @@ collections:
           - { label: Logo Alt Text, name: logo_alt, widget: string }
           - { label: Tagline, name: tagline, widget: text, required: false }
           - { label: Copyright, name: copyright, widget: hidden }
+
+  - name: en-legal
+    label: EN • Legal
+    files:
+      - name: legal
+        label: Legal (EN)
+        file: en/legal.md
+        fields:
+          - { label: Layout, name: layout, widget: hidden, default: legal }
+          - { label: Title, name: title, widget: string }
+          - { label: Description, name: description, widget: text }
+          - { label: Language, name: lang, widget: hidden, default: en }
+          - { label: Permalink, name: permalink, widget: hidden, default: /en/legal/ }
+          - { label: Page ID, name: page_id, widget: hidden, default: legal }
+          - { label: Sitemap, name: sitemap, widget: hidden, default: true }
+          - { label: Body, name: body, widget: markdown }
 
   - name: en-therapists
     label: EN • Therapists
