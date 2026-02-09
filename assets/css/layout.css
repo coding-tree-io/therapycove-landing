@@ -591,6 +591,7 @@
 }
 
 .cove-card-title {
+  color: var(--cove-charcoal);
   font-size: 1.35rem;
   margin: 0 0 12px;
   letter-spacing: -0.02em;
