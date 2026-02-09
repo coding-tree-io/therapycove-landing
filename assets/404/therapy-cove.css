@@ -1,0 +1,39 @@
+:root {
+  --cove-charcoal: #333333;
+  --cove-ivory: #F9ECCF;
+  --cove-ocean-flow: #9DC6AA;
+  --cove-ocean-deep: #7AB08A;
+  --cove-ocean-light: #C5DECE;
+  --cove-ocean-ink: #3F5F4B;
+
+  --cove-charcoal-rgb: 51, 51, 51;
+  --cove-ivory-rgb: 249, 236, 207;
+  --cove-ocean-flow-rgb: 157, 198, 170;
+
+  --ct-404-bg: var(--cove-ivory);
+  --ct-404-surface: #FFFEF9;
+  --ct-404-text: var(--cove-charcoal);
+  --ct-404-muted: rgba(var(--cove-charcoal-rgb), 0.72);
+
+  --ct-404-primary: var(--cove-ocean-flow);
+  --ct-404-primary-contrast: var(--cove-charcoal);
+  --ct-404-primary-soft: rgba(var(--cove-ocean-flow-rgb), 0.2);
+
+  --ct-404-accent: var(--cove-ocean-deep);
+  --ct-404-accent-soft: rgba(var(--cove-ocean-flow-rgb), 0.18);
+
+  --ct-404-border: rgba(var(--cove-charcoal-rgb), 0.12);
+  --ct-404-button-ghost-bg: rgba(255, 255, 255, 0.72);
+  --ct-404-shadow-color: rgba(var(--cove-charcoal-rgb), 0.16);
+
+  --ct-404-gradient-start: var(--cove-ivory);
+  --ct-404-gradient-end: var(--cove-ocean-light);
+
+  --ct-404-menu-surface: var(--ct-404-primary);
+  --ct-404-menu-text: var(--ct-404-text);
+  --ct-404-menu-hover: var(--ct-404-accent);
+
+  --ct-404-illustration-stroke: var(--ct-404-text);
+  --ct-404-illustration-fill: var(--ct-404-surface);
+  --ct-404-illustration-dot: var(--ct-404-text);
+}
