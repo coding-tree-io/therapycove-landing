@@ -8,6 +8,8 @@ logo: "/assets/images/therapy-cove-logo.png"
 image: "/assets/images/therapy-cove-space-hero.jpg"
 flags:
   show_lang_toggle: false
+analytics:
+  cloudflare_beacon_token: "a0773d3846ff42d0ad0c3ced9498dc22"
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap

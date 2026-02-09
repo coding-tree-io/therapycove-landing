@@ -1,0 +1,4 @@
+{% assign cf_token = site['analytics']['cloudflare_beacon_token'] %}
+{% if jekyll.environment == "production" and cf_token %}
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ cf_token }}"}'></script>
+{% endif %}

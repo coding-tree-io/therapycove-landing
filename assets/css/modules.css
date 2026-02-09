@@ -698,6 +698,14 @@
   letter-spacing: 0.01em;
 }
 
+.cove-footer-content coding-tree-attribution {
+  display: inline-block;
+  margin-top: 1px;
+  opacity: 1;
+  transform: scale(0.82);
+  transform-origin: center;
+}
+
 /* Motion */
 .cove-reveal {
   animation: cove-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
