@@ -200,6 +200,60 @@
     }
   }
 
+  function getCurrentPathname() {
+    if (typeof window.location !== "object" || typeof window.location.pathname !== "string") {
+      return "/";
+    }
+
+    return window.location.pathname;
+  }
+
+  function isEnglishPath(pathname) {
+    return pathname === "/en" || pathname.indexOf("/en/") === 0;
+  }
+
+  function isDirect404TemplatePath(pathname) {
+    return pathname === "/404.html" || pathname === "/en/404.html";
+  }
+
+  function resolveFallbackSection(pathname) {
+    var normalizedPathname = pathname.toLowerCase();
+    return normalizedPathname.indexOf("contact") >= 0 ? "#contact" : "#home";
+  }
+
+  function buildLocalizedSectionUrl(pathname, sectionHash) {
+    var sectionBasePath = isEnglishPath(pathname) ? "/en/" : "/";
+    return sectionBasePath + sectionHash;
+  }
+
+  function applyLocalizedActionLinks(pathname) {
+    var homeLink = document.getElementById("home-link");
+    var contactLink = document.getElementById("contact-link");
+
+    if (homeLink) {
+      homeLink.setAttribute("href", buildLocalizedSectionUrl(pathname, "#home"));
+    }
+
+    if (contactLink) {
+      contactLink.setAttribute("href", buildLocalizedSectionUrl(pathname, "#contact"));
+    }
+  }
+
+  function redirectUnknownPath(pathname, searchParams) {
+    if (hasTruthyParam(searchParams, "ctNoRedirect")) {
+      return;
+    }
+
+    if (isDirect404TemplatePath(pathname)) {
+      return;
+    }
+
+    var fallbackSection = resolveFallbackSection(pathname);
+    var fallbackUrl = buildLocalizedSectionUrl(pathname, fallbackSection);
+
+    window.location.replace(fallbackUrl);
+  }
+
   function applyPalette(input) {
     var palette = input || {};
     var currentPrimary = normalizeHex(getToken("--ct-404-primary")) || "#2ccf6d";
@@ -288,9 +342,13 @@
   };
 
   var searchParams = parseSearchParams();
+  var currentPathname = getCurrentPathname();
+
   if (hasTruthyParam(searchParams, "ctEmbed") && isEmbeddedContext()) {
     document.documentElement.setAttribute("data-ct-404-embed", "true");
   }
+
+  applyLocalizedActionLinks(currentPathname);
 
   if (searchParams) {
     injectThemeStylesheet(searchParams.get("ctTheme"));
@@ -309,6 +367,8 @@
   if (requestedPath && typeof window.location === "object") {
     requestedPath.textContent = getRequestedPathLabel(searchParams);
   }
+
+  redirectUnknownPath(currentPathname, searchParams);
 
   var backLink = document.getElementById("back-link");
   if (backLink) {
