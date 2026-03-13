@@ -1,6 +1,10 @@
-title: "Psychotherapy approaches"
-description: |
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
+title: Psychotherapy approaches
+description: Explore different psychotherapeutic schools and approaches, such as
+  **Cognitive Behavioural Therapy (CBT) and** **Psychodynamic Therapy**, as well
+  as **Existential** and **Humanistic** approaches. Each model offers a distinct
+  framework for understanding the human experience and supporting the inner
+  process, depending on the needs, values, and life stage of the person in
+  therapy.
 image:
-  src: "/assets/images/psychotherapeutic-approaches.jpg"
-  alt: "Psychotherapy approaches"
+  src: /assets/images/psychotherapeutic-approaches.jpg
+  alt: Psychotherapy approaches
