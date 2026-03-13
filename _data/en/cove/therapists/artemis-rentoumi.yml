@@ -1,8 +1,14 @@
-name: "Artemis Rentoumi"
-role: "Psychologist - Psychotherapist"
-image: "/assets/images/therapist-artemis-rentoumi.jpg"
-alt: "Artemis Rentoumi"
-bio: |
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+name: Artemis Rentoumi
+role: Psychologist - Psychotherapist
+image: /assets/images/therapist-artemis-rentoumi.jpg
+alt: Artemis Rentoumi
+bio: >-
+  Founder and coordinator of Therapy Cove, responsible for the smooth operation
+  of the space and its collaborators, with many years of experience as a
+  psychotherapist and counsellor. She specialises in psychodynamic, existential,
+  and humanistic approaches, having developed an integrative perspective that
+  always begins with establishing a safe therapeutic space. Her approach is
+  affirmative and aligned with the LGBTQ+ community.
 
-  > *"Lorem ipsum dolor sit amet, consectetur adipiscing elit."*
+
+  “There is no therapy without communication, and it is my responsibility to learn the language of every person in therapy.”
