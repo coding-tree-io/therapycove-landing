@@ -1,6 +1,10 @@
-title: "Find the right therapist"
-description: |
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+title: Find the right therapist
+description: Discover useful guidance and available resources to help you find
+  the therapist who best suits your personal needs. Your choice may be based on
+  factors such as the therapist’s area of specialization, the methodological
+  approach they follow, as well as the degree of therapeutic compatibility and
+  trust that develops within the relationship between the person in therapy and
+  the therapist.
 image:
-  src: "/assets/images/find-the-best-therapist.jpg"
-  alt: "Find the right therapist"
+  src: /assets/images/find-the-best-therapist.jpg
+  alt: Find the right therapist
